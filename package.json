@@ -1,0 +1,27 @@
+{
+  "name": "yf-fpm-admin",
+  "version": "1.0.0",
+  "description": "fpm,admin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -s -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team4yf/yf-fpm-admin.git"
+  },
+  "keywords": [
+    "fpm",
+    "admin"
+  ],
+  "author": "wangfan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/team4yf/yf-fpm-admin/issues"
+  },
+  "homepage": "https://github.com/team4yf/yf-fpm-admin#readme",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  }
+}
