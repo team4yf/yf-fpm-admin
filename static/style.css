@@ -30,3 +30,6 @@ div, span, p, td, th, a, input, option{
 .btn, .modal-content{
   border-radius: 3px;
 }
+.pagination li{
+  margin-right: 0px;
+}

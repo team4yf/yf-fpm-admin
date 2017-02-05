@@ -10,185 +10,40 @@
     <link href="style.css" rel="stylesheet">
   </head>
   <body>
-    <div id="header">
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">FPM Admin</a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a href="dashboard.html">Dashboard</a></li>
-              <li  class="active"><a href="apps.html">Apps <span class="sr-only">(current)</span></a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">List</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Create New One</a></li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav pull-right">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Setting</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Logout</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-    </div>
-
-    <div id="container" class="center-block">
-
-      <div id="apps">
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#myModal">Create</button>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <b class="pull-left table-title">Applications</b>
-            <div class="pull-right form-inline">
-              <!-- search -->
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Go!</button>
-                </span>
-              </div><!-- /input-group -->
-            </div>
-            <div class="clearfix"></div>
-          </div>
-          <div class="panel-body">
-            <table class="table table-bordered table-hover ">
-              <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Env</th>
-                <th>About</th>
-                <th>Operate</th>
-              </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>aaa</td>
-                  <td>iOS</td>
-                  <td>STAGING</td>
-                  <td>Column content</td>
-                  <td></td>
-                </tr>
-
-              </tbody>
-            </table>
-            <div class="text-center">
-              <ul class="pagination">
-                <li class="previous"><a href="#"><i class="fa fa-caret-left"></i></a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">6</a></li>
-                <li><a href="#">7</a></li>
-                <li><a href="#">8</a></li>
-                <li><a href="#">9</a></li>
-                <li class="next"><a href="#"><i class="fa fa-caret-right"></i></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- footer -->
-      <nav class="navbar navbar-default navbar-fixed-bottom footer">
-        <p class="text-right">&copy;CopyRight 2017-2018 Powered Wangfan@YunPlus.io </p>
-      </nav>
-
-    </div>
-
-    <!-- Modal -->
-    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <p class="modal-title" id="myModalLabel">Modal title</p>
-          </div>
-          <div class="modal-body">
-            <form class="form-horizontal">
-              <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <label class="checkbox">
-                    <input type="checkbox" /> Remember me
-                  </label>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-primary">Sign in</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="fpm"></div>
 
     <script src="//cdn.bootcss.com/flat-ui/2.3.0/js/vendor/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/flat-ui/2.3.0/js/flat-ui.min.js"></script>
     <script src="//cdn.bootcss.com/fetch/2.0.2/fetch.min.js"></script>
-    <script>
-      $().ready(function(){
-        fetch('http://api.yunplus.io/api', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json; charset=UTF-8'
-          },
-          body: JSON.stringify ({
-            appkey: '123123',
-            method: 'common.find',
-            v: '0.0.1',
-            sign: 123123123,
-            timestamp: 123123123,
-            param: JSON.stringify({ table: 'api_app'})
-          })
-        })
-        .then(function(response) {
-          response.json().then(function(json) {
-            console.log(json);
-          })
-        });
+    <script src="//cdn.bootcss.com/babel-polyfill/6.22.0/polyfill.min.js"></script>
+    <script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/react-router@3.0.2/umd/react-router.min.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+    <script type="text/babel" src="./comp/part.js"></script>
+    <script type="text/babel" src="./comp/app-edit.js"></script>
+    <script type="text/babel" src="./comp/apps-list.js"></script>
+    <script type="text/babel" src="./comp/apps.js"></script>
+    <script type="text/babel">
+      var AppPage = React.createClass({
+        render: function(){
+          return (
+            <div>
+              <Header />
+              <div id="container" className="center-block">
+                <Apps />
+              </div>
+              <Footer />
+            </div>
+          )
+        }
       });
+      ReactDOM.render(
+        <AppPage />
+        ,
+        document.getElementById('fpm')
+      );
+
     </script>
   </body>
 </html>
