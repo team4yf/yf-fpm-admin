@@ -41,7 +41,7 @@ const Header = React.createClass({
 
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
-                <li><Link to="/welcome" activeClassName="active">dashboard</Link></li>
+                <li><Link to="/dashboard" activeClassName="active">dashboard</Link></li>
                 <li><Link to="/apps" activeClassName="active">Apps</Link></li>
                 <li className="dropdown">
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span className="caret"></span></a>
