@@ -1,6 +1,6 @@
 import React,{ Component } from 'react'
 import fetchData from '../model/fpm-api'
-
+import PubSub from 'pubsub-js'
 class NoDataRow extends Component {
     render ()  {
       return (<tr className="warning"><td className="text-center" colSpan={this.props.cols}><h5>No Data Found</h5></td></tr>);
@@ -93,17 +93,26 @@ class AppList extends Component{
   constructor(props) {
     super(props)
     this.state = {data: apps, loading: false , pager: {total: 1, current: 1}}
+    this.appendData = this.appendData.bind(this)
+  }
+  appendData(msg, row){
+    let origin = this.state.origin
+    origin.rows.push(row)
+    origin.count ++
+    this.notifyDataSet(origin)
+  }
+  notifyDataSet(data){
+    let total = Math.ceil(data.count/10)
+    this.setState({origin: data, data: data.rows, loading: false ,pager: {count: data.count, total: total, current: 1}})
   }
   componentDidMount(){
+    // subcribe one event
+    var token = PubSub.subscribe( 'AppList.appendData', this.appendData );
     let self = this
     fetchData('common.findAndCount', { table: 'api_app'})
-        .then(function(response) {
-          response.json().then(function(json) {
-            let total = Math.ceil(json.data.count/10)
-
-            self.setState({data: json.data.rows, loading: false ,pager: {total: total, current: 1}})
-          })
-        })
+      .then((json) => {
+        self.notifyDataSet(json.data)
+      })
   }
   render() {
     let rows = []
