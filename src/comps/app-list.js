@@ -1,5 +1,5 @@
 import React,{ Component } from 'react'
-// import fetch from 'fetch'
+import fetchData from '../model/fpm-api'
 
 class NoDataRow extends Component {
     render ()  {
@@ -88,39 +88,34 @@ var apps = [
   }
 ]
 
-function fetchData(method, param){
-  // return fetch('http://api.yunplus.io/api', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json; charset=UTF-8'
-  //   },
-  //   body: JSON.stringify ({
-  //     appkey: '123123',
-  //     method: method,
-  //     v: '0.0.1',
-  //     sign: 123123123,
-  //     timestamp: 123123123,
-  //     param: JSON.stringify(param)
-  //   })
-  // })
-}
+
 class AppList extends Component{
   constructor(props) {
     super(props)
-    this.state = {data: apps, loading: false}
+    this.state = {data: apps, loading: false , pager: {total: 1, current: 1}}
   }
+  componentDidMount(){
+    let self = this
+    fetchData('common.findAndCount', { table: 'api_app'})
+        .then(function(response) {
+          response.json().then(function(json) {
+            let total = Math.ceil(json.data.count/10)
 
+            self.setState({data: json.data.rows, loading: false ,pager: {total: total, current: 1}})
+          })
+        })
+  }
   render() {
-    let rows = [];
+    let rows = []
     if(this.state.loading === true){
-      rows.push(<LoadingDataRow key={-1} cols="6"/>);
+      rows.push(<LoadingDataRow key={-1} cols="6"/>)
     }else{
       this.state.data.forEach(function(app) {
-        rows.push(<AppRow key={app.id} app={app} />);
-      });
+        rows.push(<AppRow key={app.id} app={app} />)
+      })
       if(rows.length === 0){
         //NoDatas
-        rows.push(<NoDataRow key={-1} cols="6"/>);
+        rows.push(<NoDataRow key={-1} cols="6"/>)
       }
     }
     return (
@@ -155,7 +150,7 @@ class AppList extends Component{
               </tbody>
             </table>
             <div className="text-center">
-              <Pager total="3" current="1"/>
+              <Pager total={this.state.pager.total} current={this.state.pager.current} />
             </div>
           </div>
         </div>
@@ -164,26 +159,5 @@ class AppList extends Component{
   }
 
 }
-// export default React.createClass({
-//   loadDataFromServer: ()=>{
-//     var self = this;
-//     fetchData('common.find', { table: 'api_app'})
-//     .then(function(response) {
-//       response.json().then(function(json) {
-//         self.setState({data: json.data, loading: false});
-//       })
-//     });
-//   },
-//   loadDataFromLocal: ()=>{
-//     this.setState({data: apps, loading: false})
-//   },
-//   getInitialState: () => {
-//     return {data: apps, loading: true};
-//   },
-//   componentDidMount: () =>{
-//     var self = this;
-//     //self.loadDataFromLocal();
-//   },
-//
-// })
+
 export default AppList
