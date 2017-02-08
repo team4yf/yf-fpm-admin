@@ -19,14 +19,21 @@ const Header = React.createClass({
 
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
-                <li><Link to="/dashboard" activeClassName="active">dashboard</Link></li>
+                <li><Link to="/dashboard" activeClassName="active">Dashboard</Link></li>
                 <li><Link to="/apps" activeClassName="active">Apps</Link></li>
+                <li><Link to="/apps" activeClassName="active">Users</Link></li>
+                <li><Link to="/apps" activeClassName="active">DataSet</Link></li>
                 <li className="dropdown">
-                  <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span className="caret"></span></a>
+                  <a href="#" className="dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false">Setting <span className="caret"></span></a>
                   <ul className="dropdown-menu">
-                    <li><a href="#">List</a></li>
+                    <li><a href="#">Email</a></li>
+                    <li><a href="#">Notification</a></li>
                     <li role="separator" className="divider"></li>
-                    <li><a href="#">Create New One</a></li>
+                    <li><a href="#">Sechdual</a></li>
                   </ul>
                 </li>
               </ul>

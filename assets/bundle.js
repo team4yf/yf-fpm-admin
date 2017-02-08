@@ -25626,7 +25626,7 @@
 	                _react2.default.createElement(
 	                  _reactRouter.Link,
 	                  { to: '/dashboard', activeClassName: 'active' },
-	                  'dashboard'
+	                  'Dashboard'
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -25640,11 +25640,33 @@
 	              ),
 	              _react2.default.createElement(
 	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/apps', activeClassName: 'active' },
+	                  'Users'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                null,
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/apps', activeClassName: 'active' },
+	                  'DataSet'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
 	                { className: 'dropdown' },
 	                _react2.default.createElement(
 	                  'a',
-	                  { href: '#', className: 'dropdown-toggle', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
-	                  'Users ',
+	                  { href: '#', className: 'dropdown-toggle',
+	                    'data-toggle': 'dropdown',
+	                    role: 'button',
+	                    'aria-haspopup': 'true',
+	                    'aria-expanded': 'false' },
+	                  'Setting ',
 	                  _react2.default.createElement('span', { className: 'caret' })
 	                ),
 	                _react2.default.createElement(
@@ -25656,7 +25678,16 @@
 	                    _react2.default.createElement(
 	                      'a',
 	                      { href: '#' },
-	                      'List'
+	                      'Email'
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'li',
+	                    null,
+	                    _react2.default.createElement(
+	                      'a',
+	                      { href: '#' },
+	                      'Notification'
 	                    )
 	                  ),
 	                  _react2.default.createElement('li', { role: 'separator', className: 'divider' }),
@@ -25666,7 +25697,7 @@
 	                    _react2.default.createElement(
 	                      'a',
 	                      { href: '#' },
-	                      'Create New One'
+	                      'Sechdual'
 	                    )
 	                  )
 	                )
