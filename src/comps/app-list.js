@@ -1,6 +1,8 @@
 import React,{ Component } from 'react'
 import fetchData from '../model/fpm-api'
 import PubSub from 'pubsub-js'
+import _ from 'lodash'
+
 class NoDataRow extends Component {
     render ()  {
       return (<tr className="warning"><td className="text-center" colSpan={this.props.cols}><h5>No Data Found</h5></td></tr>);
@@ -71,7 +73,7 @@ class AppRow extends Component {
         <td>{app.apptype}</td>
         <td>{app.appenvironment}</td>
         <td>{app.about}</td>
-        <td></td>
+        <td><a href="">Check</a> <a href="">Reset</a></td>
       </tr>
 
     )
@@ -97,7 +99,9 @@ class AppList extends Component{
   }
   appendData(msg, row){
     let origin = this.state.origin
-    origin.rows.push(row)
+    _.drop(origin.rows)
+    origin.rows.splice(origin.rows.length - 1, 1)
+    origin.rows.splice(0, 0, row)
     origin.count ++
     this.notifyDataSet(origin)
   }

@@ -36,18 +36,49 @@ class TextField extends Component{
   }
 }
 
+class Selector extends Component{
+
+  getValue() {
+    return this.refs.input.value;
+  }
+
+  render(){
+    let options = [];
+
+    this.props.values.forEach((item)=>{
+      options.push(
+        <option key={item.value} value={item.value}>{item.title}</option>
+      )
+    })
+    return (
+      <div className="form-group">
+        <label className="col-sm-2 control-label">{this.props.title}</label>
+        <div className="col-sm-10">
+        <select className="form-control" ref="input">
+          {options}
+        </select>
+        </div>
+      </div>
+    )
+  }
+}
+
+
 class AppEditer extends Component{
   constructor(props) {
     super(props)
     this.state = {
       app: {
         appname: '',
-        apptype: 'WEB',
-        appenvironment: 'DEV',
+        apptype: 'web',
+        appenvironment: 'dev',
         approot: '*',
         appurl: 'http://fpmadmin.yunplus.io',
         about: 'For FPMADMIN@YUNPLUS.IO'
-      }
+      },
+      type: [{title: 'iOS', value: 'ios'}, {title: 'Android', value: 'android'}, {title: 'WEB', value: 'web'} ],
+      env: [{title: 'DEV', value: 'dev'}, {title: 'STAGING', value: 'staging'}, {title: 'PRODUCT', value: 'product'}],
+
     }
   }
 
@@ -97,21 +128,23 @@ class AppEditer extends Component{
                     ref="appname"
                     placeholder="type your app name"/>
 
-                  <TextField title="Type"
+                  <Selector title="Type"
                     default={this.state.app.apptype}
+                    values={this.state.type}
                     ref="apptype" />
 
-                  <TextField title="Env"
-                      default={this.state.app.appenvironment}
-                      ref="appenvironment" />
+                  <Selector title="Env"
+                    default={this.state.app.appenvironment}
+                    values={this.state.env}
+                    ref="appenvironment" />
 
                   <TextField title="Root"
-                      default={this.state.app.approot}
-                      ref="approot" />
+                    default={this.state.app.approot}
+                    ref="approot" />
 
                   <TextField title="Url"
-                      default={this.state.app.appurl}
-                      ref="appurl" />
+                    default={this.state.app.appurl}
+                    ref="appurl" />
 
                   <TextField title="About"
                     multiLine="true"
