@@ -16,16 +16,18 @@ class LoadingDataRow extends Component {
   }
 }
 
-class AppRow extends Component {
+class DataRow extends Component {
   render () {
-    let app = this.props.app;
+    let data = this.props.data;
     return (
       <tr>
-        <td>{app.id}</td>
-        <td>{app.appname}</td>
-        <td>{app.apptype}</td>
-        <td>{app.appenvironment}</td>
-        <td>{app.about}</td>
+        {
+          _.map(data, (item)=>{
+            return (
+              <td>{item}</td>
+            )
+          })
+        }
         <td><a href="">Check</a> <a href="">Reset</a></td>
       </tr>
 
@@ -33,7 +35,7 @@ class AppRow extends Component {
   }
 }
 
-var apps = [
+var user = [
   {
     id: 1,
     appname: 'test',
@@ -44,10 +46,10 @@ var apps = [
 ]
 
 
-class AppList extends Component{
+class DataList extends Component{
   constructor(props) {
     super(props)
-    this.state = {data: apps, loading: false , pager: {total: 1, current: 1}}
+    this.state = {data: user, loading: false , pager: {total: 1, current: 1}}
     this.appendData = this.appendData.bind(this)
   }
   appendData(msg, row){
@@ -66,18 +68,18 @@ class AppList extends Component{
     // subcribe one event
     var token = PubSub.subscribe( 'AppList.appendData', this.appendData );
     let self = this
-    fetchData('common.findAndCount', { table: 'api_app'})
-      .then((json) => {
-        self.notifyDataSet(json.data)
-      })
+    // fetchData('common.findAndCount', { table: 'api_app'})
+    //   .then((json) => {
+    //     self.notifyDataSet(json.data)
+    //   })
   }
   render() {
     let rows = []
     if(this.state.loading === true){
       rows.push(<LoadingDataRow key={-1} cols="6"/>)
     }else{
-      this.state.data.forEach(function(app) {
-        rows.push(<AppRow key={app.id} app={app} />)
+      this.state.data.forEach(function(data) {
+        rows.push(<DataRow key={data.id} data={data} />)
       })
       if(rows.length === 0){
         //NoDatas
@@ -88,7 +90,7 @@ class AppList extends Component{
       <div>
         <div className="panel panel-default">
           <div className="panel-heading">
-            <b className="pull-left table-title">Applications</b>
+            <b className="pull-left table-title">Users</b>
             <div className="pull-right form-inline">
               <div className="input-group">
                 <input type="text" className="form-control" placeholder="Search..." />
@@ -126,4 +128,4 @@ class AppList extends Component{
 
 }
 
-export default AppList
+export default DataList

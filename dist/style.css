@@ -34,8 +34,8 @@ div, span, p, td, th, a, input, option{
   margin-right: 0px;
 }
 a.active{
-  background:#1abc9c;
-  color: #fff;
+  background:#1abc9c !important;
+  color: #fff !important;
 }
 .text-3x{
   font-size: 3em;

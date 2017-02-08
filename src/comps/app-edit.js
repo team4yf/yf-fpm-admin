@@ -1,68 +1,7 @@
 import React,{ Component } from 'react'
 import fetchData from '../model/fpm-api'
 import PubSub from 'pubsub-js'
-
-class TextField extends Component{
-
-  getValue() {
-    return this.refs.input.value;
-  }
-
-  render(){
-    let control ;
-    if(this.props.multiLine){
-      control = (
-        <textarea
-          className="form-control" ref="input"
-          defaultValue={this.props.default}
-          placeholder={this.props.placeholder} />
-      )
-    }else{
-      control = (
-        <input type={this.props.type}
-          className="form-control" ref="input"
-          defaultValue={this.props.default}
-          placeholder={this.props.placeholder}/>
-      )
-    }
-    return (
-      <div className="form-group">
-        <label className="col-sm-2 control-label">{this.props.title}</label>
-        <div className="col-sm-10">
-          {control}
-        </div>
-      </div>
-    )
-  }
-}
-
-class Selector extends Component{
-
-  getValue() {
-    return this.refs.input.value;
-  }
-
-  render(){
-    let options = [];
-
-    this.props.values.forEach((item)=>{
-      options.push(
-        <option key={item.value} value={item.value}>{item.title}</option>
-      )
-    })
-    return (
-      <div className="form-group">
-        <label className="col-sm-2 control-label">{this.props.title}</label>
-        <div className="col-sm-10">
-        <select className="form-control" ref="input">
-          {options}
-        </select>
-        </div>
-      </div>
-    )
-  }
-}
-
+import { TextField, Selector, Modal } from './controls'
 
 class AppEditer extends Component{
   constructor(props) {
@@ -111,57 +50,45 @@ class AppEditer extends Component{
         <div className="btn-group" role="group">
           <button type="button" className="btn btn-sm btn-success" data-toggle="modal" data-target="#app-editer">Create</button>
         </div>
-        <div className="modal" id="app-editer" role="dialog">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h6 className="modal-title">App Detail</h6>
-              </div>
-              <div className="modal-body">
-                <form className="form-horizontal" id="app-editer-form" onSubmit={this.onSubmitHandler.bind(this)} >
+        <Modal id="app-editer" title="App Detail">
+          <form className="form-horizontal" id="app-editer-form" onSubmit={this.onSubmitHandler.bind(this)} >
 
-                  <TextField title="Name"
-                    default={this.state.app.appname}
-                    ref="appname"
-                    placeholder="type your app name"/>
+            <TextField title="Name"
+              default={this.state.app.appname}
+              ref="appname"
+              placeholder="type your app name"/>
 
-                  <Selector title="Type"
-                    default={this.state.app.apptype}
-                    values={this.state.type}
-                    ref="apptype" />
+            <Selector title="Type"
+              default={this.state.app.apptype}
+              values={this.state.type}
+              ref="apptype" />
 
-                  <Selector title="Env"
-                    default={this.state.app.appenvironment}
-                    values={this.state.env}
-                    ref="appenvironment" />
+            <Selector title="Env"
+              default={this.state.app.appenvironment}
+              values={this.state.env}
+              ref="appenvironment" />
 
-                  <TextField title="Root"
-                    default={this.state.app.approot}
-                    ref="approot" />
+            <TextField title="Root"
+              default={this.state.app.approot}
+              ref="approot" />
 
-                  <TextField title="Url"
-                    default={this.state.app.appurl}
-                    ref="appurl" />
+            <TextField title="Url"
+              default={this.state.app.appurl}
+              ref="appurl" />
 
-                  <TextField title="About"
-                    multiLine="true"
-                    default={this.state.app.about}
-                    ref="about" />
+            <TextField title="About"
+              multiLine="true"
+              default={this.state.app.about}
+              ref="about" />
 
-                  <div className="form-group">
-                    <div className="col-sm-offset-2 col-sm-10">
-                      <button type="text" className="btn btn-primary">Save</button>
-                    </div>
-                  </div>
-
-                </form>
+            <div className="form-group">
+              <div className="col-sm-offset-2 col-sm-10">
+                <button type="text" className="btn btn-primary">Save</button>
               </div>
             </div>
-          </div>
-        </div>
+
+          </form>
+        </Modal>
       </div>
     )
   }
