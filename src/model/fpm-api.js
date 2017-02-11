@@ -1,4 +1,5 @@
 import fetch from 'node-fetch'
+import _ from 'lodash'
 
 function fetchData(method, param){
   return new Promise( (resolve, reject) => {
@@ -13,7 +14,7 @@ function fetchData(method, param){
         v: '0.0.1',
         sign: 123123123,
         timestamp: 123123123,
-        param: JSON.stringify(param)
+        param: _.isString(param) ? param :JSON.stringify(param)
       })
     })
     .then((response) => {

@@ -7,6 +7,7 @@ import {Welcome} from './comps/part'
 import Dashboard from './comps/dashboard'
 import Setting from './comps/setting'
 import User from './comps/user'
+import Tools from './comps/tools'
 
 render((
   <Router history={ hashHistory }>
@@ -16,6 +17,7 @@ render((
       <Route path="/apps" component={App} />
       <Route path="/users" component={User} />
       <Route path="/setting" component={ Setting } />
+      <Route path="/tools" component={ Tools } />
     </Route>
   </Router>
   ),

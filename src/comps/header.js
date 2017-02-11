@@ -27,9 +27,8 @@ const Header = React.createClass({
                 <li><Link to="/apps" activeClassName="active">Apps</Link></li>
                 <li><Link to="/users" activeClassName="active">Users</Link></li>
                 <li><Link to="/setting" activeClassName="active">Setting</Link></li>
+                <li><Link to="/tools" activeClassName="active">Tools</Link></li>
               </ul>
-
-
             </div>
           </div>
         </nav>

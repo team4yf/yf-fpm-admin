@@ -43,3 +43,6 @@ a.active{
 .empty-chart{
   min-height: 300px;
 }
+.palette{
+  padding:0px;
+}
