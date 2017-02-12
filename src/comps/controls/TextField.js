@@ -2,8 +2,29 @@ import React,{ Component } from 'react'
 
 class TextField extends Component{
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: this.props.value,
+      isChanged: false
+    }
+  }
+
   getValue() {
-    return this.refs.input.value;
+    return this.refs.input.value
+  }
+
+  setValue(val){
+    this.refs.input.value = val
+    this.setState({value: this.refs.input.value})
+  }
+
+  isChanged(){
+    return this.state.isChanged
+  }
+
+  onChangeHandler(){
+    this.setState({value: this.refs.input.value, isChanged: true})
   }
 
   render(){
@@ -13,14 +34,18 @@ class TextField extends Component{
         <textarea
           className="form-control" ref="input"
           defaultValue={this.props.default}
-          placeholder={this.props.placeholder} />
+          placeholder={this.props.placeholder}
+          value={this.state.value}
+          onChange={this.onChangeHandler.bind(this)} />
       )
     }else{
       control = (
         <input type={this.props.type}
           className="form-control" ref="input"
           defaultValue={this.props.default}
-          placeholder={this.props.placeholder}/>
+          placeholder={this.props.placeholder}
+          value={this.state.value}
+          onChange={this.onChangeHandler.bind(this)} />
       )
     }
     return (

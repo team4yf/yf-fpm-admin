@@ -24,7 +24,7 @@ class Tools extends Component {
 
   render() {
     return (
-      <Panel title="Api Client">
+      <Panel title="Api Client Simple">
         <form className="form-horizontal" onSubmit={this.onSubmitHandler.bind(this)} >
           <TextField
             title="Method:"
