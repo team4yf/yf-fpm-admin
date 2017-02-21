@@ -64,7 +64,7 @@
 
 	var _part = __webpack_require__(223);
 
-	var _dashboard = __webpack_require__(325);
+	var _dashboard = __webpack_require__(327);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
@@ -25493,8 +25493,7 @@
 	          'div',
 	          { id: 'container', className: 'center-block' },
 	          this.props.children
-	        ),
-	        _react2.default.createElement(_part.Footer, null)
+	        )
 	      );
 	    }
 	  }]);
@@ -25533,10 +25532,10 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'nav',
-	      { className: 'navbar navbar-default navbar-fixed-bottom footer' },
+	      { className: 'navbar navbar-default navbar-fixed-bottom footer blue-grey lighten-4 ' },
 	      _react2.default.createElement(
 	        'p',
-	        { className: 'text-right' },
+	        { className: 'right-align container' },
 	        '\xA9CopyRight 2017-2018 Powered Wangfan@YunPlus.io '
 	      )
 	    );
@@ -25601,88 +25600,110 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      { id: 'header' },
+	      { className: 'navbar-fixed', id: 'header' },
 	      _react2.default.createElement(
 	        'nav',
-	        { className: 'navbar navbar-inverse navbar-fixed-top' },
+	        null,
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container-fluid' },
+	          { className: 'nav-wrapper blue-grey darken-1' },
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'navbar-header' },
+	            'a',
+	            { href: '#!', className: 'left brand' },
+	            'FPM Admin'
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'left hide-on-med-and-down' },
 	            _react2.default.createElement(
-	              'button',
-	              { type: 'button', className: 'navbar-toggle collapsed',
-	                'data-toggle': 'collapse',
-	                'data-target': '#bs-example-navbar-collapse-1',
-	                'aria-expanded': 'false' },
+	              'li',
+	              null,
 	              _react2.default.createElement(
-	                'span',
-	                { className: 'sr-only' },
-	                'Toggle navigation'
-	              ),
-	              _react2.default.createElement('span', { className: 'icon-bar' }),
-	              _react2.default.createElement('span', { className: 'icon-bar' }),
-	              _react2.default.createElement('span', { className: 'icon-bar' })
+	                _reactRouter.Link,
+	                { to: '/dashboard', activeClassName: 'active' },
+	                'Dashboard'
+	              )
 	            ),
 	            _react2.default.createElement(
-	              'a',
-	              { className: 'navbar-brand', href: '/' },
-	              'FPM Admin'
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/apps', activeClassName: 'active' },
+	                'Apps'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/users', activeClassName: 'active' },
+	                'Users'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/setting', activeClassName: 'active' },
+	                'Setting'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/tools', activeClassName: 'active' },
+	                'Tools'
+	              )
 	            )
 	          ),
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'collapse navbar-collapse',
-	              id: 'bs-example-navbar-collapse-1' },
+	            'ul',
+	            { id: 'dropdown1', className: 'dropdown-content' },
 	            _react2.default.createElement(
-	              'ul',
-	              { className: 'nav navbar-nav' },
+	              'li',
+	              null,
 	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { to: '/dashboard', activeClassName: 'active' },
-	                  'Dashboard'
-	                )
-	              ),
+	                'a',
+	                { href: '#!' },
+	                'Profile'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
 	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { to: '/apps', activeClassName: 'active' },
-	                  'Apps'
-	                )
-	              ),
+	                'a',
+	                { href: '#!' },
+	                'Config'
+	              )
+	            ),
+	            _react2.default.createElement('li', { className: 'divider' }),
+	            _react2.default.createElement(
+	              'li',
+	              null,
 	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { to: '/users', activeClassName: 'active' },
-	                  'Users'
-	                )
-	              ),
+	                'a',
+	                { href: '#!' },
+	                'Logout'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'right hide-on-med-and-down' },
+	            _react2.default.createElement(
+	              'li',
+	              null,
 	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { to: '/setting', activeClassName: 'active' },
-	                  'Setting'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { to: '/tools', activeClassName: 'active' },
-	                  'Tools'
-	                )
+	                'a',
+	                { className: 'dropdown-button', href: '#!', 'data-activates': 'dropdown1' },
+	                'Admin',
+	                _react2.default.createElement('i', { className: 'fa fa-caret-down right' })
 	              )
 	            )
 	          )
@@ -25790,6 +25811,11 @@
 	  }
 
 	  _createClass(AppEditer, [{
+	    key: 'onCreateNewHandler',
+	    value: function onCreateNewHandler(e) {
+	      Materialize.toast('I am a toast!', 4000);
+	    }
+	  }, {
 	    key: 'onSubmitHandler',
 	    value: function onSubmitHandler(e) {
 	      e.preventDefault();
@@ -25805,7 +25831,7 @@
 	      };
 	      (0, _fpmApi2.default)('common.create', { table: 'api_app', row: data }).then(function (json) {
 	        // hide modal
-	        $('#app-editer').modal('hide');
+	        Materialize.toast('Add Success!', 4000);
 	        // refresh the list Component
 	        data.id = json.data.id;
 	        _pubsubJs2.default.publishSync('AppList.appendData', data);
@@ -25818,15 +25844,6 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'btn-group', role: 'group' },
-	          _react2.default.createElement(
-	            'button',
-	            { type: 'button', className: 'btn btn-sm btn-success', 'data-toggle': 'modal', 'data-target': '#app-editer' },
-	            'Create'
-	          )
-	        ),
 	        _react2.default.createElement(
 	          _controls.Modal,
 	          { id: 'app-editer', title: 'App Detail' },
@@ -25857,15 +25874,11 @@
 	              ref: 'about' }),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'form-group' },
+	              { className: 'col offset-s2 s10' },
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'col-sm-offset-2 col-sm-10' },
-	                _react2.default.createElement(
-	                  'button',
-	                  { type: 'text', className: 'btn btn-primary' },
-	                  'Save'
-	                )
+	                'button',
+	                { type: 'submit', className: 'btn modal-close' },
+	                'Save'
 	              )
 	            )
 	          )
@@ -70549,14 +70562,14 @@
 	      var control = void 0;
 	      if (this.props.multiLine) {
 	        control = _react2.default.createElement("textarea", {
-	          className: "form-control", ref: "input",
+	          className: "materialize-textarea", ref: "input",
 	          defaultValue: this.props.default,
 	          placeholder: this.props.placeholder,
 	          value: this.state.value,
 	          onChange: this.onChangeHandler.bind(this) });
 	      } else {
 	        control = _react2.default.createElement("input", { type: this.props.type,
-	          className: "form-control", ref: "input",
+	          className: "input-field", ref: "input",
 	          defaultValue: this.props.default,
 	          placeholder: this.props.placeholder,
 	          value: this.state.value,
@@ -70636,20 +70649,16 @@
 	      });
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "form-group" },
+	        { className: "" },
 	        _react2.default.createElement(
 	          "label",
-	          { className: "col-sm-2 control-label" },
+	          null,
 	          this.props.title
 	        ),
 	        _react2.default.createElement(
-	          "div",
-	          { className: "col-sm-10" },
-	          _react2.default.createElement(
-	            "select",
-	            { className: "form-control", ref: "input" },
-	            options
-	          )
+	          "select",
+	          { className: "browser-default", ref: "input" },
+	          options
 	        )
 	      );
 	    }
@@ -70698,37 +70707,22 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "modal", id: this.props.id, role: "dialog" },
+	        { className: "modal", id: this.props.id },
 	        _react2.default.createElement(
 	          "div",
-	          { className: "modal-dialog", role: "document" },
+	          { className: "modal-content" },
 	          _react2.default.createElement(
-	            "div",
-	            { className: "modal-content" },
+	            "h4",
+	            null,
+	            this.props.title,
 	            _react2.default.createElement(
-	              "div",
-	              { className: "modal-header" },
-	              _react2.default.createElement(
-	                "button",
-	                { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" },
-	                _react2.default.createElement(
-	                  "span",
-	                  { "aria-hidden": "true" },
-	                  "\xD7"
-	                )
-	              ),
-	              _react2.default.createElement(
-	                "h6",
-	                { className: "modal-title" },
-	                this.props.title
-	              )
-	            ),
-	            _react2.default.createElement(
-	              "div",
-	              { className: "modal-body" },
-	              this.props.children
+	              "span",
+	              { className: "right modal-action modal-close waves-effect waves-green btn-flat" },
+	              "x"
 	            )
-	          )
+	          ),
+	          _react2.default.createElement("div", { className: "clearfix" }),
+	          this.props.children
 	        )
 	      );
 	    }
@@ -70896,6 +70890,8 @@
 	var _lodash2 = _interopRequireDefault(_lodash);
 
 	var _controls = __webpack_require__(319);
+
+	var _common = __webpack_require__(325);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71067,12 +71063,18 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
+	      //leanmodal
 	      // subcribe one event
 	      var token = _pubsubJs2.default.subscribe('AppList.appendData', this.appendData);
 	      var self = this;
 	      (0, _fpmApi2.default)('common.findAndCount', { table: 'api_app' }).then(function (json) {
 	        self.notifyDataSet(json.data);
 	      });
+	    }
+	  }, {
+	    key: 'onClickHandler',
+	    value: function onClickHandler() {
+	      //$('#new-button').openModal()
 	    }
 	  }, {
 	    key: 'render',
@@ -71091,93 +71093,95 @@
 	      }
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'container' },
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'panel panel-default' },
+	          _common.Panel,
+	          { title: 'Applications' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'panel-heading' },
-	            _react2.default.createElement(
-	              'b',
-	              { className: 'pull-left table-title' },
-	              'Applications'
-	            ),
+	            { className: 'left' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'pull-right form-inline' },
+	              { className: 'input-field' },
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'input-group' },
-	                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Search...' }),
-	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'input-group-btn' },
-	                  _react2.default.createElement(
-	                    'button',
-	                    { className: 'btn btn-default', type: 'button' },
-	                    'Go!'
-	                  )
-	                )
+	                'button',
+	                { type: 'button',
+	                  id: 'new-button',
+	                  className: 'btn modal-trigger',
+	                  'data-target': 'app-editer',
+	                  onClick: this.onClickHandler.bind(this)
+	                },
+	                'Create'
 	              )
-	            ),
-	            _react2.default.createElement('div', { className: 'clearfix' })
+	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'panel-body' },
+	            { className: 'right' },
 	            _react2.default.createElement(
-	              'table',
-	              { className: 'table table-bordered table-hover ' },
+	              'div',
+	              { className: 'input-field' },
+	              _react2.default.createElement('i', { className: 'teal-text fa fa-search prefix' }),
+	              _react2.default.createElement('input', { id: 'icon_prefix', type: 'text', className: 'validate' }),
 	              _react2.default.createElement(
-	                'thead',
-	                null,
+	                'label',
+	                { htmlFor: 'icon_prefix' },
+	                'Search'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement('div', { className: 'clearfix' }),
+	          _react2.default.createElement(
+	            'table',
+	            { className: 'table bordered ' },
+	            _react2.default.createElement(
+	              'thead',
+	              null,
+	              _react2.default.createElement(
+	                'tr',
+	                { className: 'info' },
 	                _react2.default.createElement(
-	                  'tr',
-	                  { className: 'info' },
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'ID'
-	                  ),
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'Name'
-	                  ),
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'Type'
-	                  ),
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'Env'
-	                  ),
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'About'
-	                  ),
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'Operate'
-	                  )
+	                  'th',
+	                  null,
+	                  'ID'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Name'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Type'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Env'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'About'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Operate'
 	                )
-	              ),
-	              _react2.default.createElement(
-	                'tbody',
-	                null,
-	                rows
 	              )
 	            ),
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'text-center' },
-	              _react2.default.createElement(_controls.Pager, { total: this.state.pager.total, current: this.state.pager.current })
+	              'tbody',
+	              null,
+	              rows
 	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'text-center' },
+	            _react2.default.createElement(_controls.Pager, { total: this.state.pager.total, current: this.state.pager.current })
 	          )
 	        )
 	      );
@@ -71198,6 +71202,25 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.Panel = undefined;
+
+	var _Panel = __webpack_require__(326);
+
+	var _Panel2 = _interopRequireDefault(_Panel);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.Panel = _Panel2.default;
+
+/***/ },
+/* 326 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -71205,7 +71228,75 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _common = __webpack_require__(326);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Panel = function (_Component) {
+	  _inherits(Panel, _Component);
+
+	  function Panel() {
+	    _classCallCheck(this, Panel);
+
+	    return _possibleConstructorReturn(this, (Panel.__proto__ || Object.getPrototypeOf(Panel)).apply(this, arguments));
+	  }
+
+	  _createClass(Panel, [{
+	    key: 'render',
+	    value: function render() {
+	      var title = '';
+	      if (this.props.title) {
+	        title = _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'h5',
+	            { className: 'card-title ' },
+	            this.props.title
+	          ),
+	          _react2.default.createElement('div', { className: 'divider' })
+	        );
+	      }
+	      return _react2.default.createElement(
+	        'div',
+	        { className: "card-panel " + this.props.className },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'card-content' },
+	          title,
+	          this.props.children,
+	          _react2.default.createElement('div', { className: 'clearfix' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Panel;
+	}(_react.Component);
+
+	exports.default = Panel;
+
+/***/ },
+/* 327 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _common = __webpack_require__(325);
 
 	var _recharts = __webpack_require__(328);
 
@@ -71242,26 +71333,26 @@
 	        { className: 'row' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-md-3' },
+	          { className: 'col s3' },
 	          _react2.default.createElement(
 	            _common.Panel,
-	            { className: 'palette palette-carrot' },
+	            { className: 'teal darken-3' },
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'pull-left text-3x' },
+	              'h2',
+	              { className: 'left white-text' },
 	              _react2.default.createElement('i', { className: 'fa fa-user' })
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'pull-right' },
+	              { className: 'right white-text' },
 	              _react2.default.createElement(
 	                'h4',
-	                { className: 'text-right' },
+	                { className: 'right-align' },
 	                '+ 2'
 	              ),
 	              _react2.default.createElement(
 	                'p',
-	                { className: 'text-right' },
+	                { className: 'right-align' },
 	                'New Users'
 	              )
 	            )
@@ -71269,26 +71360,26 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-md-3' },
+	          { className: 'col s3' },
 	          _react2.default.createElement(
 	            _common.Panel,
-	            { className: 'palette palette-wisteria' },
+	            { className: 'deep-orange accent-2' },
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'pull-left text-3x' },
+	              'h2',
+	              { className: 'left white-text' },
 	              _react2.default.createElement('i', { className: 'fa fa-plug' })
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'pull-right' },
+	              { className: 'right white-text' },
 	              _react2.default.createElement(
 	                'h4',
-	                { className: 'text-right' },
+	                { className: 'right-align' },
 	                '+ 1'
 	              ),
 	              _react2.default.createElement(
 	                'p',
-	                { className: 'text-right' },
+	                { className: 'right-align' },
 	                'New Apps'
 	              )
 	            )
@@ -71296,26 +71387,26 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-md-3' },
+	          { className: 'col s3' },
 	          _react2.default.createElement(
 	            _common.Panel,
-	            { className: 'palette palette-alizarin' },
+	            { className: 'green darken-2' },
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'pull-left text-3x' },
+	              'h2',
+	              { className: 'left white-text' },
 	              _react2.default.createElement('i', { className: 'fa fa-bolt' })
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'pull-right' },
+	              { className: 'right white-text' },
 	              _react2.default.createElement(
 	                'h4',
-	                { className: 'text-right' },
+	                { className: 'right-align' },
 	                '+ 1,000'
 	              ),
 	              _react2.default.createElement(
 	                'p',
-	                { className: 'text-right' },
+	                { className: 'right-align' },
 	                'Api Calls'
 	              )
 	            )
@@ -71323,26 +71414,26 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'col-md-3' },
+	          { className: 'col s3' },
 	          _react2.default.createElement(
 	            _common.Panel,
-	            { className: 'palette palette-concrete' },
+	            { className: 'light-blue darken-2' },
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'pull-left text-3x' },
+	              'h2',
+	              { className: 'left white-text' },
 	              _react2.default.createElement('i', { className: 'fa fa-database' })
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'pull-right' },
+	              { className: 'right white-text' },
 	              _react2.default.createElement(
 	                'h4',
-	                { className: 'text-right' },
+	                { className: 'right-align' },
 	                '+ 1,000'
 	              ),
 	              _react2.default.createElement(
 	                'p',
-	                { className: 'text-right' },
+	                { className: 'right-align' },
 	                'New Data'
 	              )
 	            )
@@ -71364,7 +71455,7 @@
 	    var _this2 = _possibleConstructorReturn(this, (OsInfo.__proto__ || Object.getPrototypeOf(OsInfo)).call(this, props));
 
 	    _this2.state = {
-	      os: [{ title: 'Platfom', key: 'platform' }, { title: 'Arch', key: 'arch' }, { title: 'Version', key: 'release' }, { title: 'CPU', key: 'type' }, { title: 'Mem(Mb)', key: 'totalmem' }, { title: 'HostName', key: 'hostname' }, { title: 'FPM-Version', key: 'server.version' }, { title: 'Online', key: 'startTime' }],
+	      os: [{ title: 'Platfom', key: 'platform' }, { title: 'Arch', key: 'arch' }, { title: 'Version', key: 'release' }, { title: 'CPU', key: 'type' }, { title: 'Mem(Mb)', key: 'totalmem' }, { title: 'FPM-Version', key: 'server.version' }, { title: 'Online', key: 'startTime' }],
 	      data: {}
 	    };
 	    return _this2;
@@ -71388,7 +71479,7 @@
 
 	      return _react2.default.createElement(
 	        'table',
-	        { className: 'table table-bordered' },
+	        { className: 'table striped' },
 	        this.state.os.map(function (item) {
 	          var v = '';
 	          if (item.key.indexOf('.') > 0) {
@@ -71444,7 +71535,6 @@
 	        "arch": "x64",
 	        "hostname": "10-9-184-52",
 	        "platform": "linux",
-	        "type": "Linux",
 	        "release": "3.10.0-123.4.4.el7.x86_64",
 	        "freemem": 99,
 	        "totalmem": 995,
@@ -71456,9 +71546,19 @@
 	        { id: 'container', className: 'center-block' },
 	        _react2.default.createElement(
 	          'div',
+	          { id: 'targets' },
+	          _react2.default.createElement(
+	            'h5',
+	            null,
+	            'Targets'
+	          ),
+	          _react2.default.createElement(Target, null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
 	          { id: 'system-info' },
 	          _react2.default.createElement(
-	            'h6',
+	            'h5',
 	            null,
 	            'System'
 	          ),
@@ -71467,16 +71567,16 @@
 	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-md-7' },
+	              { className: 'col s7' },
 	              _react2.default.createElement(
 	                _common.Panel,
-	                { title: 'Mem' },
+	                { title: 'Mem', className: 'gray' },
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: '' },
 	                  _react2.default.createElement(
 	                    _recharts.LineChart,
-	                    { width: 750, height: 316, data: data,
+	                    { width: 750, height: 365, data: data,
 	                      margin: { top: 5, right: 30, left: 20, bottom: 5 } },
 	                    _react2.default.createElement(_recharts.XAxis, { dataKey: 'name' }),
 	                    _react2.default.createElement(_recharts.YAxis, null),
@@ -71491,85 +71591,11 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-md-5' },
+	              { className: 'col s5' },
 	              _react2.default.createElement(
 	                _common.Panel,
 	                { title: 'OS' },
 	                _react2.default.createElement(OsInfo, { data: os })
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { id: 'targets' },
-	          _react2.default.createElement(
-	            'h6',
-	            null,
-	            'Targets'
-	          ),
-	          _react2.default.createElement(Target, null)
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { id: 'events' },
-	          _react2.default.createElement(
-	            'h5',
-	            null,
-	            'Events'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'row' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-md-6' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'panel panel-default' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'panel-heading' },
-	                  'App Apply'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'panel-body' },
-	                  _react2.default.createElement(
-	                    'ul',
-	                    { className: 'list-group' },
-	                    _react2.default.createElement(
-	                      'li',
-	                      { className: 'list-group-item' },
-	                      _react2.default.createElement(
-	                        'label',
-	                        { className: 'checkbox', htmlFor: 'checkbox1' },
-	                        _react2.default.createElement('input', { type: 'checkbox', value: '', id: 'checkbox1' }),
-	                        'Event 1'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      { className: 'list-group-item' },
-	                      _react2.default.createElement(
-	                        'label',
-	                        { className: 'checkbox', htmlFor: 'checkbox2' },
-	                        _react2.default.createElement('input', { type: 'checkbox', value: '', id: 'checkbox2' }),
-	                        'Dapibus ac facilisis in'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      'li',
-	                      { className: 'list-group-item' },
-	                      _react2.default.createElement(
-	                        'label',
-	                        { className: 'checkbox', htmlFor: 'checkbox3' },
-	                        _react2.default.createElement('input', { type: 'checkbox', value: '', id: 'checkbox3' }),
-	                        'Morbi leo risus'
-	                      )
-	                    )
-	                  )
-	                )
 	              )
 	            )
 	          )
@@ -71582,89 +71608,6 @@
 	}(_react.Component);
 
 	exports.default = Dashboard;
-
-/***/ },
-/* 326 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.Panel = undefined;
-
-	var _Panel = __webpack_require__(327);
-
-	var _Panel2 = _interopRequireDefault(_Panel);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.Panel = _Panel2.default;
-
-/***/ },
-/* 327 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Panel = function (_Component) {
-	  _inherits(Panel, _Component);
-
-	  function Panel() {
-	    _classCallCheck(this, Panel);
-
-	    return _possibleConstructorReturn(this, (Panel.__proto__ || Object.getPrototypeOf(Panel)).apply(this, arguments));
-	  }
-
-	  _createClass(Panel, [{
-	    key: 'render',
-	    value: function render() {
-	      var title = '';
-	      if (this.props.title) {
-	        title = _react2.default.createElement(
-	          'div',
-	          { className: 'panel-heading' },
-	          this.props.title
-	        );
-	      }
-	      return _react2.default.createElement(
-	        'div',
-	        _extends({ className: 'panel panel-default' }, this.props),
-	        title,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'panel-body' },
-	          this.props.children
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Panel;
-	}(_react.Component);
-
-	exports.default = Panel;
 
 /***/ },
 /* 328 */
@@ -104713,7 +104656,7 @@
 
 	var _controls = __webpack_require__(319);
 
-	var _common = __webpack_require__(326);
+	var _common = __webpack_require__(325);
 
 	var _fpmApi = __webpack_require__(227);
 
@@ -104780,9 +104723,10 @@
 	    }
 	  }, {
 	    key: 'onSubmitHandler',
-	    value: function onSubmitHandler() {
+	    value: function onSubmitHandler(e) {
 	      var _this3 = this;
 
+	      e.preventDefault();
 	      this.refs.icon.style.display = 'inline';
 	      var _now = _lodash2.default.now();
 	      if (this.state.isCreated) {
@@ -104812,6 +104756,7 @@
 	          } else {
 	            //update ok
 	            _this3.refs.icon.style.display = 'none';
+	            Materialize.toast('Update Success!', 3000);
 	          }
 	        });
 	      } else {
@@ -104836,7 +104781,7 @@
 	          'div',
 	          { id: 'smtp' },
 	          _react2.default.createElement(
-	            'h6',
+	            'h4',
 	            null,
 	            'Email Config'
 	          ),
@@ -104845,10 +104790,10 @@
 	            { className: 'row' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-md-6' },
+	              { className: 'col s6' },
 	              _react2.default.createElement(
 	                _common.Panel,
-	                { type: 'default', title: 'SMTP' },
+	                { title: 'SMTP' },
 	                _react2.default.createElement(
 	                  'form',
 	                  { className: 'form-horizontal', onSubmit: this.onSubmitHandler.bind(this) },
@@ -104886,7 +104831,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-md-6' },
+	              { className: 'col s6' },
 	              _react2.default.createElement(
 	                _common.Panel,
 	                { type: 'default', title: 'Templates' },
@@ -105477,6 +105422,8 @@
 
 	var _controls = __webpack_require__(319);
 
+	var _common = __webpack_require__(325);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -105654,93 +105601,76 @@
 	      }
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'container' },
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'panel panel-default' },
+	          _common.Panel,
+	          { title: 'Users' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'panel-heading' },
-	            _react2.default.createElement(
-	              'b',
-	              { className: 'pull-left table-title' },
-	              'Users'
-	            ),
+	            { className: 'right' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'pull-right form-inline' },
+	              { className: 'input-field' },
+	              _react2.default.createElement('i', { className: 'teal-text fa fa-search prefix' }),
+	              _react2.default.createElement('input', { id: 'icon_prefix', type: 'text', className: 'validate' }),
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'input-group' },
-	                _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Search...' }),
+	                'label',
+	                { htmlFor: 'icon_prefix' },
+	                'Search'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'table',
+	            { className: 'table bordered' },
+	            _react2.default.createElement(
+	              'thead',
+	              null,
+	              _react2.default.createElement(
+	                'tr',
+	                { className: 'info' },
 	                _react2.default.createElement(
-	                  'span',
-	                  { className: 'input-group-btn' },
-	                  _react2.default.createElement(
-	                    'button',
-	                    { className: 'btn btn-default', type: 'button' },
-	                    'Go!'
-	                  )
+	                  'th',
+	                  null,
+	                  'ID'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Name'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Type'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Env'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'About'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Operate'
 	                )
 	              )
 	            ),
-	            _react2.default.createElement('div', { className: 'clearfix' })
+	            _react2.default.createElement(
+	              'tbody',
+	              null,
+	              rows
+	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'panel-body' },
-	            _react2.default.createElement(
-	              'table',
-	              { className: 'table table-bordered table-hover ' },
-	              _react2.default.createElement(
-	                'thead',
-	                null,
-	                _react2.default.createElement(
-	                  'tr',
-	                  { className: 'info' },
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'ID'
-	                  ),
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'Name'
-	                  ),
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'Type'
-	                  ),
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'Env'
-	                  ),
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'About'
-	                  ),
-	                  _react2.default.createElement(
-	                    'th',
-	                    null,
-	                    'Operate'
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'tbody',
-	                null,
-	                rows
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'text-center' },
-	              _react2.default.createElement(_controls.Pager, { total: this.state.pager.total, current: this.state.pager.current })
-	            )
+	            { className: 'text-center' },
+	            _react2.default.createElement(_controls.Pager, { total: this.state.pager.total, current: this.state.pager.current })
 	          )
 	        )
 	      );
@@ -105768,7 +105698,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _common = __webpack_require__(326);
+	var _common = __webpack_require__(325);
 
 	var _controls = __webpack_require__(319);
 
@@ -105817,56 +105747,52 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        _common.Panel,
-	        { title: 'Api Client Simple' },
+	        'div',
+	        { className: 'container' },
 	        _react2.default.createElement(
-	          'form',
-	          { className: 'form-horizontal', onSubmit: this.onSubmitHandler.bind(this) },
-	          _react2.default.createElement(_controls.TextField, {
-	            title: 'Method:',
-	            ref: 'method',
-	            placeholder: 'ex: common.find'
-	          }),
-	          _react2.default.createElement(_controls.TextField, {
-	            title: 'Arguments:',
-	            multiLine: 'true',
-	            ref: 'args',
-	            placeholder: 'should be json syntx'
-	          }),
+	          _common.Panel,
+	          { title: 'Api Client Simple' },
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'form-group' },
+	            'form',
+	            { className: 'form-horizontal', onSubmit: this.onSubmitHandler.bind(this) },
+	            _react2.default.createElement(_controls.TextField, {
+	              title: 'Method:',
+	              ref: 'method',
+	              placeholder: 'ex: common.find'
+	            }),
+	            _react2.default.createElement(_controls.TextField, {
+	              title: 'Arguments:',
+	              multiLine: 'true',
+	              ref: 'args',
+	              placeholder: 'should be json syntx'
+	            }),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'col-sm-offset-2 col-sm-1' },
+	              { className: 'row' },
 	              _react2.default.createElement(
-	                'button',
-	                { type: 'text', className: 'btn btn-primary' },
-	                'Go'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'col-sm-3' },
+	                'div',
+	                { className: 'col s2' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'text', className: 'btn btn-primary' },
+	                  'Go'
+	                )
+	              ),
 	              _react2.default.createElement(
-	                'button',
-	                { type: 'reset', className: 'btn btn-default' },
-	                'Reset'
+	                'div',
+	                { className: 'col s3' },
+	                _react2.default.createElement(
+	                  'button',
+	                  { type: 'reset', className: 'btn grey' },
+	                  'Reset'
+	                )
 	              )
 	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'row' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-sm-2 text-right' },
-	            'Result:'
 	          ),
+	          _react2.default.createElement('div', { className: 'divider' }),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-sm-10' },
+	            { className: '' },
 	            _react2.default.createElement(
 	              'pre',
 	              { className: 'bg-warning prettyprint lang-javascript' },
