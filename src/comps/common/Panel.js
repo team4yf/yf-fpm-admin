@@ -5,15 +5,16 @@ class Panel extends Component{
   render(){
     let title = ''
     if(this.props.title){
-      title = (<div className="panel-heading">{this.props.title}</div>)
+      title = (<div><h5 className="card-title ">{this.props.title}</h5><div className="divider"></div></div>)
     }
     return (
-      <div className="panel panel-default" {...this.props}>
-        {title}
-        <div className="panel-body">
-          {this.props.children}
+        <div className={"card-panel " + this.props.className }>
+          <div className="card-content">
+          {title}
+            {this.props.children}
+            <div className="clearfix"></div>
+          </div>
         </div>
-      </div>
     )
   }
 }

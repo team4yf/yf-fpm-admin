@@ -21,6 +21,10 @@ class AppEditer extends Component{
     }
   }
 
+  onCreateNewHandler(e){
+    Materialize.toast('I am a toast!', 4000)
+  }
+
   onSubmitHandler(e){
     e.preventDefault()
     let data = {
@@ -36,7 +40,7 @@ class AppEditer extends Component{
     fetchData('common.create', { table: 'api_app', row: data})
       .then(function(json) {
         // hide modal
-        $('#app-editer').modal('hide')
+        Materialize.toast('Add Success!', 4000)
         // refresh the list Component
         data.id = json.data.id
         PubSub.publishSync( 'AppList.appendData', data );
@@ -47,9 +51,6 @@ class AppEditer extends Component{
   render() {
     return (
       <div>
-        <div className="btn-group" role="group">
-          <button type="button" className="btn btn-sm btn-success" data-toggle="modal" data-target="#app-editer">Create</button>
-        </div>
         <Modal id="app-editer" title="App Detail">
           <form className="form-horizontal" id="app-editer-form" onSubmit={this.onSubmitHandler.bind(this)} >
 
@@ -81,10 +82,8 @@ class AppEditer extends Component{
               default={this.state.app.about}
               ref="about" />
 
-            <div className="form-group">
-              <div className="col-sm-offset-2 col-sm-10">
-                <button type="text" className="btn btn-primary">Save</button>
-              </div>
+            <div className="col offset-s2 s10">
+              <button type="submit" className="btn modal-close">Save</button>
             </div>
 
           </form>

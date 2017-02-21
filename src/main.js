@@ -10,7 +10,6 @@ class Application extends Component{
           <div id="container" className="center-block">
           {this.props.children}
           </div>
-          <Footer />
         </div>
       )
     }

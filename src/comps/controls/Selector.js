@@ -15,13 +15,12 @@ class Selector extends Component{
       )
     })
     return (
-      <div className="form-group">
-        <label className="col-sm-2 control-label">{this.props.title}</label>
-        <div className="col-sm-10">
-        <select className="form-control" ref="input">
+      <div className="">
+        <label>{this.props.title}</label>
+        <select className="browser-default" ref="input">
           {options}
         </select>
-        </div>
+
       </div>
     )
   }

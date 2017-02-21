@@ -1,48 +1,6 @@
-html, body{
-  background-color: #ECF0F1;
-}
-div, span, p, td, th, a, input, option{
-  font-size: 14px;
-}
-#container{
-  margin: 70px 20px;
-}
-.footer{
-  background:#fff;min-height:30px;
-}
-.footer>p{
-  font-size: 14px; margin-bottom: 0px; padding-right:2em;
-}
-.pagination,.pagination ul,.pagination ul li{
-  margin: 0px;
-}
-.table-title{
-  line-height: 2.4em;
-  font-size: 1.2em;
-}
-.btn-group{
-  margin: 1em 0px;
-}
-.form-control{
-  border-width: 1px;
-  border-radius: 3px;
-}
-.btn, .modal-content{
-  border-radius: 3px;
-}
-.pagination li{
-  margin-right: 0px;
-}
 a.active{
-  background:#1abc9c !important;
-  color: #fff !important;
+  background-color: rgba(0,0,0,0.1) !important;
 }
-.text-3x{
-  font-size: 3em;
-}
-.empty-chart{
-  min-height: 300px;
-}
-.palette{
-  padding:0px;
+a.brand{
+  font-size: 1.8em; padding:0 1em;
 }

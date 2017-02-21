@@ -4,6 +4,8 @@ import PubSub from 'pubsub-js'
 import _ from 'lodash'
 import {Pager, Page} from './controls'
 
+import {Panel} from './common'
+
 class NoDataRow extends Component {
     render ()  {
       return (<tr className="warning"><td className="text-center" colSpan={this.props.cols}><h5>No Data Found</h5></td></tr>);
@@ -87,41 +89,34 @@ class DataList extends Component{
       }
     }
     return (
-      <div>
-        <div className="panel panel-default">
-          <div className="panel-heading">
-            <b className="pull-left table-title">Users</b>
-            <div className="pull-right form-inline">
-              <div className="input-group">
-                <input type="text" className="form-control" placeholder="Search..." />
-                <span className="input-group-btn">
-                  <button className="btn btn-default" type="button">Go!</button>
-                </span>
-              </div>
-            </div>
-            <div className="clearfix"></div>
-          </div>
-          <div className="panel-body">
-            <table className="table table-bordered table-hover ">
-              <thead>
-              <tr className="info">
-                <th>ID</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Env</th>
-                <th>About</th>
-                <th>Operate</th>
-              </tr>
-              </thead>
-              <tbody>
-                {rows}
-              </tbody>
-            </table>
-            <div className="text-center">
-              <Pager total={this.state.pager.total} current={this.state.pager.current} />
+      <div className="container">
+        <Panel title="Users">
+          <div className="right">
+            <div className="input-field">
+              <i className="teal-text fa fa-search prefix"></i>
+              <input id="icon_prefix" type="text" className="validate" />
+              <label htmlFor="icon_prefix">Search</label>
             </div>
           </div>
-        </div>
+          <table className="table bordered">
+            <thead>
+            <tr className="info">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Env</th>
+              <th>About</th>
+              <th>Operate</th>
+            </tr>
+            </thead>
+            <tbody>
+              {rows}
+            </tbody>
+          </table>
+          <div className="text-center">
+            <Pager total={this.state.pager.total} current={this.state.pager.current} />
+          </div>
+        </Panel>
       </div>
     );
   }

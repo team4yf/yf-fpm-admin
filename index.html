@@ -3,19 +3,24 @@
   <head>
     <title>FPM Admin</title>
     <meta charset="UTF-8"/>
-    <link href="//cdn.bootcss.com/flat-ui/2.3.0/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//cdn.bootcss.com/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet">
-    <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="//cdn.bootcss.com/bootstrap-sweetalert/1.0.1/sweetalert.min.css" rel="stylesheet">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <link href="dist/style.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="grey lighten-3">
     <div id="fpm"></div>
-
-    <script src="//cdn.bootcss.com/flat-ui/2.3.0/js/vendor/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/flat-ui/2.3.0/js/flat-ui.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
-    <script src="assets/bundle.js"></script>
   </body>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
+  <script src="bower_components/materialize/js/modal.js"></script>
+  <script src="//cdn.bootcss.com/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+
+  <script src="assets/bundle.js"></script>
+  <script>
+  $('body').delegate('.modal-trigger', 'click', function() {
+    $('#' + $(this).attr('data-target')).modal()
+  });
+  </script>
 </html>

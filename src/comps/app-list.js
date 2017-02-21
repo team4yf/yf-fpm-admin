@@ -3,6 +3,7 @@ import fetchData from '../model/fpm-api'
 import PubSub from 'pubsub-js'
 import _ from 'lodash'
 import {Pager, Page} from './controls'
+import {Panel} from './common'
 
 class NoDataRow extends Component {
     render ()  {
@@ -63,6 +64,7 @@ class AppList extends Component{
     this.setState({origin: data, data: data.rows, loading: false ,pager: {count: data.count, total: total, current: 1}})
   }
   componentDidMount(){
+    //leanmodal
     // subcribe one event
     var token = PubSub.subscribe( 'AppList.appendData', this.appendData );
     let self = this
@@ -70,6 +72,9 @@ class AppList extends Component{
       .then((json) => {
         self.notifyDataSet(json.data)
       })
+  }
+  onClickHandler(){
+    //$('#new-button').openModal()
   }
   render() {
     let rows = []
@@ -85,22 +90,27 @@ class AppList extends Component{
       }
     }
     return (
-      <div>
-        <div className="panel panel-default">
-          <div className="panel-heading">
-            <b className="pull-left table-title">Applications</b>
-            <div className="pull-right form-inline">
-              <div className="input-group">
-                <input type="text" className="form-control" placeholder="Search..." />
-                <span className="input-group-btn">
-                  <button className="btn btn-default" type="button">Go!</button>
-                </span>
-              </div>
+      <div className="container">
+        <Panel title="Applications">
+          <div className="left" >
+            <div className="input-field">
+              <button type="button"
+                id="new-button"
+                className="btn modal-trigger"
+                data-target="app-editer"
+                onClick={this.onClickHandler.bind(this)}
+                >Create</button>
             </div>
-            <div className="clearfix"></div>
           </div>
-          <div className="panel-body">
-            <table className="table table-bordered table-hover ">
+          <div className="right">
+            <div className="input-field">
+              <i className="teal-text fa fa-search prefix"></i>
+              <input id="icon_prefix" type="text" className="validate" />
+              <label htmlFor="icon_prefix">Search</label>
+            </div>
+          </div>
+          <div className="clearfix"></div>
+            <table className="table bordered ">
               <thead>
               <tr className="info">
                 <th>ID</th>
@@ -118,8 +128,7 @@ class AppList extends Component{
             <div className="text-center">
               <Pager total={this.state.pager.total} current={this.state.pager.current} />
             </div>
-          </div>
-        </div>
+        </Panel>
       </div>
     );
   }

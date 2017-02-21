@@ -5,8 +5,8 @@ import Header from './header'
 const Footer = React.createClass({
   render: () => {
     return (
-      <nav className="navbar navbar-default navbar-fixed-bottom footer">
-        <p className="text-right">&copy;CopyRight 2017-2018 Powered Wangfan@YunPlus.io </p>
+      <nav className="navbar navbar-default navbar-fixed-bottom footer blue-grey lighten-4 ">
+        <p className="right-align container">&copy;CopyRight 2017-2018 Powered Wangfan@YunPlus.io </p>
       </nav>
     )
   }

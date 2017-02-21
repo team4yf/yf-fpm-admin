@@ -38,7 +38,8 @@ class Setting extends Component{
         }
       })
   }
-  onSubmitHandler(){
+  onSubmitHandler(e){
+    e.preventDefault()
     this.refs.icon.style.display = 'inline'
     const _now = _.now()
     if(this.state.isCreated){
@@ -70,6 +71,7 @@ class Setting extends Component{
         }else{
           //update ok
           this.refs.icon.style.display = 'none'
+          Materialize.toast('Update Success!', 3000)
         }
       })
     }else{
@@ -95,10 +97,10 @@ class Setting extends Component{
     return (
       <div>
         <div id="smtp">
-          <h6>Email Config</h6>
+          <h4>Email Config</h4>
           <div className="row">
-            <div className="col-md-6">
-              <Panel type="default" title="SMTP">
+            <div className="col s6">
+              <Panel title="SMTP">
                 <form className="form-horizontal" onSubmit={this.onSubmitHandler.bind(this)}>
                   <TextField title="Server"
                     default={this.state.smtp.server}
@@ -120,7 +122,7 @@ class Setting extends Component{
               </Panel>
             </div>
 
-            <div className="col-md-6">
+            <div className="col s6">
               <Panel type="default" title="Templates">
                 <h1>A Table Here</h1>
               </Panel>

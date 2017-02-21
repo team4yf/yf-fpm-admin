@@ -8,50 +8,51 @@ class Target extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-3">
-          <Panel className="palette palette-carrot">
-            <div className="pull-left text-3x">
+
+        <div className="col s3">
+          <Panel className="teal darken-3">
+            <h2 className="left white-text">
               <i className="fa fa-user"></i>
-            </div>
-            <div className="pull-right">
-              <h4 className="text-right">+ 2</h4>
-              <p className="text-right">New Users</p>
+            </h2>
+            <div className="right white-text">
+              <h4 className="right-align">+ 2</h4>
+              <p className="right-align">New Users</p>
             </div>
           </Panel>
         </div>
 
-        <div className="col-md-3">
-          <Panel className="palette palette-wisteria">
-            <div className="pull-left text-3x">
+        <div className="col s3">
+          <Panel className="deep-orange accent-2">
+            <h2 className="left white-text">
               <i className="fa fa-plug"></i>
-            </div>
-            <div className="pull-right">
-              <h4 className="text-right">+ 1</h4>
-              <p className="text-right">New Apps</p>
+            </h2>
+            <div className="right white-text">
+              <h4 className="right-align">+ 1</h4>
+              <p className="right-align">New Apps</p>
             </div>
           </Panel>
         </div>
 
-        <div className="col-md-3">
-          <Panel className="palette palette-alizarin">
-            <div className="pull-left text-3x">
+        <div className="col s3">
+          <Panel className="green darken-2">
+            <h2 className="left white-text">
               <i className="fa fa-bolt"></i>
-            </div>
-            <div className="pull-right">
-              <h4 className="text-right">+ 1,000</h4>
-              <p className="text-right">Api Calls</p>
+            </h2>
+            <div className="right white-text">
+              <h4 className="right-align">+ 1,000</h4>
+              <p className="right-align">Api Calls</p>
             </div>
           </Panel>
         </div>
 
-        <div className="col-md-3">
-          <Panel className="palette palette-concrete">
-            <div className="pull-left text-3x">
+        <div className="col s3">
+          <Panel className="light-blue darken-2">
+            <h2 className="left white-text">
               <i className="fa fa-database"></i>
-            </div>
-            <div className="pull-right">
-              <h4 className="text-right">+ 1,000</h4>
-              <p className="text-right">New Data</p>
+            </h2>
+            <div className="right white-text">
+              <h4 className="right-align">+ 1,000</h4>
+              <p className="right-align">New Data</p>
             </div>
           </Panel>
         </div>
@@ -72,7 +73,6 @@ class OsInfo extends Component {
         { title: 'Version', key: 'release'},
         { title: 'CPU', key: 'type'},
         { title: 'Mem(Mb)', key: 'totalmem'},
-        { title: 'HostName', key: 'hostname'},
         { title: 'FPM-Version', key: 'server.version'},
         { title: 'Online', key: 'startTime'},
       ],
@@ -94,7 +94,7 @@ class OsInfo extends Component {
   render() {
 
     return (
-      <table className="table table-bordered">
+      <table className="table striped">
       {
         this.state.os.map((item)=>{
           let v = ''
@@ -141,7 +141,6 @@ class Dashboard extends Component {
         "arch": "x64",
         "hostname": "10-9-184-52",
         "platform": "linux",
-        "type": "Linux",
         "release": "3.10.0-123.4.4.el7.x86_64",
         "freemem": 99,
         "totalmem": 995,
@@ -151,14 +150,21 @@ class Dashboard extends Component {
       return (
         <div id="container" className="center-block">
 
+          <div id="targets">
+
+            <h5>Targets</h5>
+            <Target />
+
+          </div>
+
           <div id="system-info">
-            <h6>System</h6>
+            <h5>System</h5>
             <div className="row">
 
-              <div className="col-md-7">
-                <Panel title="Mem">
+              <div className="col s7">
+                <Panel title="Mem" className="gray">
                   <div className="">
-                    <LineChart width={750} height={316} data={data}
+                    <LineChart width={750} height={365} data={data}
                           margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                      <XAxis dataKey="name"/>
                      <YAxis/>
@@ -172,7 +178,7 @@ class Dashboard extends Component {
                 </Panel>
               </div>
 
-              <div className="col-md-5">
+              <div className="col s5">
                 <Panel title="OS">
                   <OsInfo data={os}/>
                 </Panel>
@@ -182,49 +188,6 @@ class Dashboard extends Component {
             </div>
           </div>
 
-
-          <div id="targets">
-
-            <h6>Targets</h6>
-            <Target />
-
-          </div>
-
-          <div id="events">
-            <h5>Events</h5>
-            <div className="row">
-              <div className="col-md-6">
-                <div className="panel panel-default">
-                  <div className="panel-heading">App Apply
-                  </div>
-                  <div className="panel-body">
-                    <ul className="list-group">
-                      <li className="list-group-item">
-                        <label className="checkbox" htmlFor="checkbox1">
-                          <input type="checkbox" value="" id="checkbox1" />
-                          Event 1
-                        </label>
-                      </li>
-                      <li className="list-group-item">
-                        <label className="checkbox" htmlFor="checkbox2">
-                          <input type="checkbox" value="" id="checkbox2" />
-                          Dapibus ac facilisis in
-                        </label>
-                      </li>
-                      <li className="list-group-item">
-                        <label className="checkbox" htmlFor="checkbox3">
-                          <input type="checkbox" value="" id="checkbox3" />
-                          Morbi leo risus
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
         </div>
       )
     }

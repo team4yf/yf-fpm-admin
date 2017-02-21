@@ -32,7 +32,7 @@ class TextField extends Component{
     if(this.props.multiLine){
       control = (
         <textarea
-          className="form-control" ref="input"
+          className="materialize-textarea" ref="input"
           defaultValue={this.props.default}
           placeholder={this.props.placeholder}
           value={this.state.value}
@@ -41,7 +41,7 @@ class TextField extends Component{
     }else{
       control = (
         <input type={this.props.type}
-          className="form-control" ref="input"
+          className="input-field" ref="input"
           defaultValue={this.props.default}
           placeholder={this.props.placeholder}
           value={this.state.value}

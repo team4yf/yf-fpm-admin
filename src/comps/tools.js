@@ -24,39 +24,38 @@ class Tools extends Component {
 
   render() {
     return (
-      <Panel title="Api Client Simple">
-        <form className="form-horizontal" onSubmit={this.onSubmitHandler.bind(this)} >
-          <TextField
-            title="Method:"
-            ref="method"
-            placeholder="ex: common.find"
-          />
-          <TextField
-            title="Arguments:"
-            multiLine="true"
-            ref="args"
-            placeholder="should be json syntx"
-          />
-          <div className="form-group">
-            <div className="col-sm-offset-2 col-sm-1">
-              <button type="text" className="btn btn-primary">Go</button>
+      <div className="container">
+        <Panel title="Api Client Simple">
+          <form className="form-horizontal" onSubmit={this.onSubmitHandler.bind(this)} >
+            <TextField
+              title="Method:"
+              ref="method"
+              placeholder="ex: common.find"
+            />
+            <TextField
+              title="Arguments:"
+              multiLine="true"
+              ref="args"
+              placeholder="should be json syntx"
+            />
+            <div className="row">
+              <div className="col s2">
+                <button type="text" className="btn btn-primary">Go</button>
+              </div>
+              <div className="col s3">
+                <button type="reset" className="btn grey">Reset</button>
+              </div>
             </div>
-            <div className="col-sm-3">
-              <button type="reset" className="btn btn-default">Reset</button>
-            </div>
-          </div>
-        </form>
-        <div className="row">
-          <div className="col-sm-2 text-right">
-            Result:
-          </div>
-          <div className="col-sm-10">
+          </form>
+
+          <div className="divider"></div>
+          <div className="">
             <pre className="bg-warning prettyprint lang-javascript">
               { JSON.stringify(this.state.result, null, 2) }
             </pre>
           </div>
-        </div>
-      </Panel>
+        </Panel>
+      </div>
     )
   }
 }
