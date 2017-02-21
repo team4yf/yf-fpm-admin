@@ -105734,9 +105734,10 @@
 
 	  _createClass(Tools, [{
 	    key: 'onSubmitHandler',
-	    value: function onSubmitHandler() {
+	    value: function onSubmitHandler(e) {
 	      var _this2 = this;
 
+	      e.preventDefault();
 	      var method = this.refs.method.getValue();
 	      var args = this.refs.args.getValue() || '{}';
 	      (0, _fpmApi2.default)(method, args).then(function (data) {

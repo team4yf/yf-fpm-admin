@@ -13,7 +13,8 @@ class Tools extends Component {
     }
   }
 
-  onSubmitHandler(){
+  onSubmitHandler(e){
+    e.preventDefault()
     let method = this.refs.method.getValue()
     let args = this.refs.args.getValue() || '{}'
     fetchData(method, args)
