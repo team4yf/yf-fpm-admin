@@ -1,12 +1,11 @@
 import React,{ Component } from 'react'
 import { Link } from 'react-router'
-import { TextField, Selector, Modal } from './controls'
-import { Panel } from './common'
-import fetchData from '../model/fpm-api'
+import { TextField, Selector, Modal } from '../controls'
+import { Panel } from '../common'
+import fetchData from '../../model/fpm-api'
 import _ from 'lodash'
-import each from 'async/each';
 
-class Setting extends Component{
+class Smtp extends Component{
   constructor(props) {
     super(props)
     this.state = {
@@ -95,43 +94,30 @@ class Setting extends Component{
   render () {
 
     return (
-      <div>
-        <div id="smtp">
-          <h4>Email Config</h4>
-          <div className="row">
-            <div className="col s6">
-              <Panel title="SMTP">
-                <form className="form-horizontal" onSubmit={this.onSubmitHandler.bind(this)}>
-                  <TextField title="Server"
-                    default={this.state.smtp.server}
-                    ref="smtpServer"/>
-                  <TextField title="User"
-                    default={this.state.smtp.user}
-                    ref="smtpUser"
-                    placeholder="xxxxx@qq.com"/>
-                  <TextField title="AuthCode"
-                    default={this.state.smtp.pass}
-                    ref="smtpAuth"
-                    placeholder="Server Auth Code"/>
-                  <div className="form-group">
-                    <div className="col-sm-offset-2 col-sm-10">
-                      <button type="text" className="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on left"><span ref="icon" style={{display: 'none'}} ><i className="fa fa-spin fa-circle-o-notch"></i></span> Save</button>
-                    </div>
-                  </div>
-                </form>
-              </Panel>
+      <div id="smtp" className="container">
+        <Panel title="SMTP">
+          <form className="form-horizontal" onSubmit={this.onSubmitHandler.bind(this)}>
+            <TextField title="Server"
+              default={this.state.smtp.server}
+              ref="smtpServer"/>
+            <TextField title="User"
+              default={this.state.smtp.user}
+              ref="smtpUser"
+              placeholder="xxxxx@qq.com"/>
+            <TextField title="AuthCode"
+              default={this.state.smtp.pass}
+              ref="smtpAuth"
+              placeholder="Server Auth Code"/>
+            <div className="form-group">
+              <div className="col offset-s2 s10">
+                <button type="text" className="btn"><span ref="icon" style={{display: 'none'}} ><i className="fa fa-spin fa-circle-o-notch"></i></span> Save</button>
+              </div>
             </div>
-
-            <div className="col s6">
-              <Panel type="default" title="Templates">
-                <h1>A Table Here</h1>
-              </Panel>
-            </div>
-          </div>
-        </div>
+          </form>
+        </Panel>
       </div>
     )
   }
 }
 
-export default Setting
+export default Smtp

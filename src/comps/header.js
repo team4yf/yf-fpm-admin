@@ -13,20 +13,41 @@ const Header = React.createClass({
               <li><Link to="/dashboard" activeClassName="active">Dashboard</Link></li>
               <li><Link to="/apps" activeClassName="active">Apps</Link></li>
               <li><Link to="/users" activeClassName="active">Users</Link></li>
-              <li><Link to="/setting" activeClassName="active">Setting</Link></li>
-              <li><Link to="/tools" activeClassName="active">Tools</Link></li>
+              <li>
+                <a className="dropdown-button"
+                  data-activates="dropdownSetting">Setting</a>
+              </li>
+              <li>
+                <a className="dropdown-button"
+                  data-activates="dropdownTools">Tools</a>
+              </li>
             </ul>
 
-            <ul id="dropdown1" className="dropdown-content">
+
+            <ul id="dropdownSetting" className="dropdown-content">
+              <li><Link to="/setting/smtp">Smtp</Link></li>
+              <li className="divider"></li>
+              <li><a href="#!">---</a></li>
+            </ul>
+
+            <ul id="dropdownTools" className="dropdown-content">
+              <li><Link to="/tools/apiTester">ApiTester</Link></li>
+              <li className="divider"></li>
+              <li><a href="#!">Pusher</a></li>
+            </ul>
+
+
+
+            <ul className="right hide-on-med-and-down">
+              <li><a className="dropdown-button" href="#!" data-activates="dropdownUser">Admin
+                  <i className="fa fa-caret-down right"></i></a></li>
+            </ul>
+
+            <ul id="dropdownUser" className="dropdown-content">
               <li><a href="#!">Profile</a></li>
               <li><a href="#!">Config</a></li>
               <li className="divider"></li>
               <li><a href="#!">Logout</a></li>
-            </ul>
-
-            <ul className="right hide-on-med-and-down">
-              <li><a className="dropdown-button" href="#!" data-activates="dropdown1">Admin
-                  <i className="fa fa-caret-down right"></i></a></li>
             </ul>
           </div>
         </nav>

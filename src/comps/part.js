@@ -15,10 +15,10 @@ const Footer = React.createClass({
 const Welcome = React.createClass({
   render: () => {
     return (
-      <div className="jumbotron bg-success">
-        <h1>Hello, world!</h1>
-        <p>...</p>
-        <p><a className="btn btn-primary btn-lg" href="dashboard.html" role="button">Learn more</a></p>
+      <div className="container">
+        <h1>Welcome You</h1>
+        <p>This is the admin for the fpm-server,you can do more things with it</p>
+        <p><Link to="/dashboard" className="btn">Lets Start</Link></p>
       </div>
     )
   }

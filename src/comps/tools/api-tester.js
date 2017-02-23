@@ -1,10 +1,10 @@
 import React,{ Component } from 'react'
-import { Panel } from './common'
-import { TextField } from './controls'
-import fetchData from '../model/fpm-api'
+import { Panel } from '../common'
+import { TextField } from '../controls'
+import fetchData from '../../model/fpm-api'
 import _ from 'lodash'
 
-class Tools extends Component {
+class ApiTester extends Component {
 
   constructor(props) {
     super(props)
@@ -61,4 +61,4 @@ class Tools extends Component {
   }
 }
 
-export default Tools
+export default ApiTester

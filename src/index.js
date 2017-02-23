@@ -5,9 +5,9 @@ import Main from './main'
 import App from './comps/app'
 import {Welcome} from './comps/part'
 import Dashboard from './comps/dashboard'
-import Setting from './comps/setting'
+import { Smtp } from './comps/setting'
 import User from './comps/user'
-import Tools from './comps/tools'
+import { ApiTester } from './comps/tools'
 
 render((
   <Router history={ hashHistory }>
@@ -16,8 +16,12 @@ render((
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/apps" component={App} />
       <Route path="/users" component={User} />
-      <Route path="/setting" component={ Setting } />
-      <Route path="/tools" component={ Tools } />
+      <Route path="/setting">
+        <Route path="smtp" component={ Smtp } />
+      </Route>
+      <Route path="/tools">
+        <Route path="apiTester" component={ ApiTester } />
+      </Route>
     </Route>
   </Router>
   ),
