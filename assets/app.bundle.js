@@ -41319,14 +41319,15 @@ webpackJsonp([0],[
 
 	    var _this = _possibleConstructorReturn(this, (Template.__proto__ || Object.getPrototypeOf(Template)).call(this, props));
 
-	    _this.list = [];
+	    _this.list = [{ id: 1, name: '123', type: '1', env: '123', about: '123', operate: '123' }, { id: 2, name: '123', type: '1', env: '123', about: '123', operate: '123' }, { id: 3, name: '33', type: '1', env: '123', about: '123', operate: '123' }, { id: 4, name: '44', type: '1', env: '123', about: '123', operate: '123' }];
 	    return _this;
 	  }
 
 	  _createClass(Template, [{
 	    key: 'onPageClickHandler',
 	    value: function onPageClickHandler(i, e) {
-	      this.list = [{ id: i + 1, name: '123', type: '1', env: '123', about: '123', operate: '123' }, { id: i + 2, name: '123', type: '1', env: '123', about: '123', operate: '123' }, { id: 3, name: '33', type: '1', env: '123', about: '123', operate: '123' }, { id: 4, name: '44', type: '1', env: '123', about: '123', operate: '123' }];
+	      i--;
+	      this.list = [{ id: i * 4 + 1, name: '123', type: '1', env: '123', about: '123', operate: '123' }, { id: i * 4 + 2, name: '123', type: '1', env: '123', about: '123', operate: '123' }, { id: i * 4 + 3, name: '33', type: '1', env: '123', about: '123', operate: '123' }, { id: i * 4 + 4, name: '44', type: '1', env: '123', about: '123', operate: '123' }];
 	      this.refs.table.notifyDataChangeHandler(this.list, e);
 	    }
 	  }, {
@@ -41340,7 +41341,7 @@ webpackJsonp([0],[
 	        { className: 'container' },
 	        _react2.default.createElement(_controls.Table, { title: 'Templates',
 	          columns: columns,
-	          list: [],
+	          list: this.list,
 	          ref: 'table',
 	          onPageClickHandler: this.onPageClickHandler.bind(this)
 	        })
