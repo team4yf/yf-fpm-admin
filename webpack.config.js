@@ -4,25 +4,22 @@ var path = require('path');
 module.exports = {
   entry: { 
     app: './src/index.js', 
-    react: [
-      'react', 
-      'react-dom', 
-    ],
-    chart: [
-      'recharts',
-    ],
-    vender: [
+    vendor: [
+      'react', 'react-dom', 
       'async', 'lodash', 'node-fetch',
-    ],
-    other: [
       'pubsub-js',
-    ]
+    ],
+    // chart: [
+    //   'recharts',
+    // ],
+    
   } ,
 
   output: {
-    path: 'assets',
+    path: path.join(__dirname, 'assets'),
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
+    publicPath: "/assets/",
   },
 
   module: {
@@ -33,7 +30,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-        names: ['react', 'chart', 'vender', 'other', 'manifest'],
+        name: 'vendor',
     }),
   ],
 }

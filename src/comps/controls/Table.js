@@ -49,6 +49,11 @@ class TableBody extends Component{
 
     return rows
   }
+
+  notifyDataChangeHandler(list, e){
+    this.setState({list: list}) 
+  }
+
   render(){
     return (
       <tbody>
@@ -87,16 +92,26 @@ class Table extends Component {
     this.setState({list: this.props.list, cols: cols, titles: titles}) 
   }
 
+  notifyDataChangeHandler(list, e){
+    this.refs.tableBody.notifyDataChangeHandler(list, e)
+  }
+
   render(){
     return (
       <Panel title={this.props.title}>
         <table className="table bordered striped">
           <TableHeader titles={this.state.titles} />
-          <TableBody cols={this.state.cols} list={this.state.list}/>
+          <TableBody 
+            cols={this.state.cols} 
+            list={this.state.list} 
+            ref="tableBody"/>
         </table>
         <div className="center">
-          <Pager total={this.state.pager.total} current={this.state.pager.current} 
-            onClickHandler={this.props.onPageClickHandler}/>
+          <Pager 
+            total={this.state.pager.total} 
+            current={this.state.pager.current} 
+            onClickHandler={this.props.onPageClickHandler}
+            ref="pager"/>
         </div>
       </Panel>
     )

@@ -8,10 +8,23 @@ import {Table, TableHeader, TableBody} from '../controls'
 class Template extends Component{
   constructor(props) {
     super(props)
+    this.list = [
+      {id: 1, name: '123', type: '1', env: '123', about: '123', operate: '123'},
+      {id: 2, name: '123', type: '1', env: '123', about: '123', operate: '123'},
+      {id: 3, name: '33', type: '1', env: '123', about: '123', operate: '123'},
+      {id: 4, name: '44', type: '1', env: '123', about: '123', operate: '123'},
+    ]
   }
 
-  onPageClickHandler(i){
-    alert('from template: ' + i)
+  onPageClickHandler(i, e){
+    i--
+    this.list = [
+        {id: i*4 + 1, name: '123', type: '1', env: '123', about: '123', operate: '123'},
+        {id: i*4 + 2, name: '123', type: '1', env: '123', about: '123', operate: '123'},
+        {id: i*4 + 3, name: '33', type: '1', env: '123', about: '123', operate: '123'},
+        {id: i*4 + 4, name: '44', type: '1', env: '123', about: '123', operate: '123'},
+      ]
+    this.refs.table.notifyDataChangeHandler(this.list, e)
   }
   
   render() {
@@ -23,15 +36,15 @@ class Template extends Component{
       { key: 'about', title: 'About', filter: false},
       { key: 'operate', title: 'Operate', filter: false},
     ]
-    const DATA = [
-      {id: 1, name: '123', type: '1', env: '123', about: '123', operate: '123'},
-      {id: 2, name: '123', type: '1', env: '123', about: '123', operate: '123'},
-    ]
+    
     const page = {}
     return (
       <div className="container">
-        <Table title="Templates" columns={columns} list={DATA} 
-          onPageClickHandler={this.onPageClickHandler}
+        <Table title="Templates" 
+          columns={columns} 
+          list={this.list} 
+          ref='table'
+          onPageClickHandler={this.onPageClickHandler.bind(this)}
         />
       </div>
     )

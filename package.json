@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server -s -c-1",
-    "dev": "webpack-dev-server --inline --content-base .",
+    "dev": "webpack-dev-server --config webpack.config.js --inline --content-base .",
     "build": "webpack --config webpack.config.js"
   },
   "repository": {
