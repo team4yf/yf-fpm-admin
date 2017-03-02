@@ -5,7 +5,7 @@ import Main from './main'
 import App from './comps/app'
 import {Welcome} from './comps/part'
 import Dashboard from './comps/dashboard'
-import { Smtp } from './comps/setting'
+import { Smtp, Template } from './comps/setting'
 import User from './comps/user'
 import { ApiTester } from './comps/tools'
 
@@ -18,6 +18,7 @@ render((
       <Route path="/users" component={User} />
       <Route path="/setting">
         <Route path="smtp" component={ Smtp } />
+        <Route path="template" component={ Template } />
       </Route>
       <Route path="/tools">
         <Route path="apiTester" component={ ApiTester } />

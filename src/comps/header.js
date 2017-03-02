@@ -26,6 +26,7 @@ const Header = React.createClass({
 
             <ul id="dropdownSetting" className="dropdown-content">
               <li><Link to="/setting/smtp">Smtp</Link></li>
+              <li><Link to="/setting/template">Template</Link></li>
               <li className="divider"></li>
               <li><a href="#!">---</a></li>
             </ul>
