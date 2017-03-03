@@ -29,6 +29,14 @@ class Template extends Component{
   componentDidMount(){
     this.fetchPage(1)
   }
+
+  onCreateHandler(e){
+    alert(1)
+  }
+
+  onRowClickHandler(row, e){
+    swal('', row.content, '')
+  }
   
   render() {
     const truncateFunc = (src) => {
@@ -46,10 +54,13 @@ class Template extends Component{
     return (
       <div className="container">
         <Table title="Templates" 
+          hasCreate="true"
+          onCreateHandler={this.onCreateHandler.bind(this)}
           columns={columns} 
-          list={this.list} 
           ref='table'
           onPageClickHandler={this.onPageClickHandler.bind(this)}
+          onRowClickHandler={this.onRowClickHandler}
+          canRowClick="true"
         />
       </div>
     )

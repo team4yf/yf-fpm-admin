@@ -70,9 +70,15 @@ class TableBody extends Component{
           <td key={'col-' + i}>{ceil}</td>
         )
       })
-      rows.push(
-        <tr className="" key={'row-' + index}>{cols}</tr>
-      )
+      if(this.props.canRowClick){
+        rows.push(
+          <tr className="" key={'row-' + index} onClick={this.props.onRowClickHandler.bind(this, row)}>{cols}</tr>  
+        )
+      }else{
+        rows.push(
+          <tr className="" key={'row-' + index}>{cols}</tr>  
+        )
+      }
     })
 
     if(rows.length<1){
@@ -178,6 +184,8 @@ class Table extends Component {
           <TableHeader columns={this.props.columns} />
           <TableBody 
             columns={this.props.columns} 
+            canRowClick={this.props.canRowClick}
+            onRowClickHandler={this.props.onRowClickHandler}
             list={this.state.list} 
             ref="tableBody"/>
         </table>

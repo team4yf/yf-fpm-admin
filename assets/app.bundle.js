@@ -6852,11 +6852,19 @@ webpackJsonp([0],[
 	            ceil
 	          ));
 	        });
-	        rows.push(_react2.default.createElement(
-	          'tr',
-	          { className: '', key: 'row-' + index },
-	          cols
-	        ));
+	        if (_this4.props.canRowClick) {
+	          rows.push(_react2.default.createElement(
+	            'tr',
+	            { className: '', key: 'row-' + index, onClick: _this4.props.onRowClickHandler.bind(_this4, row) },
+	            cols
+	          ));
+	        } else {
+	          rows.push(_react2.default.createElement(
+	            'tr',
+	            { className: '', key: 'row-' + index },
+	            cols
+	          ));
+	        }
 	      });
 
 	      if (rows.length < 1) {
@@ -7052,6 +7060,8 @@ webpackJsonp([0],[
 	          _react2.default.createElement(TableHeader, { columns: this.props.columns }),
 	          _react2.default.createElement(TableBody, {
 	            columns: this.props.columns,
+	            canRowClick: this.props.canRowClick,
+	            onRowClickHandler: this.props.onRowClickHandler,
 	            list: this.state.list,
 	            ref: 'tableBody' })
 	        ),
@@ -44069,6 +44079,16 @@ webpackJsonp([0],[
 	      this.fetchPage(1);
 	    }
 	  }, {
+	    key: 'onCreateHandler',
+	    value: function onCreateHandler(e) {
+	      alert(1);
+	    }
+	  }, {
+	    key: 'onRowClickHandler',
+	    value: function onRowClickHandler(row, e) {
+	      swal('', row.content, '');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var truncateFunc = function truncateFunc(src) {
@@ -44083,10 +44103,13 @@ webpackJsonp([0],[
 	        'div',
 	        { className: 'container' },
 	        _react2.default.createElement(_controls.Table, { title: 'Templates',
+	          hasCreate: 'true',
+	          onCreateHandler: this.onCreateHandler.bind(this),
 	          columns: columns,
-	          list: this.list,
 	          ref: 'table',
-	          onPageClickHandler: this.onPageClickHandler.bind(this)
+	          onPageClickHandler: this.onPageClickHandler.bind(this),
+	          onRowClickHandler: this.onRowClickHandler,
+	          canRowClick: 'true'
 	        })
 	      );
 	    }
