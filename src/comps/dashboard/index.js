@@ -94,31 +94,33 @@ class OsInfo extends Component {
   render() {
     return (
       <table className="table striped">
-      {
-        this.state.os.map((item)=>{
-          let v = ''
-          if(item.key.indexOf('.')>0){
-            const keys = item.key.split('.')
-            let tempV = this.state.data[keys[0]]
-            for(let i = 1; i<keys.length ; i++){
-              if(tempV === undefined)
-                break
-              tempV = tempV[keys[i]]
+        <tbody>
+        {
+          this.state.os.map((item)=>{
+            let v = ''
+            if(item.key.indexOf('.')>0){
+              const keys = item.key.split('.')
+              let tempV = this.state.data[keys[0]]
+              for(let i = 1; i<keys.length ; i++){
+                if(tempV === undefined)
+                  break
+                tempV = tempV[keys[i]]
+              }
+              v = tempV
+            }else if(item.key === 'startTime'){
+              v = parseInt((_.now() - this.state.data[item.key]) / 1000 / 60 / 60) + ' H'
+            }else{
+              v = this.state.data[item.key]
             }
-            v = tempV
-          }else if(item.key === 'startTime'){
-            v = parseInt((_.now() - this.state.data[item.key]) / 1000 / 60 / 60) + ' H'
-          }else{
-            v = this.state.data[item.key]
-          }
-          return (
-            <tr key={item.key}>
-              <th width="25%">{item.title}</th>
-              <td>{v}</td>
-            </tr>
-          )
-        })
-      }
+            return (
+              <tr key={item.key}>
+                <th width="25%">{item.title}</th>
+                <td>{v}</td>
+              </tr>
+            )
+          })
+        }
+        </tbody>
       </table>
     )
   }

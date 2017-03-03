@@ -9950,36 +9950,40 @@ webpackJsonp([0],[
 	      return _react2.default.createElement(
 	        'table',
 	        { className: 'table striped' },
-	        this.state.os.map(function (item) {
-	          var v = '';
-	          if (item.key.indexOf('.') > 0) {
-	            var keys = item.key.split('.');
-	            var tempV = _this3.state.data[keys[0]];
-	            for (var i = 1; i < keys.length; i++) {
-	              if (tempV === undefined) break;
-	              tempV = tempV[keys[i]];
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          this.state.os.map(function (item) {
+	            var v = '';
+	            if (item.key.indexOf('.') > 0) {
+	              var keys = item.key.split('.');
+	              var tempV = _this3.state.data[keys[0]];
+	              for (var i = 1; i < keys.length; i++) {
+	                if (tempV === undefined) break;
+	                tempV = tempV[keys[i]];
+	              }
+	              v = tempV;
+	            } else if (item.key === 'startTime') {
+	              v = parseInt((_lodash2.default.now() - _this3.state.data[item.key]) / 1000 / 60 / 60) + ' H';
+	            } else {
+	              v = _this3.state.data[item.key];
 	            }
-	            v = tempV;
-	          } else if (item.key === 'startTime') {
-	            v = parseInt((_lodash2.default.now() - _this3.state.data[item.key]) / 1000 / 60 / 60) + ' H';
-	          } else {
-	            v = _this3.state.data[item.key];
-	          }
-	          return _react2.default.createElement(
-	            'tr',
-	            { key: item.key },
-	            _react2.default.createElement(
-	              'th',
-	              { width: '25%' },
-	              item.title
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              v
-	            )
-	          );
-	        })
+	            return _react2.default.createElement(
+	              'tr',
+	              { key: item.key },
+	              _react2.default.createElement(
+	                'th',
+	                { width: '25%' },
+	                item.title
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                v
+	              )
+	            );
+	          })
+	        )
 	      );
 	    }
 	  }]);
