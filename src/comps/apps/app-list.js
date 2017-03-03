@@ -27,42 +27,37 @@ class AppList extends Component{
     this.fetchPage(i)
   }
 
-  onClickHandler(){
+  onCreateHandler(e){
     //$('#new-button').openModal()
+    alert(1)
+  }
+  onRemoveHandler(id, e){
+    alert(id)
   }
   render() {
+    let self = this
     const columns = [
       {key: 'id', title: 'ID'},
       {key: 'appname', title: 'Name'},
       {key: 'apptype', title: 'Type'},
       {key: 'appenvironment', title: 'Env'},
       {key: 'about', title: 'About'},
-      {key: 'oper', title: 'Oper', filter: ()=>{return 123}},
+      {key: 'id', title: 'Oper', filter: (id)=>{
+        return (
+          <a href="javascript:void(0);" className="red-text lighten-4" onClick={self.onRemoveHandler.bind(this, id)}>Remove</a>
+        )
+      }},
     ]
     return (
       <div className="container">
         <Table title="Applications" 
+          hasCreate="false"
+          hasSearch="true"
+          onCreateHandler={this.onCreateHandler.bind(this)}
           columns={columns} 
-          list={[]} 
           ref='table'
           onPageClickHandler={this.onPageClickHandler.bind(this)}>
-          <div className="left" >
-            <div className="input-field">
-              <button type="button"
-                id="new-button"
-                className="btn modal-trigger"
-                data-target="app-editer"
-                onClick={this.onClickHandler.bind(this)}
-                >Create</button>
-            </div>
-          </div>
-          <div className="right">
-            <div className="input-field">
-              <i className="teal-text fa fa-search prefix"></i>
-              <input id="icon_prefix" type="text" className="validate" />
-              <label htmlFor="icon_prefix">Search</label>
-            </div>
-          </div>
+
           <div className="clearfix"></div>
         </Table>
       </div>

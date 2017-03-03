@@ -10,7 +10,7 @@ class Panel extends Component{
     return (
         <div className={"card-panel " + this.props.className }>
           <div className="card-content">
-          {title}
+            {title}
             {this.props.children}
             <div className="clearfix"></div>
           </div>

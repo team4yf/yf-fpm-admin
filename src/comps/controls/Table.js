@@ -1,7 +1,34 @@
 import React, {Component, PropTypes} from 'react'
-import { Panel } from '../common'
 import _ from 'lodash'
 import {Page, Pager} from './Pager'
+
+class TablePanel extends Component{
+
+  render(){
+    let title = '',
+      createButton = this.props.hasCreate? (<button className="right btn green lighten-4" onClick={this.props.onCreateHandler}>+ Create</button>):''
+    
+    if(this.props.title){
+      title = (
+        <div>
+          <h5 className="card-title left">{this.props.title} </h5>
+          {createButton}
+          <div className="clearfix"></div>
+          <div className="divider"></div>
+        </div>
+      )
+    }
+    return (
+        <div className={"card-panel " + this.props.className }>
+          <div className="card-content">
+            {title}
+            {this.props.children}
+            <div className="clearfix"></div>
+          </div>
+        </div>
+    )
+  }
+}
 
 class TableHeader extends Component{
 
@@ -120,7 +147,7 @@ class Table extends Component {
       cols.push(column.key)
     })
     
-    this.setState({list: this.props.list, cols: cols, titles: titles}) 
+    this.setState({list: this.props.list || [], cols: cols, titles: titles}) 
   }
 
   notifyDataChangeHandler(list, e){
@@ -133,9 +160,20 @@ class Table extends Component {
   }
 
   render(){
+    let searchBar = this.props.hasSearch? 
+      (
+        <div className="right">
+          <SearchBar />
+        </div>
+      ) :''
     return (
-      <Panel title={this.props.title}>
+      <TablePanel 
+        title={this.props.title}
+        hasCreate={this.props.hasCreate}
+        onCreateHandler={this.props.onCreateHandler}>
         {this.props.children}
+        {searchBar}
+        <div className="clearfix"></div>
         <table className="table striped">
           <TableHeader columns={this.props.columns} />
           <TableBody 
@@ -150,7 +188,7 @@ class Table extends Component {
             onClickHandler={this.props.onPageClickHandler}
             ref="pager"/>
         </div>
-      </Panel>
+      </TablePanel>
     )
   }
 }
