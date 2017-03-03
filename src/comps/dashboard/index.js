@@ -87,8 +87,7 @@ class OsInfo extends Component {
     let func = new YF.Func('system.show')
     func.invoke({})
       .then((json) => {
-        console.log(json)
-        self.setState({data: json.data})
+        self.setState({data: json})
       })
   }
 

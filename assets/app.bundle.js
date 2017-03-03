@@ -9939,8 +9939,7 @@ webpackJsonp([0],[
 	      var self = this;
 	      var func = new _yfFpmClientNodejs2.default.Func('system.show');
 	      func.invoke({}).then(function (json) {
-	        console.log(json);
-	        self.setState({ data: json.data });
+	        self.setState({ data: json });
 	      });
 	    }
 	  }, {
