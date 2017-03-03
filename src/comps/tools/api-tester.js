@@ -1,8 +1,8 @@
 import React,{ Component } from 'react'
 import { Panel } from '../common'
 import { TextField } from '../controls'
-import fetchData from '../../model/fpm-api'
 import _ from 'lodash'
+import YF from 'yf-fpm-client-nodejs'
 
 class ApiTester extends Component {
 
@@ -16,8 +16,12 @@ class ApiTester extends Component {
   onSubmitHandler(e){
     e.preventDefault()
     let method = this.refs.method.getValue()
+    if(_.isEmpty(method)){
+      return false
+    }
     let args = this.refs.args.getValue() || '{}'
-    fetchData(method, args)
+    let func = new YF.Func(method)
+    func.invoke(args)
       .then((data)=>{
         this.setState({result: data })
       })
@@ -52,7 +56,7 @@ class ApiTester extends Component {
           <div className="divider"></div>
           <div className="">
             <pre className="bg-warning prettyprint lang-javascript">
-              { JSON.stringify(this.state.result, null, 2) }
+              { JSON.stringify(this.state.result, null, 1) }
             </pre>
           </div>
         </Panel>

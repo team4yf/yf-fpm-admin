@@ -1,5 +1,4 @@
 import React,{ Component } from 'react'
-import fetchData from '../../model/fpm-api'
 import PubSub from 'pubsub-js'
 import _ from 'lodash'
 import {Table, TableHeader, TableBody} from '../controls'
@@ -18,6 +17,7 @@ class Template extends Component{
     let query = new YF.Query('fpm_template')
     query.page(this.page, 10).findAndCount()
       .then(data => {
+        data.current = i
         tableRef.notifyDataChangeHandler(data, e)
       })
   }

@@ -1,9 +1,10 @@
 import React,{ Component } from 'react'
 import { Link } from 'react-router'
+import _ from 'lodash'
+import YF from 'yf-fpm-client-nodejs'
+import each from 'async/each'
 import { TextField, Selector, Modal } from '../controls'
 import { Panel } from '../common'
-import fetchData from '../../model/fpm-api'
-import _ from 'lodash'
 
 class Smtp extends Component{
   constructor(props) {
@@ -20,14 +21,15 @@ class Smtp extends Component{
   }
 
   componentDidMount(){
-    fetchData('common.find', {table: 'fpm_setting', condition:"scope='smtp'"})
+    let query = new YF.Query('fpm_setting')
+    query.condition({scope: 'smtp'}).find()
       .then((data)=>{
-        if (data.data.length < 1){
+        if (data.length < 1){
           // no data
           this.setState({isCreated: false})
         }else{
           let obj = {}
-          data.data.forEach((item) =>{
+          data.forEach((item) =>{
             obj[item.name] = item.content
           })
           this.setState({isCreated: true, smtp: obj})
@@ -40,18 +42,17 @@ class Smtp extends Component{
   onSubmitHandler(e){
     e.preventDefault()
     this.refs.icon.style.display = 'inline'
-    const _now = _.now()
     if(this.state.isCreated){
       //modify
       let rows = []
       if(this.refs.smtpServer.isChanged()){
-        rows.push({ condition: "name='server' and scope='smtp'", row: {content: this.refs.smtpServer.getValue(), updateAt: _now}})
+        rows.push({ condition: "name='server' and scope='smtp'", row: {content: this.refs.smtpServer.getValue()}})
       }
       if(this.refs.smtpUser.isChanged()){
-        rows.push({ condition: "name='user' and scope='smtp'", row: {content: this.refs.smtpUser.getValue(), updateAt: _now}})
+        rows.push({ condition: "name='user' and scope='smtp'", row: {content: this.refs.smtpUser.getValue()}})
       }
       if(this.refs.smtpAuth.isChanged()){
-        rows.push({ condition: "name='pass' and scope='smtp'", row: {content: this.refs.smtpAuth.getValue(), updateAt: _now}})
+        rows.push({ condition: "name='pass' and scope='smtp'", row: {content: this.refs.smtpAuth.getValue()}})
       }
       if(rows.length < 1){
         swal('', 'nothing changed', 'warning')
@@ -60,9 +61,16 @@ class Smtp extends Component{
       }
       each(
         rows, (item, callback) => {
-          fetchData('common.update',_.assign(item, { table: 'fpm_setting'}) )
-            .then((data)=>{
+          let query = new YF.Query('fpm_setting')
+          query.first(item)
+            .then( data => {
+              return new YF.Object('fpm_setting', _.assign(data, item.row)).save()
+            })
+            .then( data => {
               callback()
+            })
+            .catch( err => {
+              callback(err)
             })
       },(error) => {
         if(error){
@@ -74,15 +82,13 @@ class Smtp extends Component{
         }
       })
     }else{
-      let arg = {
-      　table: 'fpm_setting',
-      　row:[
-          {scope: 'smtp', name: 'server', content: this.refs.smtpServer.getValue(), createAt: _now, updateAt: _now},
-          {scope: 'smtp', name: 'user', content: this.refs.smtpUser.getValue(), createAt: _now, updateAt: _now},
-          {scope: 'smtp', name: 'pass', content: this.refs.smtpAuth.getValue(), createAt: _now, updateAt: _now},
-        ]
-      }
-      fetchData('common.create', arg)
+      let row = [
+        {scope: 'smtp', name: 'server', content: this.refs.smtpServer.getValue(), },
+        {scope: 'smtp', name: 'user', content: this.refs.smtpUser.getValue(), },
+        {scope: 'smtp', name: 'pass', content: this.refs.smtpAuth.getValue(), },
+      ]
+      let batch = new YF.Batch('fpm_setting')
+      batch.insert(row)
         .then((data)=>{
           this.setState({isCreated: true })
           this.refs.icon.style.display = 'none'

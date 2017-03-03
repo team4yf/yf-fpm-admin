@@ -1,8 +1,8 @@
 import React,{ Component } from 'react'
-import { Panel } from './common'
+import { Panel } from '../common'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts'
-import fetchData from '../model/fpm-api'
 import _ from 'lodash'
+import YF from 'yf-fpm-client-nodejs'
 
 class Target extends Component {
   render() {
@@ -84,7 +84,8 @@ class OsInfo extends Component {
     // subcribe one event
     // var token = PubSub.subscribe( 'AppList.appendData', this.appendData );
     let self = this
-    fetchData('system.show', { })
+    let func = new YF.Func('system.show')
+    func.invoke({})
       .then((json) => {
         console.log(json)
         self.setState({data: json.data})
@@ -92,7 +93,6 @@ class OsInfo extends Component {
   }
 
   render() {
-
     return (
       <table className="table striped">
       {

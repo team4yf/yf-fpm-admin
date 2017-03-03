@@ -91,10 +91,13 @@ class Pager extends Component {
 
   render () {
     let pages = []
-    //calc the previous & next
-    let prevPage = this.state.current > 1? this.state.current - 1: -1
-    let nextPage = this.state.current >= this.state.pages ? -1: this.state.current + 1
-    pages.push(<Page key={'prevPage'} type="previous" page={prevPage} ref={'page-prevPage'} onClickHandler={this.onClickHandler.bind(this)} />);
+    if(this.state.pages > 1){
+      //calc the previous & next
+      let prevPage = this.state.current > 1? this.state.current - 1: -1
+      
+      pages.push(<Page key={'prevPage'} type="previous" page={prevPage} ref={'page-prevPage'} onClickHandler={this.onClickHandler.bind(this)} />);
+    }
+    
     for(let i = 1; i <= this.state.pages; i++){
       pages.push(
         <Page 
@@ -105,7 +108,12 @@ class Pager extends Component {
           page={i}/>
       )
     }
-    pages.push(<Page key={'nextPage'} page={nextPage}  ref={'page-nextPage'} type="next" onClickHandler={this.onClickHandler.bind(this)} />);
+    if(this.state.pages > 1){
+      //calc the previous & next
+      let nextPage = this.state.current >= this.state.pages ? -1: this.state.current + 1
+      pages.push(<Page key={'nextPage'} page={nextPage}  ref={'page-nextPage'} type="next" onClickHandler={this.onClickHandler.bind(this)} />);
+    }
+    
     return (
       <ul className="pagination">
         {pages}

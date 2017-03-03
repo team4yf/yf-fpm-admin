@@ -1,7 +1,5 @@
 import React,{ Component } from 'react'
-import fetchData from '../model/fpm-api'
-import PubSub from 'pubsub-js'
-import { TextField, Selector, Modal } from './controls'
+import { TextField, Selector, Modal } from '../controls'
 
 class AppEditer extends Component{
   constructor(props) {

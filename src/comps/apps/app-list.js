@@ -1,7 +1,6 @@
 import React,{ Component } from 'react'
 import _ from 'lodash'
-import { Table } from './controls'
-import { Panel } from './common'
+import { Table } from '../controls'
 import YF from 'yf-fpm-client-nodejs'
 
 class AppList extends Component{

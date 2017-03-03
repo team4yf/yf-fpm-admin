@@ -13,7 +13,7 @@ class TableHeader extends Component{
 
     return (
       <thead>
-        <tr className="blue lighten-4">
+        <tr className="teal lighten-4">
           {titles}
         </tr>
       </thead>
@@ -96,7 +96,7 @@ class SearchBar extends Component {
 
 class NoDataRow extends Component {
     render ()  {
-      return (<tr className="red lighten-5"><td className="center" colSpan={this.props.cols}><h5>No Data Found</h5></td></tr>);
+      return (<tr className="blue-grey lighten-5"><td className="center" colSpan={this.props.cols}><h5 className="grey-text lighten-3">No Data Found</h5></td></tr>);
     }
 }
 
