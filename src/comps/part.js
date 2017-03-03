@@ -17,8 +17,17 @@ const Welcome = React.createClass({
     return (
       <div className="container">
         <h1>Welcome You</h1>
-        <p>This is the admin for the fpm-server,you can do more things with it</p>
-        <p><Link to="/dashboard" className="btn">Lets Start</Link></p>
+        <h6>This is the admin for the fpm-server,you can do more things with it.<Link to="/dashboard" className="btn">Lets Start</Link></h6>
+        <h2>Colors</h2>
+        <p>Using Materials Colors : <a className="waves-effect waves-light btn blue lighten-2" target="_blank" href="http://www.materialscss.com/color">http://www.materialscss.com/color</a></p>
+        <h2>ICons</h2>
+        <p>Using font-awesome@4.7.0 : <a className="waves-effect waves-light btn teal darken-4" target="_blank" href="http://fontawesome.dashgame.com/">http://fontawesome.dashgame.com/</a></p>
+        <h2>Webpack</h2>
+        <h2>React</h2>
+        <h2>React-Router</h2>
+        <h2>FPM-Server</h2>
+        <h2>FPM-Client4Node</h2>
+        <h2>SweetAlert</h2>
       </div>
     )
   }

@@ -7,13 +7,13 @@ class TableHeader extends Component{
 
   render(){
     let titles = []
-    this.props.titles.map((title, i)=>{
-      titles.push(<th key={i}>{title}</th>)
+    this.props.columns.map((column, i)=>{
+      titles.push(<th key={i}>{column.title}</th>)
     })
 
     return (
       <thead>
-        <tr className="info">
+        <tr className="blue lighten-4">
           {titles}
         </tr>
       </thead>
@@ -31,20 +31,31 @@ class TableBody extends Component{
   createRows(){
     let rows = []
 
-    this.state.list.map((row, index) => {
+    _.map(this.state.list, (row, index) => {
       let cols = []
-      this.props.cols.map((col, i) => {
+      this.props.columns.map((col, i) => {
+        let ceil = row[col.key]
+        // run filter
+        if(col.filter){
+          ceil = col.filter(ceil)
+        }
         cols.push(
-          <td key={'col-' + i}>{row[col]}</td>
+          <td key={'col-' + i}>{ceil}</td>
         )
       })
       rows.push(
-        <tr className="hoverable" key={'row-' + index}>{cols}</tr>
+        <tr className="" key={'row-' + index}>{cols}</tr>
       )
     })
 
     if(rows.length<1){
-      return <NoDataRow cols={this.props.cols.length}/>
+      return <NoDataRow cols={this.props.columns.length}/>
+    }else if(rows.length< 10){
+      //fill the empty
+      for(let i = rows.length; i < 10 ; i++)
+      rows.push(
+        <tr className="" key={'row-' + i}><td colSpan={this.props.columns.length}>&nbsp;</td></tr>
+      )
     }
 
     return rows
@@ -63,6 +74,26 @@ class TableBody extends Component{
   }
 }
 
+class LoadingDataRow extends Component {
+  render ()  {
+    return (<tr className="warning"><td className="text-center" colSpan={this.props.cols}><i className="fa fa-circle-o-notch fa-spin"></i> Loading.</td></tr>);
+  }
+}
+
+class SearchBar extends Component {
+  render() {
+    return (
+      <div className={this.props.direction}>
+        <div className="input-field">
+          <i className="teal-text fa fa-search prefix"></i>
+          <input id="icon_prefix" type="text" className="validate" />
+          <label htmlFor="icon_prefix">Search</label>
+        </div>
+      </div>
+    )
+  }
+}
+
 class NoDataRow extends Component {
     render ()  {
       return (<tr className="red lighten-5"><td className="center" colSpan={this.props.cols}><h5>No Data Found</h5></td></tr>);
@@ -75,7 +106,7 @@ class Table extends Component {
     this.state = {
       allRowsSelected: false,
       pager: {
-        total: 3,
+        total: 1,
         current: 1,
       }
     }
@@ -93,16 +124,22 @@ class Table extends Component {
   }
 
   notifyDataChangeHandler(list, e){
-    this.refs.tableBody.notifyDataChangeHandler(list, e)
+    if(_.isObject(list)){
+      this.refs.pager.notifyPageChangeHandler(list.count, list.current)
+      this.refs.tableBody.notifyDataChangeHandler(list.rows, e)
+    }else{
+      this.refs.tableBody.notifyDataChangeHandler(list, e)
+    }
   }
 
   render(){
     return (
       <Panel title={this.props.title}>
-        <table className="table bordered striped">
-          <TableHeader titles={this.state.titles} />
+        {this.props.children}
+        <table className="table striped">
+          <TableHeader columns={this.props.columns} />
           <TableBody 
-            cols={this.state.cols} 
+            columns={this.props.columns} 
             list={this.state.list} 
             ref="tableBody"/>
         </table>
@@ -118,7 +155,7 @@ class Table extends Component {
   }
 }
 
-export { Table, TableBody, TableHeader }
+export { Table, TableBody, TableHeader, LoadingDataRow, SearchBar }
 
 
 

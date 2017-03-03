@@ -6,11 +6,19 @@ class Page extends Component {
 
   constructor(props){
     super(props)
-    this.state = this.props
+    this.state = {
+      type: this.props.type || 'normal',
+    }
   }
 
   onClickHandler(i, e){
+    if(i === -1){
+      return false
+    }
     this.props.onClickHandler(i, e);
+    if(this.props.type == 'previous' || this.props.type == 'next' ){
+      return
+    }
     this.setState({
       type: 'active'
     })
@@ -23,25 +31,25 @@ class Page extends Component {
   }
 
   render () {
-    var type = this.state.type || 'normal',
-        page = this.state.page;
-    switch(type){
+    
+    let page = this.props.page
+    switch(this.state.type){
       case 'previous':
         return (
-          <li className="previous"><a onClick={this.onClickHandler.bind(this, page - 1)}><i className="fa fa-caret-left"></i></a></li>
+          <li className="previous"><a href="javascript:void(0)" onClick={this.onClickHandler.bind(this, page)}><i className="fa fa-caret-left"></i></a></li>
         );
       case 'active':
         return (
-          <li className="active"><a onClick={this.onClickHandler.bind(this, page)}>{page}</a></li>
+          <li className="active"><a href="javascript:void(0)" onClick={this.onClickHandler.bind(this, page)}>{page}</a></li>
         );
       case 'next':
         return (
-          <li className="next"><a onClick={this.onClickHandler.bind(this, page + 1)}><i className="fa fa-caret-right"></i></a></li>
+          <li className="next"><a href="javascript:void(0)" onClick={this.onClickHandler.bind(this, page)}><i className="fa fa-caret-right"></i></a></li>
         );
       case 'normal':
       default:
         return (
-          <li><a onClick={this.onClickHandler.bind(this, page)}>{page}</a></li>
+          <li><a href="javascript:void(0)" onClick={this.onClickHandler.bind(this, page)}>{page}</a></li>
         );
 
     }
@@ -53,13 +61,15 @@ class Pager extends Component {
   constructor(props){
     super(props)
     this.state = {
-      current: this.props.current,
-      total: this.props.total,
+      total: this.props.total || 10,
+      rows: this.props.rows || 10,  // 10 every page
+      current: this.props.current || 1,
     }
+    this.state.pages = Math.ceil(this.state.total/this.state.rows)
   }
 
   getCurrent(){
-    return this.current
+    return this.state.current
   }
 
   onClickHandler(i, e){
@@ -70,10 +80,22 @@ class Pager extends Component {
     })
   }
 
+  notifyPageChangeHandler(total, current){
+    this.setState({
+      total: total,
+      current: current,
+      pages: Math.ceil(total/this.state.rows),
+    })
+    this.refs['page-' + current].notifyPageChangeHandler('active')
+  }
+
   render () {
-    let pages = [];
-    pages.push(<Page key={0} type="previous" ref="page-0" onClickHandler={this.onClickHandler.bind(this)} />);
-    for(let i = 1; i <= this.state.total; i++){
+    let pages = []
+    //calc the previous & next
+    let prevPage = this.state.current > 1? this.state.current - 1: -1
+    let nextPage = this.state.current >= this.state.pages ? -1: this.state.current + 1
+    pages.push(<Page key={'prevPage'} type="previous" page={prevPage} ref={'page-prevPage'} onClickHandler={this.onClickHandler.bind(this)} />);
+    for(let i = 1; i <= this.state.pages; i++){
       pages.push(
         <Page 
           key={i} 
@@ -83,7 +105,7 @@ class Pager extends Component {
           page={i}/>
       )
     }
-    pages.push(<Page key={this.state.total+1} ref={'page-' + (this.state.total+1)} type="next" onClickHandler={this.onClickHandler.bind(this)} />);
+    pages.push(<Page key={'nextPage'} page={nextPage}  ref={'page-nextPage'} type="next" onClickHandler={this.onClickHandler.bind(this)} />);
     return (
       <ul className="pagination">
         {pages}

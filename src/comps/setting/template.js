@@ -3,38 +3,43 @@ import fetchData from '../../model/fpm-api'
 import PubSub from 'pubsub-js'
 import _ from 'lodash'
 import {Table, TableHeader, TableBody} from '../controls'
+import YF from 'yf-fpm-client-nodejs'
 
 
 class Template extends Component{
   constructor(props) {
     super(props)
-    this.list = [
-      {id: 1, name: '123', type: '1', env: '123', about: '123', operate: '123'},
-      {id: 2, name: '123', type: '1', env: '123', about: '123', operate: '123'},
-      {id: 3, name: '33', type: '1', env: '123', about: '123', operate: '123'},
-      {id: 4, name: '44', type: '1', env: '123', about: '123', operate: '123'},
-    ]
+    this.list = []
+  }
+
+  fetchPage(i, e){
+    this.page = i
+    let tableRef = this.refs.table
+    let query = new YF.Query('fpm_template')
+    query.page(this.page, 10).findAndCount()
+      .then(data => {
+        tableRef.notifyDataChangeHandler(data, e)
+      })
   }
 
   onPageClickHandler(i, e){
-    i--
-    this.list = [
-        {id: i*4 + 1, name: '123', type: '1', env: '123', about: '123', operate: '123'},
-        {id: i*4 + 2, name: '123', type: '1', env: '123', about: '123', operate: '123'},
-        {id: i*4 + 3, name: '33', type: '1', env: '123', about: '123', operate: '123'},
-        {id: i*4 + 4, name: '44', type: '1', env: '123', about: '123', operate: '123'},
-      ]
-    this.refs.table.notifyDataChangeHandler(this.list, e)
+    this.fetchPage(i, e)
+  }
+  
+  componentDidMount(){
+    this.fetchPage(1)
   }
   
   render() {
+    const truncateFunc = (src) => {
+      return _.truncate(src, {
+          'length': 18,
+        })
+    }
     const columns = [
       { key: 'id', title: 'ID', filter: false},
       { key: 'name', title: 'Name', filter: false},
-      { key: 'type', title: 'Type', filter: false},
-      { key: 'env', title: 'Env', filter: false},
-      { key: 'about', title: 'About', filter: false},
-      { key: 'operate', title: 'Operate', filter: false},
+      { key: 'content', title: 'Content', filter: truncateFunc, className: []},
     ]
     
     const page = {}

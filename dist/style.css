@@ -4,3 +4,6 @@ a.active{
 a.brand{
   font-size: 1.8em; padding:0 1em;
 }
+th{
+  border-radius:0 !important;
+}

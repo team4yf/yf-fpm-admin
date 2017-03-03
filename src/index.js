@@ -8,6 +8,8 @@ import Dashboard from './comps/dashboard'
 import { Smtp, Template } from './comps/setting'
 import User from './comps/user'
 import { ApiTester } from './comps/tools'
+import YF from 'yf-fpm-client-nodejs'
+YF.init({mode:'PRODUCT', scope:'api', appkey:'123123', masterKey:'123123'})
 
 render((
   <Router history={ hashHistory }>
