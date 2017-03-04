@@ -52,10 +52,7 @@ class TemplateList extends Component{
       if (isConfirm) {
         //Delete
         let obj = new YF.Object('fpm_template')
-        obj.getById(id)
-          .then(res=>{
-            return obj.remove()
-          })
+        obj.remove(id)
           .then(res=>{
             Materialize.toast('Remove Success!', 4000)
             self.fetchPage(self.page)

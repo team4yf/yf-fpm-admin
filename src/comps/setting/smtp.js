@@ -60,20 +60,21 @@ class Smtp extends Component{
       }
       each(
         rows, (item, callback) => {
-          let query = new YF.Query('fpm_setting')
-          query.first(item)
-            .then( data => {
-              return new YF.Object('fpm_setting', _.assign(data, item.row)).save()
+          let obj = new YF.Object('fpm_setting')
+          obj.getByCondition(item.condition)
+            .then( obj => {
+              return obj.save(item.row)
             })
             .then( data => {
               callback()
             })
             .catch( err => {
+              console.log(err)
               callback(err)
             })
       },(error) => {
         if(error){
-          swal('', _.isString(error)? error: error.error , 'error')
+          swal('', _.isString(error)? error: error.message , 'error')
         }else{
           //update ok
           this.refs.icon.style.display = 'none'

@@ -8126,6 +8126,22 @@ webpackJsonp([0],[
 	    return this._d;
 	  }
 
+	  getByCondition(c) {
+	    let self = this;
+	    return new _promise2.default((resolve, reject) => {
+	      self._client.send('common.first', {
+	        table: this._t,
+	        condition: c
+	      }).then(data => {
+	        self._d = data;
+	        self.objectId = data.id;
+	        resolve(self);
+	      }).catch(err => {
+	        reject(err);
+	      });
+	    });
+	  }
+
 	  getById(id) {
 	    let self = this;
 	    return new _promise2.default((resolve, reject) => {
@@ -8147,16 +8163,16 @@ webpackJsonp([0],[
 	      throw new Error('save error no objectid');
 	    }
 	    if (d) {
-	      this._d = d;
+	      this._d = _lodash2.default.assign(this._d, d);
 	    }
-	    this._d.updateAt = _lodash2.default.now();
+	    d.updateAt = this._d.updateAt = _lodash2.default.now();
 	    let self = this;
 
 	    return new _promise2.default((resolve, reject) => {
 	      self._client.send('common.update', {
 	        table: this._t,
 	        condition: ' id = ' + this.objectId,
-	        row: this._d
+	        row: d
 	      }).then(data => {
 	        resolve(self);
 	      }).catch(err => {
@@ -8165,7 +8181,8 @@ webpackJsonp([0],[
 	    });
 	  }
 
-	  remove() {
+	  remove(id) {
+	    this.objectId = id || this.objectId;
 	    if (this.objectId == undefined) {
 	      throw new Error('save error no objectid');
 	    }
@@ -43511,17 +43528,18 @@ webpackJsonp([0],[
 	          return false;
 	        }
 	        (0, _each2.default)(rows, function (item, callback) {
-	          var query = new _yfFpmClientNodejs2.default.Query('fpm_setting');
-	          query.first(item).then(function (data) {
-	            return new _yfFpmClientNodejs2.default.Object('fpm_setting', _lodash2.default.assign(data, item.row)).save();
+	          var obj = new _yfFpmClientNodejs2.default.Object('fpm_setting');
+	          obj.getByCondition(item.condition).then(function (obj) {
+	            return obj.save(item.row);
 	          }).then(function (data) {
 	            callback();
 	          }).catch(function (err) {
+	            console.log(err);
 	            callback(err);
 	          });
 	        }, function (error) {
 	          if (error) {
-	            swal('', _lodash2.default.isString(error) ? error : error.error, 'error');
+	            swal('', _lodash2.default.isString(error) ? error : error.message, 'error');
 	          } else {
 	            //update ok
 	            _this3.refs.icon.style.display = 'none';
@@ -44197,9 +44215,7 @@ webpackJsonp([0],[
 	        if (isConfirm) {
 	          //Delete
 	          var obj = new _yfFpmClientNodejs2.default.Object('fpm_template');
-	          obj.getById(id).then(function (res) {
-	            return obj.remove();
-	          }).then(function (res) {
+	          obj.remove(id).then(function (res) {
 	            Materialize.toast('Remove Success!', 4000);
 	            self.fetchPage(self.page);
 	          }).catch(function (err) {
