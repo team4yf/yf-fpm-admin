@@ -5,9 +5,32 @@ import Header from './header'
 const Footer = React.createClass({
   render: () => {
     return (
-      <nav className="navbar navbar-default navbar-fixed-bottom footer blue-grey lighten-4 ">
-        <p className="right-align container">&copy;CopyRight 2017-2018 Powered Wangfan@YunPlus.io </p>
-      </nav>
+      <footer className="page-footer grey darken-3">
+        <div className="container grey darken-3">
+          <div className="row grey darken-3">
+            <div className="col l6 s12">
+              <h5 className="white-text">Thanks</h5>
+              <p className="grey-text text-lighten-4">1. you can create an <a className="grey-text text-darken-1" target="_blank" href="https://github.com/team4yf/yf-fpm-admin/issues">ISSUES</a> if you find any bugs or ideas</p>
+              <p className="grey-text text-lighten-4">2. visit our <a className="grey-text text-darken-1" target="_blank" href="http://blog.yunplus.io">BLOG</a> for more infomations </p>
+              <p className="grey-text text-lighten-4">3. improve this with us <a className="grey-text text-darken-1" target="_blank" href="https://github.com/team4yf/yf-fpm-admin/pulls">PULLS</a> .We are waiting for you </p>
+            </div>
+            <div className="col l4 offset-l2 s12">
+              <h5 className="white-text">Links</h5>
+              <ul>
+                <li><a className="grey-text text-lighten-3" href="http://blog.yunplus.io">Blog</a></li>
+                <li><a className="grey-text text-lighten-3" href="https://github.com/team4yf/yf-fpm-admin">GitHub</a></li>
+                <li><a className="grey-text text-lighten-3" href="http://www.yunplus.io">YunPlus.IO</a></li>
+                <li><a className="grey-text text-lighten-3" href="https://github.com/team4yf/yf-fpm-server">FPM-Server</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="footer-copyright">
+          <div className="container">
+            © 2017 Copyright YunPlus.IO
+          </div>
+        </div>
+      </footer>
     )
   }
 })

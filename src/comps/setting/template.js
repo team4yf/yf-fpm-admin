@@ -1,11 +1,10 @@
 import React,{ Component } from 'react'
-import PubSub from 'pubsub-js'
 import _ from 'lodash'
-import {Table, TableHeader, TableBody} from '../controls'
 import YF from 'yf-fpm-client-nodejs'
+import { browserHistory } from 'react-router'
+import { Table} from '../../controls'
 
-
-class Template extends Component{
+class TemplateList extends Component{
   constructor(props) {
     super(props)
     this.list = []
@@ -31,7 +30,7 @@ class Template extends Component{
   }
 
   onCreateHandler(e){
-    alert(1)
+    browserHistory.push('/setting/template/create')
   }
 
   onRowClickHandler(row, e){
@@ -67,4 +66,15 @@ class Template extends Component{
   }
 }
 
-export default Template
+class TemplateEditor extends Component{
+
+  render(){
+    return (
+      <div className="container">
+        <h5>Editor</h5>
+
+      </div>
+    )
+  }
+}
+export { TemplateList, TemplateEditor}

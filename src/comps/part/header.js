@@ -1,5 +1,5 @@
 import React,{ Component } from 'react'
-import { Link } from 'react-router'
+import { Link, IndexLink } from 'react-router'
 
 const Header = React.createClass({
   render: () => {
@@ -7,7 +7,7 @@ const Header = React.createClass({
       <div className="navbar-fixed" id="header">
         <nav>
           <div className="nav-wrapper blue-grey darken-1">
-            <a href="#" className="left brand">FPM Admin</a>
+            <IndexLink to="/" className="left brand">FPM Admin</IndexLink>
 
             <ul className="left hide-on-med-and-down">
               <li><Link to="/dashboard" activeClassName="active">Dashboard</Link></li>

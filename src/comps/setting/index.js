@@ -1,5 +1,5 @@
 import React,{ Component } from 'react'
 import Smtp from './smtp'
-import Template from './template'
+import { TemplateList, TemplateEditor } from './template'
 
-export { Smtp, Template }
+export { Smtp, TemplateList, TemplateEditor  }

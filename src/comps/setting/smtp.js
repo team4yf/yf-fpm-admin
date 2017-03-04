@@ -3,8 +3,7 @@ import { Link } from 'react-router'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
 import each from 'async/each'
-import { TextField, Selector, Modal } from '../controls'
-import { Panel } from '../common'
+import { TextField, Selector, Modal, Panel } from '../../controls'
 
 class Smtp extends Component{
   constructor(props) {

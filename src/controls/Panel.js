@@ -18,4 +18,4 @@ class Panel extends Component{
     )
   }
 }
-export default Panel
+export { Panel }

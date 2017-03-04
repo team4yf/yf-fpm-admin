@@ -1,8 +1,7 @@
 import React,{ Component } from 'react'
-import { Panel } from '../common'
-import { TextField } from '../controls'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
+import { Panel, TextField } from '../../controls'
 
 class ApiTester extends Component {
 
