@@ -1,8 +1,8 @@
 import React,{ Component } from 'react'
-import { Panel } from '../common'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
+import { Panel } from '../../controls'
 
 class Target extends Component {
   render() {

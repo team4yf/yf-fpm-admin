@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server -s -c-1",
-    "dev": "webpack-dev-server --config webpack.config.js --inline --content-base .",
+    "dev": "webpack-dev-server --config webpack.config.js --inline --content-base . --history-api-fallback",
     "build": "webpack --config webpack.config.js"
   },
   "repository": {
@@ -32,7 +32,7 @@
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0",
     "recharts": "^0.20.6",
-    "yf-fpm-client-nodejs": "^1.0.2"
+    "yf-fpm-client-nodejs": "^1.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.5.1",

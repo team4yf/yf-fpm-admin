@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import _ from 'lodash'
-import { Table } from '../controls'
 import YF from 'yf-fpm-client-nodejs'
+import { Table } from '../../controls'
 
 class AppList extends Component{
   constructor(props) {
