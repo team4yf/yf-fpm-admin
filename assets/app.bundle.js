@@ -7502,8 +7502,8 @@ webpackJsonp([0],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	const sign = args => {
-	  let argStrArray = _lodash2.default.map(args, (val, key) => {
+	const sign = function(args) {
+	  var argStrArray = _lodash2.default.map(args, function(val, key) {
 	    if (_lodash2.default.isObject(val)) {
 	      val = (0, _stringify2.default)(val);
 	    }
