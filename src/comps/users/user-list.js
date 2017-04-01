@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
-import { Table } from '../../controls'
+import { PageTitle, Table } from '../../controls'
 
 class UserList extends Component {
   constructor(props) {
@@ -39,21 +39,24 @@ class UserList extends Component {
       {key: 'oper', title: 'Oper', filter: ()=>{return 123}},
     ]
     return (
-      <div className="container">
-        <Table title="Users" 
-          columns={columns} 
-          list={[]} 
-          ref='table'
-          onPageClickHandler={this.onPageClickHandler.bind(this)}>
-          <div className="right">
-            <div className="input-field">
-              <i className="teal-text fa fa-search prefix"></i>
-              <input id="icon_prefix" type="text" className="validate" />
-              <label htmlFor="icon_prefix">Search</label>
+      <div>
+        <PageTitle>Users</PageTitle>
+        <div className="container">
+          <Table title="Users" 
+            columns={columns} 
+            list={[]} 
+            ref='table'
+            onPageClickHandler={this.onPageClickHandler.bind(this)}>
+            <div className="right">
+              <div className="input-field">
+                <i className="teal-text fa fa-search prefix"></i>
+                <input id="icon_prefix" type="text" className="validate" />
+                <label htmlFor="icon_prefix">Search</label>
+              </div>
             </div>
-          </div>
-          <div className="clearfix"></div>
-        </Table>
+            <div className="clearfix"></div>
+          </Table>
+        </div>
       </div>
     );
   }

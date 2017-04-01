@@ -1,0 +1,12 @@
+{
+    "window.zoomLevel": 2,
+    "editor.tabSize": 2,
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/.DS_Store": true,
+      "**/*.pyc": true,
+      "**/.vscode": true
+    }
+  }

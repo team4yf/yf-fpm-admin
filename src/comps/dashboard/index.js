@@ -2,7 +2,7 @@ import React,{ Component } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
-import { Panel } from '../../controls'
+import { PageTitle, Panel } from '../../controls'
 
 class Target extends Component {
   render() {
@@ -149,46 +149,49 @@ class Dashboard extends Component {
       }
 
       return (
-        <div id="container" className="center-block">
+        <div>
+          <PageTitle>Dashboard</PageTitle>
+          <div className="container">
 
-          <div id="targets">
+            <div id="targets">
 
-            <h5>Targets</h5>
-            <Target />
-
-          </div>
-
-          <div id="system-info">
-            <h5>System</h5>
-            <div className="row">
-
-              <div className="col s7">
-                <Panel title="Mem" className="gray">
-                  <div className="">
-                    <LineChart width={750} height={365} data={data}
-                          margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                     <XAxis dataKey="name"/>
-                     <YAxis/>
-                     <CartesianGrid strokeDasharray="3 3"/>
-                     <Tooltip/>
-                     <Legend />
-                     <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
-                     <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-                    </LineChart>
-                  </div>
-                </Panel>
-              </div>
-
-              <div className="col s5">
-                <Panel title="OS">
-                  <OsInfo data={os}/>
-                </Panel>
-              </div>
-
+              <h5>Targets</h5>
+              <Target />
 
             </div>
-          </div>
 
+            <div id="system-info">
+              <h5>System</h5>
+              <div className="row">
+
+                <div className="col s7">
+                  <Panel title="Mem" className="gray">
+                    <div className="">
+                      <LineChart width={750} height={365} data={data}
+                            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                      <XAxis dataKey="name"/>
+                      <YAxis/>
+                      <CartesianGrid strokeDasharray="3 3"/>
+                      <Tooltip/>
+                      <Legend />
+                      <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
+                      <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                      </LineChart>
+                    </div>
+                  </Panel>
+                </div>
+
+                <div className="col s5">
+                  <Panel title="OS">
+                    <OsInfo data={os}/>
+                  </Panel>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
         </div>
       )
     }

@@ -2,7 +2,7 @@ import React,{ Component } from 'react'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
 import { browserHistory } from 'react-router'
-import { Table, TextField, Panel} from '../../controls'
+import { PageTitle, Table, TextField, Panel} from '../../controls'
 
 class TemplateList extends Component{
   constructor(props) {
@@ -87,16 +87,19 @@ class TemplateList extends Component{
     
     const page = {}
     return (
-      <div className="container">
-        <Table title="Templates" 
-          hasCreate="true"
-          onCreateHandler={this.onCreateHandler.bind(this)}
-          columns={columns} 
-          ref='table'
-          onPageClickHandler={this.onPageClickHandler.bind(this)}
-          onRowClickHandler={this.onRowClickHandler}
-          canRowClick="true"
-        />
+      <div>
+        <PageTitle>Template</PageTitle>
+        <div className="container">
+          <Table title="Templates" 
+            hasCreate="true"
+            onCreateHandler={this.onCreateHandler.bind(this)}
+            columns={columns} 
+            ref='table'
+            onPageClickHandler={this.onPageClickHandler.bind(this)}
+            onRowClickHandler={this.onRowClickHandler}
+            canRowClick="true"
+          />
+        </div>
       </div>
     )
   }

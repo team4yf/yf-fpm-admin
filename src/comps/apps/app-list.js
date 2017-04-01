@@ -1,7 +1,7 @@
 import React,{ Component } from 'react'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
-import { Table } from '../../controls'
+import { PageTitle, Table } from '../../controls'
 
 class AppList extends Component{
   constructor(props) {
@@ -49,17 +49,20 @@ class AppList extends Component{
       }},
     ]
     return (
-      <div className="container">
-        <Table title="Applications" 
-          hasCreate="false"
-          hasSearch="true"
-          onCreateHandler={this.onCreateHandler.bind(this)}
-          columns={columns} 
-          ref='table'
-          onPageClickHandler={this.onPageClickHandler.bind(this)}>
+      <div>
+        <PageTitle>Applications</PageTitle>
+        <div className="container">
+          <Table title="Applications" 
+            hasCreate="false"
+            hasSearch="true"
+            onCreateHandler={this.onCreateHandler.bind(this)}
+            columns={columns} 
+            ref='table'
+            onPageClickHandler={this.onPageClickHandler.bind(this)}>
 
-          <div className="clearfix"></div>
-        </Table>
+            <div className="clearfix"></div>
+          </Table>
+        </div>
       </div>
     );
   }

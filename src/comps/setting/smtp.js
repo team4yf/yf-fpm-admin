@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
 import each from 'async/each'
-import { TextField, Selector, Modal, Panel } from '../../controls'
+import { PageTitle, TextField, Selector, Modal, Panel } from '../../controls'
 
 class Smtp extends Component{
   constructor(props) {
@@ -100,27 +100,30 @@ class Smtp extends Component{
   render () {
 
     return (
-      <div id="smtp" className="container">
-        <Panel title="SMTP">
-          <form className="form-horizontal" onSubmit={this.onSubmitHandler.bind(this)}>
-            <TextField title="Server"
-              default={this.state.smtp.server}
-              ref="smtpServer"/>
-            <TextField title="User"
-              default={this.state.smtp.user}
-              ref="smtpUser"
-              placeholder="xxxxx@qq.com"/>
-            <TextField title="AuthCode"
-              default={this.state.smtp.pass}
-              ref="smtpAuth"
-              placeholder="Server Auth Code"/>
-            <div className="form-group">
-              <div className="col offset-s2 s10">
-                <button type="text" className="btn"><span ref="icon" style={{display: 'none'}} ><i className="fa fa-spin fa-circle-o-notch"></i></span> Save</button>
+      <div>
+        <PageTitle>SMTP</PageTitle>
+        <div id="smtp" className="container">
+          <Panel title="SMTP">
+            <form className="form-horizontal" onSubmit={this.onSubmitHandler.bind(this)}>
+              <TextField title="Server"
+                default={this.state.smtp.server}
+                ref="smtpServer"/>
+              <TextField title="User"
+                default={this.state.smtp.user}
+                ref="smtpUser"
+                placeholder="xxxxx@qq.com"/>
+              <TextField title="AuthCode"
+                default={this.state.smtp.pass}
+                ref="smtpAuth"
+                placeholder="Server Auth Code"/>
+              <div className="form-group">
+                <div className="col offset-s2 s10">
+                  <button type="text" className="btn"><span ref="icon" style={{display: 'none'}} ><i className="fa fa-spin fa-circle-o-notch"></i></span> Save</button>
+                </div>
               </div>
-            </div>
-          </form>
-        </Panel>
+            </form>
+          </Panel>
+        </div>
       </div>
     )
   }

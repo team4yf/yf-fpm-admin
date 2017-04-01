@@ -1,5 +1,15 @@
 import React,{ Component } from 'react'
 
+class PageTitle extends Component{
+  render(){
+    return (
+      <div className="page-title blue darken-1">
+        <h3 className="container white-text">{this.props.children}</h3>
+      </div>
+    )
+  }
+}
+
 class Panel extends Component{
 
   render(){
@@ -18,4 +28,4 @@ class Panel extends Component{
     )
   }
 }
-export { Panel }
+export { PageTitle, Panel }

@@ -6,10 +6,13 @@ class Application extends Component{
       return (
         <div>
           <Header />
-          <div id="container" className="center-block">
-          {this.props.children}
-          </div>
-          <Footer />
+          <main>
+            <div id="main" className="">
+            {this.props.children}
+            </div>
+          
+            <Footer />
+          </main>
         </div>
       )
     }

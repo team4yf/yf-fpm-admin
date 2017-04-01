@@ -7,3 +7,33 @@ a.brand{
 th{
   border-radius:0 !important;
 }
+main{
+  padding-left: 300px;
+  margin-top: 0px;
+  background: #fcfcfc;
+}
+a.brand-logo{
+  font-size: 1.8em;
+  line-height: 4.4em;
+  min-height: 4.4em;
+}
+.collapsible .collapsible-body{
+  padding: 0;
+}
+.padding-1em{
+  padding: 1em !important;
+}
+.side-nav .collapsible a, .side-nav .collapsible-header{
+  text-indent: 1em;
+}
+
+.container {
+  width: 90%; 
+}
+.welcome{
+  padding: 1em;
+}
+.page-title{
+  padding: 1.8em 0;
+  margin-bottom: 2em;
+}
