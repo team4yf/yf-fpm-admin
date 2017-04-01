@@ -167,7 +167,7 @@ class Dashboard extends Component {
                 <div className="col s7">
                   <Panel title="Mem" className="gray">
                     <div className="">
-                      <LineChart width={750} height={365} data={data}
+                      <LineChart width={700} height={365} data={data}
                             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
                       <XAxis dataKey="name"/>
                       <YAxis/>
