@@ -90,4 +90,4 @@ class AppEditer extends Component{
     )
   }
 }
-export default AppEditer
+export { AppEditer }

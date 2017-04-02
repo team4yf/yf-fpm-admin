@@ -5986,8 +5986,8 @@ webpackJsonp([0],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	const sign = function(args) {
-	  var argStrArray = _lodash2.default.map(args, function(val, key) {
+	const sign = args => {
+	  let argStrArray = _lodash2.default.map(args, (val, key) => {
 	    if (_lodash2.default.isObject(val)) {
 	      val = (0, _stringify2.default)(val);
 	    }
@@ -8126,6 +8126,22 @@ webpackJsonp([0],[
 	    return this._d;
 	  }
 
+	  getByCondition(c) {
+	    let self = this;
+	    return new _promise2.default((resolve, reject) => {
+	      self._client.send('common.first', {
+	        table: this._t,
+	        condition: c
+	      }).then(data => {
+	        self._d = data;
+	        self.objectId = data.id;
+	        resolve(self);
+	      }).catch(err => {
+	        reject(err);
+	      });
+	    });
+	  }
+
 	  getById(id) {
 	    let self = this;
 	    return new _promise2.default((resolve, reject) => {
@@ -8134,6 +8150,7 @@ webpackJsonp([0],[
 	        id: id
 	      }).then(data => {
 	        self._d = data;
+	        self.objectId = data.id;
 	        resolve(self);
 	      }).catch(err => {
 	        reject(err);
@@ -8146,16 +8163,16 @@ webpackJsonp([0],[
 	      throw new Error('save error no objectid');
 	    }
 	    if (d) {
-	      this._d = d;
+	      this._d = _lodash2.default.assign(this._d, d);
 	    }
-	    this._d.updateAt = _lodash2.default.now();
+	    d.updateAt = this._d.updateAt = _lodash2.default.now();
 	    let self = this;
 
 	    return new _promise2.default((resolve, reject) => {
 	      self._client.send('common.update', {
 	        table: this._t,
 	        condition: ' id = ' + this.objectId,
-	        row: this._d
+	        row: d
 	      }).then(data => {
 	        resolve(self);
 	      }).catch(err => {
@@ -8164,7 +8181,8 @@ webpackJsonp([0],[
 	    });
 	  }
 
-	  remove() {
+	  remove(id) {
+	    this.objectId = id || this.objectId;
 	    if (this.objectId == undefined) {
 	      throw new Error('save error no objectid');
 	    }
@@ -8334,13 +8352,13 @@ webpackJsonp([0],[
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'footer',
-	      { className: 'page-footer grey darken-3' },
+	      { className: 'page-footer grey darken-1' },
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'container grey darken-3' },
+	        { className: 'container grey darken-1' },
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'row grey darken-3' },
+	          { className: 'row grey darken-1' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'col l6 s12' },
@@ -8355,7 +8373,7 @@ webpackJsonp([0],[
 	              '1. you can create an ',
 	              _react2.default.createElement(
 	                'a',
-	                { className: 'grey-text text-darken-1', target: '_blank', href: 'https://github.com/team4yf/yf-fpm-admin/issues' },
+	                { className: 'grey-text text-lighten-1', target: '_blank', href: 'https://github.com/team4yf/yf-fpm-admin/issues' },
 	                'ISSUES'
 	              ),
 	              ' if you find any bugs or ideas'
@@ -8366,7 +8384,7 @@ webpackJsonp([0],[
 	              '2. visit our ',
 	              _react2.default.createElement(
 	                'a',
-	                { className: 'grey-text text-darken-1', target: '_blank', href: 'http://blog.yunplus.io' },
+	                { className: 'grey-text text-lighten-1', target: '_blank', href: 'http://blog.yunplus.io' },
 	                'BLOG'
 	              ),
 	              ' for more infomations '
@@ -8377,7 +8395,7 @@ webpackJsonp([0],[
 	              '3. improve this with us ',
 	              _react2.default.createElement(
 	                'a',
-	                { className: 'grey-text text-darken-1', target: '_blank', href: 'https://github.com/team4yf/yf-fpm-admin/pulls' },
+	                { className: 'grey-text text-lighten-1', target: '_blank', href: 'https://github.com/team4yf/yf-fpm-admin/pulls' },
 	                'PULLS'
 	              ),
 	              ' .We are waiting for you '
@@ -8665,7 +8683,9 @@ webpackJsonp([0],[
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'collapsible-header' },
-	          this.props.title
+	          this.props.title,
+	          ' ',
+	          _react2.default.createElement('i', { className: 'right icon fa fa-angle-down' })
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -8732,7 +8752,7 @@ webpackJsonp([0],[
 	            'a',
 	            { id: 'logo-container',
 	              href: '/',
-	              className: 'brand-logo block blue-text grey lighten-3 center-align' },
+	              className: 'brand-logo block blue white-text center-align' },
 	            'FPM Admin'
 	          )
 	        ),
@@ -9281,7 +9301,7 @@ webpackJsonp([0],[
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "page-title blue darken-1" },
+	        { className: "page-title blue lighten-1" },
 	        _react2.default.createElement(
 	          "h3",
 	          { className: "container white-text" },
@@ -9385,7 +9405,7 @@ webpackJsonp([0],[
 	      var title = '',
 	          createButton = this.props.hasCreate ? _react2.default.createElement(
 	        'button',
-	        { className: 'right btn green lighten-4', onClick: this.props.onCreateHandler },
+	        { className: 'right btn green darken-1 lighten-2 white-text', onClick: this.props.onCreateHandler },
 	        '+ Create'
 	      ) : '';
 
@@ -9447,7 +9467,7 @@ webpackJsonp([0],[
 	        null,
 	        _react2.default.createElement(
 	          'tr',
-	          { className: 'teal lighten-4' },
+	          { className: 'blue lighten-4' },
 	          titles
 	        )
 	      );
@@ -9591,11 +9611,11 @@ webpackJsonp([0],[
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'input-field' },
-	          _react2.default.createElement('i', { className: 'teal-text fa fa-search prefix' }),
-	          _react2.default.createElement('input', { id: 'icon_prefix', type: 'text', className: 'validate' }),
+	          _react2.default.createElement('i', { className: 'grey-text fa fa-search prefix' }),
+	          _react2.default.createElement('input', { id: '', type: 'text', className: ' validate' }),
 	          _react2.default.createElement(
 	            'label',
-	            { htmlFor: 'icon_prefix' },
+	            { htmlFor: 'icon_prefix', className: 'grey-text' },
 	            'Search'
 	          )
 	        )
@@ -10354,7 +10374,7 @@ webpackJsonp([0],[
 	                    { className: '' },
 	                    _react2.default.createElement(
 	                      _recharts.LineChart,
-	                      { width: 750, height: 365, data: data,
+	                      { width: 700, height: 365, data: data,
 	                        margin: { top: 5, right: 30, left: 20, bottom: 5 } },
 	                      _react2.default.createElement(_recharts.XAxis, { dataKey: 'name' }),
 	                      _react2.default.createElement(_recharts.YAxis, null),
@@ -23136,11 +23156,11 @@ webpackJsonp([0],[
 /* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// https://d3js.org/d3-path/ Version 1.0.3. Copyright 2016 Mike Bostock.
+	// https://d3js.org/d3-path/ Version 1.0.4. Copyright 2017 Mike Bostock.
 	(function (global, factory) {
-	   true ? factory(exports) :
-	  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	  (factory((global.d3 = global.d3 || {})));
+		 true ? factory(exports) :
+		typeof define === 'function' && define.amd ? define(['exports'], factory) :
+		(factory((global.d3 = global.d3 || {})));
 	}(this, (function (exports) { 'use strict';
 
 	var pi = Math.PI;
@@ -23251,14 +23271,16 @@ webpackJsonp([0],[
 	    // Is this arc empty? We’re done.
 	    if (!r) return;
 
+	    // Does the angle go the wrong way? Flip the direction.
+	    if (da < 0) da = da % tau + tau;
+
 	    // Is this a complete circle? Draw two arcs to complete the circle.
 	    if (da > tauEpsilon) {
 	      this._ += "A" + r + "," + r + ",0,1," + cw + "," + (x - dx) + "," + (y - dy) + "A" + r + "," + r + ",0,1," + cw + "," + (this._x1 = x0) + "," + (this._y1 = y0);
 	    }
 
-	    // Otherwise, draw an arc!
-	    else {
-	      if (da < 0) da = da % tau + tau;
+	    // Is this arc non-empty? Draw an arc!
+	    else if (da > epsilon) {
 	      this._ += "A" + r + "," + r + ",0," + (+(da >= pi)) + "," + cw + "," + (this._x1 = x + r * Math.cos(a1)) + "," + (this._y1 = y + r * Math.sin(a1));
 	    }
 	  },
