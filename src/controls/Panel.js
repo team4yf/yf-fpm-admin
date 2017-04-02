@@ -3,7 +3,7 @@ import React,{ Component } from 'react'
 class PageTitle extends Component{
   render(){
     return (
-      <div className="page-title blue darken-1">
+      <div className="page-title blue lighten-1">
         <h3 className="container white-text">{this.props.children}</h3>
       </div>
     )

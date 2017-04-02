@@ -9,7 +9,7 @@ class CollapsibleNav extends Component{
   render() {
     return (
       <li>
-        <div className="collapsible-header">{this.props.title}</div>
+        <div className="collapsible-header">{this.props.title} <i className="right icon fa fa-angle-down"></i></div>
         <div className="collapsible-body">
           <ul>
             {this.props.children}
@@ -44,7 +44,7 @@ class Nav extends Component{
         <li className="logo">
           <a id="logo-container" 
             href="/" 
-            className="brand-logo block blue-text grey lighten-3 center-align">FPM Admin</a>
+            className="brand-logo block blue white-text center-align">FPM Admin</a>
         </li>
         <li>
           <ul className="collapsible" data-collapsible="accordion">

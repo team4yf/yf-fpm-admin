@@ -6,7 +6,7 @@ class TablePanel extends Component{
 
   render(){
     let title = '',
-      createButton = this.props.hasCreate? (<button className="right btn green lighten-4" onClick={this.props.onCreateHandler}>+ Create</button>):''
+      createButton = this.props.hasCreate? (<button className="right btn green darken-1 lighten-2 white-text" onClick={this.props.onCreateHandler}>+ Create</button>):''
     
     if(this.props.title){
       title = (
@@ -40,7 +40,7 @@ class TableHeader extends Component{
 
     return (
       <thead>
-        <tr className="teal lighten-4">
+        <tr className="blue lighten-4">
           {titles}
         </tr>
       </thead>
@@ -118,9 +118,9 @@ class SearchBar extends Component {
     return (
       <div className={this.props.direction}>
         <div className="input-field">
-          <i className="teal-text fa fa-search prefix"></i>
-          <input id="icon_prefix" type="text" className="validate" />
-          <label htmlFor="icon_prefix">Search</label>
+          <i className="grey-text fa fa-search prefix"></i>
+          <input id="" type="text" className=" validate" />
+          <label htmlFor="icon_prefix" className="grey-text">Search</label>
         </div>
       </div>
     )
