@@ -16,7 +16,6 @@ class Application extends Component{
           <div id="main" className="">
           {this.props.children}
           </div>
-          <Footer />
         </main>
       </div>
     )

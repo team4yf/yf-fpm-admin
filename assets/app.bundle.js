@@ -5933,8 +5933,7 @@ webpackJsonp([0],[
 	            'div',
 	            { id: 'main', className: '' },
 	            this.props.children
-	          ),
-	          _react2.default.createElement(_part.Footer, null)
+	          )
 	        )
 	      );
 	    }
@@ -6207,7 +6206,8 @@ webpackJsonp([0],[
 	          null,
 	          'SweetAlert'
 	        )
-	      )
+	      ),
+	      _react2.default.createElement(Footer, null)
 	    );
 	  }
 	});
@@ -6375,74 +6375,105 @@ webpackJsonp([0],[
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'ul',
+	        'div',
 	        { id: 'nav-mobile', className: 'side-nav fixed' },
 	        _react2.default.createElement(
-	          'li',
-	          { className: 'logo' },
+	          'ul',
+	          { className: '' },
 	          _react2.default.createElement(
-	            'a',
-	            { id: 'logo-container',
-	              href: '/',
-	              className: 'brand-logo block blue white-text center-align' },
-	            'FPM Admin'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'li',
-	          null,
+	            'li',
+	            { className: 'logo' },
+	            _react2.default.createElement(
+	              'a',
+	              { id: 'logo-container',
+	                href: '/',
+	                className: 'brand-logo block blue white-text center-align' },
+	              'FPM Admin'
+	            )
+	          ),
 	          _react2.default.createElement(
-	            'ul',
-	            { className: 'collapsible', 'data-collapsible': 'accordion' },
+	            'li',
+	            null,
 	            _react2.default.createElement(
-	              NavLink,
-	              { to: '/dashboard' },
-	              'Dashboard'
-	            ),
-	            _react2.default.createElement(
-	              NavLink,
-	              { to: '/apps' },
-	              'Apps'
-	            ),
-	            _react2.default.createElement(
-	              NavLink,
-	              { to: '/users' },
-	              'Users'
-	            ),
-	            _react2.default.createElement(
-	              CollapsibleNav,
-	              { title: 'Tool' },
+	              'ul',
+	              { className: 'collapsible', 'data-collapsible': 'accordion' },
 	              _react2.default.createElement(
 	                NavLink,
-	                { to: '/tools/apiTester' },
-	                'ApiTester'
+	                { to: '/dashboard' },
+	                'Dashboard'
 	              ),
 	              _react2.default.createElement(
 	                NavLink,
-	                { href: '#!' },
-	                'Pusher'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              CollapsibleNav,
-	              { title: 'Setting' },
-	              _react2.default.createElement(
-	                NavLink,
-	                { to: '/setting/smtp' },
-	                'Smtp'
+	                { to: '/apps' },
+	                'Apps'
 	              ),
 	              _react2.default.createElement(
 	                NavLink,
-	                { to: '/setting/template' },
-	                'Template'
+	                { to: '/users' },
+	                'Users'
 	              ),
 	              _react2.default.createElement(
-	                NavLink,
-	                { to: '/setting/collection' },
-	                'Collection'
+	                CollapsibleNav,
+	                { title: 'Tool' },
+	                _react2.default.createElement(
+	                  NavLink,
+	                  { to: '/tools/apiTester' },
+	                  'ApiTester'
+	                ),
+	                _react2.default.createElement(
+	                  NavLink,
+	                  { href: '#!' },
+	                  'Pusher'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                CollapsibleNav,
+	                { title: 'Setting' },
+	                _react2.default.createElement(
+	                  NavLink,
+	                  { to: '/setting/smtp' },
+	                  'Smtp'
+	                ),
+	                _react2.default.createElement(
+	                  NavLink,
+	                  { to: '/setting/template' },
+	                  'Template'
+	                ),
+	                _react2.default.createElement(
+	                  NavLink,
+	                  { to: '/setting/collection' },
+	                  'Collection'
+	                )
 	              )
 	            )
 	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'nav-footer' },
+	          _react2.default.createElement(
+	            'ul',
+	            null,
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'left' },
+	              _react2.default.createElement(
+	                'a',
+	                { className: 'center-block', href: '' },
+	                'FPM'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              { className: 'left' },
+	              _react2.default.createElement(
+	                'a',
+	                { className: 'center-block', href: '' },
+	                'v0.0.1'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement('div', { className: 'clearfix' })
 	        )
 	      );
 	    }
@@ -6937,7 +6968,7 @@ webpackJsonp([0],[
 	        "div",
 	        { className: "page-title blue lighten-1" },
 	        _react2.default.createElement(
-	          "h3",
+	          "h5",
 	          { className: "container white-text" },
 	          this.props.children
 	        )

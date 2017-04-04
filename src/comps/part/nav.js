@@ -40,29 +40,39 @@ class Nav extends Component{
 
   render(){
     return (
-      <ul id="nav-mobile" className="side-nav fixed" >
-        <li className="logo">
-          <a id="logo-container" 
-            href="/" 
-            className="brand-logo block blue white-text center-align">FPM Admin</a>
-        </li>
-        <li>
-          <ul className="collapsible" data-collapsible="accordion">
-            <NavLink to="/dashboard">Dashboard</NavLink>
-            <NavLink to="/apps">Apps</NavLink>
-            <NavLink to="/users">Users</NavLink>
-            <CollapsibleNav title="Tool">
-              <NavLink to="/tools/apiTester">ApiTester</NavLink>
-              <NavLink href="#!">Pusher</NavLink>
-            </CollapsibleNav> 
-            <CollapsibleNav title="Setting">
-              <NavLink to="/setting/smtp">Smtp</NavLink>
-              <NavLink to="/setting/template">Template</NavLink>
-              <NavLink to="/setting/collection">Collection</NavLink>
-            </CollapsibleNav>
+      <div id="nav-mobile" className="side-nav fixed" >
+        <ul className="">
+          <li className="logo">
+            <a id="logo-container" 
+              href="/" 
+              className="brand-logo block blue white-text center-align">FPM Admin</a>
+          </li>
+          <li>
+            <ul className="collapsible" data-collapsible="accordion">
+              <NavLink to="/dashboard">Dashboard</NavLink>
+              <NavLink to="/apps">Apps</NavLink>
+              <NavLink to="/users">Users</NavLink>
+              <CollapsibleNav title="Tool">
+                <NavLink to="/tools/apiTester">ApiTester</NavLink>
+                <NavLink href="#!">Pusher</NavLink>
+              </CollapsibleNav> 
+              <CollapsibleNav title="Setting">
+                <NavLink to="/setting/smtp">Smtp</NavLink>
+                <NavLink to="/setting/template">Template</NavLink>
+                <NavLink to="/setting/collection">Collection</NavLink>
+              </CollapsibleNav>
+            </ul>
+          </li>
+          
+        </ul>
+        <div className="nav-footer">
+          <ul>
+            <li className="left"><a className="center-block" href="">FPM</a></li>
+            <li className="left"><a className="center-block" href="">v0.0.1</a></li>
           </ul>
-        </li>
-      </ul>
+          <div className="clearfix"></div>
+        </div>
+      </div>
     )
   }
 }

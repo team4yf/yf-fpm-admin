@@ -7,10 +7,12 @@ a.brand{
 th{
   border-radius:0 !important;
 }
+body{
+  background: #f5f5f5;
+}
 main{
   padding-left: 300px;
   margin-top: 0px;
-  background: #fcfcfc;
 }
 a.brand-logo{
   font-size: 1.8em;
@@ -26,6 +28,26 @@ a.brand-logo{
 .side-nav .collapsible a, .side-nav .collapsible-header{
   text-indent: 1em;
 }
+.side-nav > ul{
+  margin: 0;
+}
+.nav-footer{
+  position: fixed; bottom: 60px;
+  overflow: hidden;
+  border-top: 1px solid #ddd;
+  width: 100%;
+}
+.nav-footer ul, .nav-footer li{
+  margin: 0;
+}
+.nav-footer li a{
+  margin: 0; font-size: 12px; font-weight: normal;
+  padding-left: 1em; padding-right: 1em;
+  color: #777;
+}
+.nav-footer li a:hover{
+  background: transparent; 
+}
 
 .container {
   width: 90%; 
@@ -34,7 +56,7 @@ a.brand-logo{
   padding: 1em;
 }
 .page-title{
-  padding: 1.8em 0;
+  padding: .8em 0;
   margin-bottom: 2em;
 }
 

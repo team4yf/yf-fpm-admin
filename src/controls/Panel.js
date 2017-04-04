@@ -4,7 +4,7 @@ class PageTitle extends Component{
   render(){
     return (
       <div className="page-title blue lighten-1">
-        <h3 className="container white-text">{this.props.children}</h3>
+        <h5 className="container white-text">{this.props.children}</h5>
       </div>
     )
   }

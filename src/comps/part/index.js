@@ -66,6 +66,7 @@ const Welcome = React.createClass({
           <h2>FPM-Client4Node</h2>
           <h2>SweetAlert</h2>
         </div>
+        <Footer />
       </div>
     )
   }
