@@ -1,9 +1,10 @@
 import React,{ Component } from 'react'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
+import { browserHistory } from 'react-router'
 import { PageTitle, Table } from '../../controls'
 
-class {{ name }}List extends Component{
+class CollectionList extends Component{
   constructor(props) {
     super(props)
   }
@@ -11,7 +12,7 @@ class {{ name }}List extends Component{
   fetchPage(i, e){
     this.page = i
     let tableRef = this.refs.table
-    let query = new YF.Query('{{ name }}')
+    let query = new YF.Query('_sys_collection')
     query.page(this.page, 10).findAndCount()
       .then(data => {
         data.current = i
@@ -28,6 +29,7 @@ class {{ name }}List extends Component{
   }
 
   onCreateHandler(e){
+    browserHistory.push('/setting/collection/create')
   }
   onRemoveHandler(id, e){
     let self = this
@@ -38,52 +40,42 @@ class {{ name }}List extends Component{
       type: 'warning',
       showCancelButton: true,
       closeOnConfirm: true,
-    },
-    function(isConfirm){
-      // if (isConfirm) {
-      //   //Delete
-      //   let obj = new YF.Object('fpm_template')
-      //   obj.remove(id)
-      //     .then(res=>{
-      //       Materialize.toast('Remove Success!', 4000)
-      //       self.fetchPage(self.page)
-      //     })
-      //     .catch(err=>{
-      //       swal('', err.message, 'warning')
-      //     })
-      // }
     })
-
   }
   onRowClickHandler(row, e){
-    swal('', row.content, '')
+    // swal('', row.content, '')
   }
   render() {
     let self = this
     const columns = [
       {key: 'id', title: 'ID'},
-      {key: 'appname', title: 'Name'},
-      {key: 'apptype', title: 'Type'},
-      {key: 'appenvironment', title: 'Env'},
-      {key: 'about', title: 'About'},
+      {key: 'name', title: 'Name'},
+      {key: 'title', title: 'Title'},
+      {key: 'view', title: 'View'},
+      {key: 'enable', title: 'Enable', filter: (enable)=>{
+        return enable == 1? '启用': '禁用'
+      }},
       {key: 'id', title: 'Oper', filter: (id)=>{
         return (
-          <a href="javascript:void(0);" className="red-text lighten-4" onClick={self.onRemoveHandler.bind(this, id)}>Remove</a>
+          <span>
+            <a href="javascript:void(0);" className="blue-text lighten-4" onClick={self.onRemoveHandler.bind(this, id)}>Edit</a>
+            &nbsp;&nbsp;<a href="javascript:void(0);" className="red-text lighten-4" onClick={self.onRemoveHandler.bind(this, id)}>Remove</a>
+          </span>
         )
       }},
     ]
     return (
       <div>
-        <PageTitle>{{ name }}</PageTitle>
+        <PageTitle>Collection</PageTitle>
         <div className="container">
-          <Table title="{{ name }}" 
-            hasCreate="false"
-            hasSearch="true"
+          <Table title="Collection" 
+            hasCreate={true}
+            hasSearch={true}
             onCreateHandler={this.onCreateHandler.bind(this)}
             columns={columns} 
             ref='table'
             onRowClickHandler={this.onRowClickHandler}
-            canRowClick="true"
+            canRowClick={false}
             onPageClickHandler={this.onPageClickHandler.bind(this)}>
 
             <div className="clearfix"></div>
@@ -95,4 +87,4 @@ class {{ name }}List extends Component{
 
 }
 
-export { {{ name }}List }
+export { CollectionList }

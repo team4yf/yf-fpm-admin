@@ -134,42 +134,45 @@ class TemplateEditor extends Component{
 
   render(){
     return (
-      <div className="container white">
-        <Panel title="Edit A Template">
-          <form className="form-horizontal" id="template-editer-form" onSubmit={this.onSubmitHandler.bind(this)} >
+      <div>
+        <PageTitle>Template</PageTitle>
+        <div className="container white">
+          <Panel title="Edit A Template">
+            <form className="form-horizontal" id="template-editer-form" onSubmit={this.onSubmitHandler.bind(this)} >
 
-              <TextField title="Name"
-                default={this.state.template.name}
-                ref="name"
-                placeholder="type your template name"/>
+                <TextField title="Name"
+                  default={this.state.template.name}
+                  ref="name"
+                  placeholder="type your template name"/>
 
-              <TextField title="Content"
-                default={this.state.template.content}
-                multiLine="true"
-                ref="content"
-                placeholder="type your template content"/>
-              
-              <div className="grey lighten-4">
-                <p className="prettyprint lang-javascript">
-                  //Example
-                </p>
-                <p>
-                  //1. output var [name] Code: &#123;&#123; name &#125;&#125;
-                </p>
-                <p>
-                  //2. if 
-                </p>
-                <p>
-                  //3. for 
-                </p>
-                <p>Tip: Template Content Use [Nunjucks] , How to Use ? Check It Out: <a target="_blank" href="https://mozilla.github.io/nunjucks/">https://mozilla.github.io/nunjucks/</a></p>
+                <TextField title="Content"
+                  default={this.state.template.content}
+                  multiLine="true"
+                  ref="content"
+                  placeholder="type your template content"/>
                 
-              </div>
-              <div className="col offset-s2 s10">
-                <button type="submit" className="btn modal-close">Save</button>
-              </div>
-            </form>
-          </Panel>
+                <div className="grey lighten-4">
+                  <p className="prettyprint lang-javascript">
+                    //Example
+                  </p>
+                  <p>
+                    //1. output var [name] Code: &#123;&#123; name &#125;&#125;
+                  </p>
+                  <p>
+                    //2. if 
+                  </p>
+                  <p>
+                    //3. for 
+                  </p>
+                  <p>Tip: Template Content Use [Nunjucks] , How to Use ? Check It Out: <a target="_blank" href="https://mozilla.github.io/nunjucks/">https://mozilla.github.io/nunjucks/</a></p>
+                  
+                </div>
+                <div className="col offset-s2 s10">
+                  <button type="submit" className="btn modal-close">Save</button>
+                </div>
+              </form>
+            </Panel>
+        </div>
       </div>
     )
   }

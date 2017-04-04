@@ -2,7 +2,7 @@ import React,{ Component } from 'react'
 import { render } from 'react-dom'
 import { Router, Route, hashHistory, browserHistory, IndexRoute } from 'react-router'
 
-import {Application, App, User, Dashboard, Welcome, Smtp, TemplateList, TemplateEditor, ApiTester} from './comps'
+import {Application, App, User, CollectionList, CollectionEditor, Dashboard, Welcome, Smtp, TemplateList, TemplateEditor, ApiTester} from './comps'
 
 import YF from 'yf-fpm-client-nodejs'
 
@@ -20,6 +20,10 @@ render((
         <Route path="template">
           <IndexRoute component={ TemplateList } />
           <Route path="create" component={ TemplateEditor } />
+        </Route>
+        <Route path="collection">
+          <IndexRoute component={ CollectionList } />
+          <Route path="create" component={ CollectionEditor } />
         </Route>
       </Route>
       <Route path="/tools">

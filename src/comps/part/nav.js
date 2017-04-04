@@ -58,6 +58,7 @@ class Nav extends Component{
             <CollapsibleNav title="Setting">
               <NavLink to="/setting/smtp">Smtp</NavLink>
               <NavLink to="/setting/template">Template</NavLink>
+              <NavLink to="/setting/collection">Collection</NavLink>
             </CollapsibleNav>
           </ul>
         </li>
