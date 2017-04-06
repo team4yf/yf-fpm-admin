@@ -56,7 +56,7 @@ const Welcome = React.createClass({
         </div>
         <div className="container ">
           <h2>Colors</h2>
-          <p>Using Materials Colors : <a className="waves-effect waves-light btn blue lighten-2" target="_blank" href="http://www.materialscss.com/color">http://www.materialscss.com/color</a></p>
+          <p>Using Materials Colors : <a className="waves-effect waves-light btn blue lighten-2" target="_blank" href="http://www.materialscss.com/color">http://materializecss.com//color</a></p>
           <h2>ICons</h2>
           <p>Using font-awesome@4.7.0 : <a className="waves-effect waves-light btn teal darken-4" target="_blank" href="http://fontawesome.dashgame.com/">http://fontawesome.dashgame.com/</a></p>
           <h2>Webpack</h2>
