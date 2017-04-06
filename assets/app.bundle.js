@@ -6186,7 +6186,7 @@ webpackJsonp([0],[
 	          _react2.default.createElement(
 	            'a',
 	            { className: 'waves-effect waves-light btn blue lighten-2', target: '_blank', href: 'http://www.materialscss.com/color' },
-	            'http://www.materialscss.com/color'
+	            'http://materializecss.com//color'
 	          )
 	        ),
 	        _react2.default.createElement(
