@@ -2,7 +2,7 @@ import React,{ Component } from 'react'
 import { render } from 'react-dom'
 import { Router, Route, hashHistory, browserHistory, IndexRoute } from 'react-router'
 
-import {Application, App, User, CollectionList, CollectionEditor, Dashboard, Welcome, Smtp, TemplateList, TemplateEditor, ApiTester} from './comps'
+import {Application, Login, App, User, CollectionList, CollectionEditor, Dashboard, Welcome, Smtp, TemplateList, TemplateEditor, ApiTester} from './comps'
 
 import YF from 'yf-fpm-client-nodejs'
 
@@ -10,6 +10,7 @@ YF.init({mode:'PRODUCT', scope:'api', appkey:'123123', masterKey:'123123'})
 
 render((
   <Router history={ browserHistory }>
+    <Route path="/login" component={ Login }/>
     <Route path="/" component={ Application }>
       <IndexRoute component={ Welcome } />
       <Route path="/dashboard" component={ Dashboard } />
