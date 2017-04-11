@@ -151,7 +151,7 @@ class Dashboard extends Component {
       return (
         <div>
           <PageTitle>Dashboard</PageTitle>
-          <div className="container">
+          <div className="">
 
             <div id="targets">
 

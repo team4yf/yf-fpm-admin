@@ -9,7 +9,7 @@ class CollapsibleNav extends Component{
   render() {
     return (
       <li>
-        <div className="collapsible-header">{this.props.title} <i className="right icon fa fa-angle-down"></i></div>
+        <div className="collapsible-header"><i className={"left icon fa fa-" + this.props.icon}></i> {this.props.title} <i className="right icon fa fa-plus"></i></div>
         <div className="collapsible-body">
           <ul>
             {this.props.children}
@@ -27,7 +27,11 @@ class NavLink extends Component{
 
   render() {
     return (
-      <li><Link to={this.props.to} className="collapsible-header waves-effect waves-blue" activeClassName="active">{this.props.children}</Link></li>
+      <li>
+        <Link to={this.props.to} className="collapsible-header waves-effect waves-blue" activeClassName="active">
+          <i className={"fa fa-" + this.props.icon}></i> {this.props.children}
+        </Link>
+      </li>
     )
   }
 }
@@ -40,26 +44,24 @@ class Nav extends Component{
 
   render(){
     return (
-      <div id="nav-mobile" className="side-nav fixed" >
-        <ul className="">
-          <li className="logo">
-            <a id="logo-container" 
-              href="/" 
-              className="brand-logo block blue white-text center-align">FPM Admin</a>
-          </li>
+      <aside id="nav-mobile" className="side-nav fixed" >
+        <ul className="sidebar-menu">
           <li>
             <ul className="collapsible" data-collapsible="accordion">
-              <NavLink to="/dashboard">Dashboard</NavLink>
-              <NavLink to="/apps">Apps</NavLink>
-              <NavLink to="/users">Users</NavLink>
-              <CollapsibleNav title="Tool">
-                <NavLink to="/tools/apiTester">ApiTester</NavLink>
-                <NavLink href="#!">Pusher</NavLink>
+              <li className="nav-title">Main Navi</li>
+              <NavLink to="/dashboard" icon="dashboard">Dashboard</NavLink>
+              <NavLink to="/apps" icon="tasks">Apps</NavLink>
+              <NavLink to="/users" icon="user-circle-o">Users</NavLink>
+
+              <li className="nav-title">Extra Navi</li>
+              <CollapsibleNav icon="wrench" title="Tool">
+                <NavLink to="/tools/apiTester" icon="plug">ApiTester</NavLink>
+                <NavLink href="#!" icon="paper-plane">Pusher</NavLink>
               </CollapsibleNav> 
-              <CollapsibleNav title="Setting">
-                <NavLink to="/setting/smtp">Smtp</NavLink>
-                <NavLink to="/setting/template">Template</NavLink>
-                <NavLink to="/setting/collection">Collection</NavLink>
+              <CollapsibleNav icon="cog" title="Setting">
+                <NavLink to="/setting/smtp" icon="send-o">Smtp</NavLink>
+                <NavLink to="/setting/template" icon="file-text">Template</NavLink>
+                <NavLink to="/setting/collection" icon="list">Collection</NavLink>
               </CollapsibleNav>
             </ul>
           </li>
@@ -72,7 +74,7 @@ class Nav extends Component{
           </ul>
           <div className="clearfix"></div>
         </div>
-      </div>
+      </aside>
     )
   }
 }

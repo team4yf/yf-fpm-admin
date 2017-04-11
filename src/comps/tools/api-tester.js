@@ -30,7 +30,7 @@ class ApiTester extends Component {
     return (
       <div>
         <PageTitle>Api Client</PageTitle>
-        <div className="container">
+        <div className="">
           <Panel title="Api Client Simple">
             <form className="form-horizontal" onSubmit={this.onSubmitHandler.bind(this)} >
               <TextField

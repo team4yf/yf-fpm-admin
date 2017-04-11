@@ -5953,12 +5953,13 @@ webpackJsonp([0],[
 	        'div',
 	        null,
 	        _react2.default.createElement(_part.Header, null),
+	        _react2.default.createElement(_part.Nav, null),
 	        _react2.default.createElement(
 	          'main',
 	          null,
 	          _react2.default.createElement(
 	            'div',
-	            { id: 'main', className: '' },
+	            { id: 'main', className: 'page-content' },
 	            this.props.children
 	          )
 	        )
@@ -5991,7 +5992,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Welcome = exports.Header = exports.Footer = undefined;
+	exports.Welcome = exports.Nav = exports.Header = exports.Footer = undefined;
 
 	var _react = __webpack_require__(1);
 
@@ -6002,6 +6003,10 @@ webpackJsonp([0],[
 	var _header = __webpack_require__(224);
 
 	var _header2 = _interopRequireDefault(_header);
+
+	var _nav = __webpack_require__(225);
+
+	var _nav2 = _interopRequireDefault(_nav);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6185,8 +6190,8 @@ webpackJsonp([0],[
 	          'Using Materials Colors : ',
 	          _react2.default.createElement(
 	            'a',
-	            { className: 'waves-effect waves-light btn blue lighten-2', target: '_blank', href: 'http://materializecss.com/color' },
-	            'http://materializecss.com/color'
+	            { className: 'waves-effect waves-light btn blue lighten-2', target: '_blank', href: 'http://www.materializecss.cn/color' },
+	            'http://www.materializecss.cn/color'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -6242,6 +6247,7 @@ webpackJsonp([0],[
 
 	exports.Footer = Footer;
 	exports.Header = _header2.default;
+	exports.Nav = _nav2.default;
 	exports.Welcome = Welcome;
 
 /***/ },
@@ -6288,8 +6294,74 @@ webpackJsonp([0],[
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'header',
-	        null,
-	        _react2.default.createElement(_nav2.default, null)
+	        { id: 'top-bar' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'navbar-fixed' },
+	          _react2.default.createElement(
+	            'nav',
+	            { className: 'blue' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'nav-wrapper' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'logo-wrapper center-align left' },
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/', className: '' },
+	                  'FPM-ADMIN'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'ul',
+	                { className: 'right col s9 m3 nav-right-menu' },
+	                _react2.default.createElement(
+	                  'li',
+	                  null,
+	                  _react2.default.createElement(
+	                    'a',
+	                    { className: 'dropdown-button dropdown-right', href: '#', 'data-activates': 'dropdown' },
+	                    _react2.default.createElement('i', { className: 'fa fa-user' }),
+	                    ' Admin'
+	                  ),
+	                  _react2.default.createElement(
+	                    'ul',
+	                    { id: 'dropdown', className: 'dropdown-content profile-dropdown' },
+	                    _react2.default.createElement(
+	                      'li',
+	                      null,
+	                      _react2.default.createElement(
+	                        'a',
+	                        { href: '#!' },
+	                        'Profile'
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'li',
+	                      null,
+	                      _react2.default.createElement(
+	                        'a',
+	                        { href: '#!' },
+	                        'Settings'
+	                      )
+	                    ),
+	                    _react2.default.createElement('li', { className: 'divider' }),
+	                    _react2.default.createElement(
+	                      'li',
+	                      null,
+	                      _react2.default.createElement(
+	                        'a',
+	                        { href: '#!' },
+	                        'Logout'
+	                      )
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -6343,9 +6415,11 @@ webpackJsonp([0],[
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'collapsible-header' },
+	          _react2.default.createElement('i', { className: "left icon fa fa-" + this.props.icon }),
+	          ' ',
 	          this.props.title,
 	          ' ',
-	          _react2.default.createElement('i', { className: 'right icon fa fa-angle-down' })
+	          _react2.default.createElement('i', { className: 'right icon fa fa-plus' })
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -6381,6 +6455,8 @@ webpackJsonp([0],[
 	        _react2.default.createElement(
 	          _reactRouter.Link,
 	          { to: this.props.to, className: 'collapsible-header waves-effect waves-blue', activeClassName: 'active' },
+	          _react2.default.createElement('i', { className: "fa fa-" + this.props.icon }),
+	          ' ',
 	          this.props.children
 	        )
 	      );
@@ -6403,22 +6479,11 @@ webpackJsonp([0],[
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
+	        'aside',
 	        { id: 'nav-mobile', className: 'side-nav fixed' },
 	        _react2.default.createElement(
 	          'ul',
-	          { className: '' },
-	          _react2.default.createElement(
-	            'li',
-	            { className: 'logo' },
-	            _react2.default.createElement(
-	              'a',
-	              { id: 'logo-container',
-	                href: '/',
-	                className: 'brand-logo block blue white-text center-align' },
-	              'FPM Admin'
-	            )
-	          ),
+	          { className: 'sidebar-menu' },
 	          _react2.default.createElement(
 	            'li',
 	            null,
@@ -6426,50 +6491,60 @@ webpackJsonp([0],[
 	              'ul',
 	              { className: 'collapsible', 'data-collapsible': 'accordion' },
 	              _react2.default.createElement(
+	                'li',
+	                { className: 'nav-title' },
+	                'Main Navi'
+	              ),
+	              _react2.default.createElement(
 	                NavLink,
-	                { to: '/dashboard' },
+	                { to: '/dashboard', icon: 'dashboard' },
 	                'Dashboard'
 	              ),
 	              _react2.default.createElement(
 	                NavLink,
-	                { to: '/apps' },
+	                { to: '/apps', icon: 'tasks' },
 	                'Apps'
 	              ),
 	              _react2.default.createElement(
 	                NavLink,
-	                { to: '/users' },
+	                { to: '/users', icon: 'user-circle-o' },
 	                'Users'
 	              ),
 	              _react2.default.createElement(
+	                'li',
+	                { className: 'nav-title' },
+	                'Extra Navi'
+	              ),
+	              _react2.default.createElement(
 	                CollapsibleNav,
-	                { title: 'Tool' },
+	                { icon: 'wrench', title: 'Tool' },
 	                _react2.default.createElement(
 	                  NavLink,
-	                  { to: '/tools/apiTester' },
+	                  { to: '/tools/apiTester', icon: 'plug' },
 	                  'ApiTester'
 	                ),
 	                _react2.default.createElement(
 	                  NavLink,
-	                  { href: '#!' },
+	                  { href: '#!', icon: 'paper-plane' },
 	                  'Pusher'
 	                )
 	              ),
 	              _react2.default.createElement(
 	                CollapsibleNav,
-	                { title: 'Setting' },
+	                { icon: 'cog', title: 'Setting' },
 	                _react2.default.createElement(
 	                  NavLink,
-	                  { to: '/setting/smtp' },
+	                  { to: '/setting/smtp', icon: 'send-o' },
 	                  'Smtp'
 	                ),
 	                _react2.default.createElement(
 	                  NavLink,
-	                  { to: '/setting/template' },
+	                  { to: '/setting/template', icon: 'file-text' },
 	                  'Template'
 	                ),
 	                _react2.default.createElement(
 	                  NavLink,
-	                  { to: '/setting/collection' },
+	                  { to: '/setting/collection', icon: 'list' },
 	                  'Collection'
 	                )
 	              )
@@ -6959,7 +7034,7 @@ webpackJsonp([0],[
 /* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -6990,17 +7065,13 @@ webpackJsonp([0],[
 	  }
 
 	  _createClass(PageTitle, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "page-title blue lighten-1" },
-	        _react2.default.createElement(
-	          "h5",
-	          { className: "container white-text" },
-	          this.props.children
-	        )
-	      );
+	      return _react2.default.createElement('div', null)
+	      /*<div className="page-title blue lighten-1">
+	        <h5 className="container white-text">{this.props.children}</h5>
+	      </div>*/
+	      ;
 	    }
 	  }]);
 
@@ -7017,30 +7088,30 @@ webpackJsonp([0],[
 	  }
 
 	  _createClass(Panel, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      var title = '';
 	      if (this.props.title) {
 	        title = _react2.default.createElement(
-	          "div",
+	          'div',
 	          null,
 	          _react2.default.createElement(
-	            "h5",
-	            { className: "card-title " },
+	            'h5',
+	            { className: 'card-title ' },
 	            this.props.title
 	          ),
-	          _react2.default.createElement("div", { className: "divider" })
+	          _react2.default.createElement('div', { className: 'divider' })
 	        );
 	      }
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        { className: "card-panel " + this.props.className },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "card-content" },
+	          'div',
+	          { className: 'card-content' },
 	          title,
 	          this.props.children,
-	          _react2.default.createElement("div", { className: "clearfix" })
+	          _react2.default.createElement('div', { className: 'clearfix' })
 	        )
 	      );
 	    }
@@ -7107,7 +7178,7 @@ webpackJsonp([0],[
 	          'div',
 	          null,
 	          _react2.default.createElement(
-	            'h5',
+	            'span',
 	            { className: 'card-title left' },
 	            this.props.title,
 	            ' '
@@ -7119,7 +7190,7 @@ webpackJsonp([0],[
 	      }
 	      return _react2.default.createElement(
 	        'div',
-	        { className: "card-panel " + this.props.className },
+	        { className: "card " + this.props.className },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'card-content' },
@@ -7740,7 +7811,7 @@ webpackJsonp([0],[
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container' },
+	          { className: '' },
 	          _react2.default.createElement(
 	            _controls.Table,
 	            { title: 'Applications',
@@ -10239,7 +10310,7 @@ webpackJsonp([0],[
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container' },
+	          { className: '' },
 	          _react2.default.createElement(
 	            _controls.Table,
 	            { title: 'Users',
@@ -10653,7 +10724,7 @@ webpackJsonp([0],[
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container' },
+	          { className: '' },
 	          _react2.default.createElement(
 	            'div',
 	            { id: 'targets' },
@@ -44689,7 +44760,7 @@ webpackJsonp([0],[
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container' },
+	          { className: '' },
 	          _react2.default.createElement(_controls.Table, { title: 'Templates',
 	            hasCreate: 'true',
 	            onCreateHandler: this.onCreateHandler.bind(this),
@@ -44973,7 +45044,7 @@ webpackJsonp([0],[
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container' },
+	          { className: '' },
 	          _react2.default.createElement(
 	            _controls.Table,
 	            { title: 'Collection',
@@ -45209,7 +45280,7 @@ webpackJsonp([0],[
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container' },
+	          { className: '' },
 	          _react2.default.createElement(
 	            _controls.Panel,
 	            { title: 'Api Client Simple' },

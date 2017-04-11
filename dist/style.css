@@ -11,13 +11,33 @@ body{
   background: #f5f5f5;
 }
 main{
-  padding-left: 300px;
+  padding-left: 240px;
   margin-top: 0px;
 }
-a.brand-logo{
-  font-size: 1.8em;
-  line-height: 4.4em;
-  min-height: 4.4em;
+.logo-wrapper a{
+  font-size: 1.4em;
+  width: 240px;
+  display: block;
+}
+#nav-mobile{
+  top: 64px; width: 240px; overflow-y: auto;
+}
+.side-nav .sidebar-menu li.nav-title {
+  padding: 0px 16px;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.5);
+}
+.collapsible-header i.right{
+  font-size: 0.8em;
+  font-weight: normal;
+}
+.collapsible-header i, .side-nav li > a > i, .side-nav li > a > [class^="mdi-"], .side-nav li > a > [class*="mdi-"], .side-nav li > a > i.material-icons {
+    margin: 0 15px 0 0;
+    font-size: 1.2em;
+}
+.logo-wrapper a:hover{
+  background: #1976d2;
 }
 .collapsible .collapsible-body{
   padding: 0;
@@ -53,7 +73,7 @@ a.brand-logo{
   margin: 0;
 }
 .nav-footer{
-  position: fixed; bottom: 60px;
+  position: fixed; bottom: 124px;
   overflow: hidden;
   border-top: 1px solid #ddd;
   width: 100%;
@@ -70,9 +90,6 @@ a.brand-logo{
   background: transparent; 
 }
 
-.container {
-  width: 90%; 
-}
 .welcome{
   padding: 1em;
 }
@@ -83,4 +100,10 @@ a.brand-logo{
 
 .page-footer{
   margin-top: 2em;
+}
+.page-content {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
 }

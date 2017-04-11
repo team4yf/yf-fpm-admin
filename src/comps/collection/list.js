@@ -67,7 +67,7 @@ class CollectionList extends Component{
     return (
       <div>
         <PageTitle>Collection</PageTitle>
-        <div className="container">
+        <div className="">
           <Table title="Collection" 
             hasCreate={true}
             hasSearch={true}

@@ -89,7 +89,7 @@ class TemplateList extends Component{
     return (
       <div>
         <PageTitle>Template</PageTitle>
-        <div className="container">
+        <div className="">
           <Table title="Templates" 
             hasCreate="true"
             onCreateHandler={this.onCreateHandler.bind(this)}

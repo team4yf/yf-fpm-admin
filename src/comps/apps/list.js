@@ -51,7 +51,7 @@ class AppList extends Component{
     return (
       <div>
         <PageTitle>Applications</PageTitle>
-        <div className="container">
+        <div className="">
           <Table title="Applications" 
             hasCreate="false"
             hasSearch="true"

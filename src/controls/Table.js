@@ -11,7 +11,7 @@ class TablePanel extends Component{
     if(this.props.title){
       title = (
         <div>
-          <h5 className="card-title left">{this.props.title} </h5>
+          <span className="card-title left">{this.props.title} </span>
           {createButton}
           <div className="clearfix"></div>
           <div className="divider"></div>
@@ -19,7 +19,7 @@ class TablePanel extends Component{
       )
     }
     return (
-        <div className={"card-panel " + this.props.className }>
+        <div className={"card " + this.props.className }>
           <div className="card-content">
             {title}
             {this.props.children}

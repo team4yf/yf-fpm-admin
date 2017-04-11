@@ -41,7 +41,7 @@ class UserList extends Component {
     return (
       <div>
         <PageTitle>Users</PageTitle>
-        <div className="container">
+        <div className="">
           <Table title="Users" 
             columns={columns} 
             list={[]} 

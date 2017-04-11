@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
-import { Header, Footer, Welcome } from './part'
+import { Nav, Header, Footer, Welcome } from './part'
 import App from './apps'
 import User from './users'
 import { Login } from './login'
@@ -37,8 +37,9 @@ class Application extends Component{
     return (
       <div>
         <Header />
+        <Nav />
         <main>
-          <div id="main" className="">
+          <div id="main" className="page-content">
           {this.props.children}
           </div>
         </main>

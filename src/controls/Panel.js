@@ -3,9 +3,11 @@ import React,{ Component } from 'react'
 class PageTitle extends Component{
   render(){
     return (
-      <div className="page-title blue lighten-1">
-        <h5 className="container white-text">{this.props.children}</h5>
+      <div>
       </div>
+      /*<div className="page-title blue lighten-1">
+        <h5 className="container white-text">{this.props.children}</h5>
+      </div>*/
     )
   }
 }
