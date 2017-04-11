@@ -107,3 +107,15 @@ main{
   padding-right: 20px;
   padding-bottom: 10px;
 }
+.dropzone{
+  min-height: 10em;
+}
+.images-preview, .images-preview img{
+  min-height: 200px;
+  height: 200px;
+  max-height: 200px;
+}
+
+.card-content .divider{
+  margin-bottom: 1em;
+}

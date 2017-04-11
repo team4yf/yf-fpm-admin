@@ -27,9 +27,12 @@
     "async": "^2.1.4",
     "json-loader": "^0.5.4",
     "node-fetch": "^1.6.3",
+    "plupload": "^2.3.2",
     "pubsub-js": "^1.5.4",
+    "qiniu-js": "^1.0.19",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "react-dropzone": "^3.12.3",
     "react-router": "^2.0.0",
     "recharts": "^0.20.6",
     "yf-fpm-client-nodejs": "^1.0.3"

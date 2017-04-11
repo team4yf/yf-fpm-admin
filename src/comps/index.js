@@ -7,6 +7,7 @@ import { Login } from './login'
 import { Dashboard } from './dashboard'
 import { Smtp, TemplateList, TemplateEditor } from './setting'
 import { CollectionList, CollectionEditor } from './collection'
+import { VrList, VrEditor } from './vr'
 import { ApiTester } from './tools'
 
 class Application extends Component{
@@ -48,5 +49,5 @@ class Application extends Component{
   }
 }
 
-export {Application, Login, App, User, Dashboard, Welcome, Smtp, CollectionList, CollectionEditor, TemplateList, TemplateEditor, ApiTester}
+export {Application, Login, App, User, Dashboard, Welcome, Smtp, CollectionList, CollectionEditor, TemplateList, TemplateEditor, ApiTester, VrList, VrEditor}
 
