@@ -45528,7 +45528,7 @@ webpackJsonp([0],[
 	              _react2.default.createElement(_controls.TextField, { title: 'Tag',
 	                ref: 'tag',
 	                placeholder: 'tag' }),
-	              _react2.default.createElement(Selector, { title: 'Template',
+	              _react2.default.createElement(_controls.Selector, { title: 'Template',
 	                values: [{ title: 'Sample', value: 'sample' }, { title: 'Model', value: 'model' }, { title: 'Multi', value: 'multi' }, { title: 'Floor', value: 'floor' }],
 	                ref: 'tmp' }),
 	              _react2.default.createElement(_controls.TextField, { title: 'Sky',
