@@ -52,6 +52,7 @@ class VrList extends Component{
       {key: 'id', title: 'ID'},
       {key: 'name', title: 'Name'},
       {key: 'sky', title: 'Sky'},
+      {key: 'tmp', title: 'Template'},
       {key: 'id', title: 'Oper', filter: (id)=>{
         return (
           <span>

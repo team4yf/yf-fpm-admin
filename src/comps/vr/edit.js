@@ -19,6 +19,7 @@ class VrEditor extends Component {
       name: this.refs.name.getValue(),
       tag: this.refs.tag.getValue(),
       sky: this.refs.sky.getValue(),
+      tmp: this.refs.tmp.getValue(),
     }
     let obj = new YF.Object('_udf_vr_list',data)
     obj.create()
@@ -83,6 +84,14 @@ class VrEditor extends Component {
               <TextField title="Tag"
                 ref="tag"
                 placeholder="tag" />
+
+              <Selector title="Template"
+                values={[
+                  {title: 'Sample', value: 'sample'}, 
+                  {title: 'Model', value: 'model'}, 
+                  {title: 'Multi', value: 'multi'},
+                  {title: 'Floor', value: 'floor'} ]}
+                ref="tmp" />
 
               <TextField title="Sky"
                 ref="sky"
