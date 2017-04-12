@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
 import Dropzone from 'react-dropzone'
-import { PageTitle, TextField, Panel } from '../../controls'
+import { PageTitle, TextField, Selector, Panel } from '../../controls'
 
 class VrEditor extends Component {
 
