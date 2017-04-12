@@ -45320,7 +45320,7 @@ webpackJsonp([0],[
 	      var _this2 = this;
 
 	      var self = this;
-	      var columns = [{ key: 'id', title: 'ID' }, { key: 'name', title: 'Name' }, { key: 'sky', title: 'Sky' }, { key: 'id', title: 'Oper', filter: function filter(id) {
+	      var columns = [{ key: 'id', title: 'ID' }, { key: 'name', title: 'Name' }, { key: 'sky', title: 'Sky' }, { key: 'tmp', title: 'Template' }, { key: 'id', title: 'Oper', filter: function filter(id) {
 	          return _react2.default.createElement(
 	            'span',
 	            null,
@@ -45432,7 +45432,8 @@ webpackJsonp([0],[
 	      var data = {
 	        name: this.refs.name.getValue(),
 	        tag: this.refs.tag.getValue(),
-	        sky: this.refs.sky.getValue()
+	        sky: this.refs.sky.getValue(),
+	        tmp: this.refs.tmp.getValue()
 	      };
 	      var obj = new _yfFpmClientNodejs2.default.Object('_udf_vr_list', data);
 	      obj.create().then(function (res) {
@@ -45527,6 +45528,9 @@ webpackJsonp([0],[
 	              _react2.default.createElement(_controls.TextField, { title: 'Tag',
 	                ref: 'tag',
 	                placeholder: 'tag' }),
+	              _react2.default.createElement(Selector, { title: 'Template',
+	                values: [{ title: 'Sample', value: 'sample' }, { title: 'Model', value: 'model' }, { title: 'Multi', value: 'multi' }, { title: 'Floor', value: 'floor' }],
+	                ref: 'tmp' }),
 	              _react2.default.createElement(_controls.TextField, { title: 'Sky',
 	                ref: 'sky',
 	                placeholder: 'http://' }),
