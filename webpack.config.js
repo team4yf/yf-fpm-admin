@@ -5,9 +5,11 @@ module.exports = {
   entry: { 
     app: './src/index.js', 
     vendor: [
-      'react', 'react-dom', 
+      'react', 'react-dom', 'react-dropzone',
       'async', 'lodash', 'node-fetch',
-      'pubsub-js',
+      'pubsub-js', 'form-data', 
+      'yf-fpm-client-nodejs',
+
     ],
     // chart: [
     //   'recharts',

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
+import FormData from 'form-data'
 import Dropzone from 'react-dropzone'
 import { PageTitle, TextField, Selector, Panel } from '../../controls'
 
@@ -33,7 +34,17 @@ class VrEditor extends Component {
     return false
   }
   onDrop(acceptedFiles, rejectedFiles, e) {
-    console.log('Accepted files: ', acceptedFiles)
+    // console.log('Accepted files: ', acceptedFiles)
+    let file = new YF.File()
+    let form = new FormData(document.getElementById('collection-editer-form'))
+    let image = acceptedFiles[0]
+    console.log(image)
+    console.log(form)
+    file.upload(form)
+      .then(res => {
+        console.log(res)
+      })
+
     this.setState({
       imagesHtml: this.renderImages(acceptedFiles)
     })
