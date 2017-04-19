@@ -57,6 +57,7 @@ class Nav extends Component{
               <NavLink to="/vr" icon="street-view">VR</NavLink>
 
               <li className="nav-title">Extra Navi</li>
+              <NavLink to="/gallery" icon="image">Gallery</NavLink>
               <CollapsibleNav icon="wrench" title="Tool">
                 <NavLink to="/tools/apiTester" icon="plug">ApiTester</NavLink>
                 <NavLink href="#!" icon="paper-plane">Pusher</NavLink>
