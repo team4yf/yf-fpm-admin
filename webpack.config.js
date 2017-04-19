@@ -7,7 +7,7 @@ module.exports = {
     vendor: [
       'react', 'react-dom', 'react-dropzone',
       'async', 'lodash', 'node-fetch',
-      'pubsub-js', 'form-data', 
+      'pubsub-js', 
       'yf-fpm-client-nodejs',
 
     ],

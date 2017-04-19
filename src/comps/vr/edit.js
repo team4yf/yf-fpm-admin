@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
-import FormData from 'form-data'
 import Dropzone from 'react-dropzone'
 import { PageTitle, TextField, Selector, Panel } from '../../controls'
 

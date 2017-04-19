@@ -1,5 +1,6 @@
 import React,{ Component } from 'react'
 import _ from 'lodash'
+import map from 'async/map'
 import YF from 'yf-fpm-client-nodejs'
 import Dropzone from 'react-dropzone'
 import { browserHistory } from 'react-router'
@@ -9,24 +10,27 @@ class Gallery extends Component{
   constructor(props) {
     super(props)
     this.state = {
-      gallery: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {},],
+      gallery: [],
       preview: []
     }
   }
 
   fetchPage(i, e){
     this.page = i
-    let tableRef = this.refs.table
-    let query = new YF.Query('_udf_vr_list')
-    query.page(this.page, 10).findAndCount()
-      .then(data => {
-        data.current = i
-        // tableRef.notifyDataChangeHandler(data, e)
+    let self = this
+    let uploader = new YF.Func('gallery.list')
+    uploader.invoke()
+      .then(data=>{
+        console.log(data)
+        this.setState({ gallery: _.concat(this.state.gallery, data) })
+      })
+      .catch(err => {
+        console.log(err)
       })
   }
 
   componentDidMount(){
-    // this.fetchPage(1)
+    this.fetchPage(1)
     $('.modal').modal();
   }
 
@@ -47,11 +51,6 @@ class Gallery extends Component{
   }
   onDrop(acceptedFiles, rejectedFiles, e) {
     // console.log(acceptedFiles)
-    let form = new FormData()
-    // _.map(acceptedFiles){
-      form.append('file', acceptedFiles[0])
-    // }
-    console.log(form)
     let self = this
     this.setState({ preview: _.concat(this.state.preview, acceptedFiles) })
   }
@@ -78,17 +77,33 @@ class Gallery extends Component{
 
   onUploadHandler(){
     let self = this
-    _.map(this.state.preview, file => {
-      let reader = new FileReader()
-      reader.onload = (e) => {
-        self.readerOnLoad(e, (base64)=>{
-          console.log(base64.length)
-          $('#modal1').modal('close');
-        })
-      }
-      reader.readAsDataURL(file)
-    })
-    this.setState({ preview: []})
+    let uploader = new YF.Func('gallery.upload')
+    map(this.state.preview, 
+      (image, cb) => {
+        let reader = new FileReader()
+        reader.onload = (e) => {
+          self.readerOnLoad(e, (base64)=>{
+            image = _.assign(image, {data: base64})
+            cb(null, image)
+          })
+        }
+        reader.readAsDataURL(image)
+      },
+      (err, result) => {
+        console.log(result)
+        uploader.invoke(result)
+          .then((data) => {
+            console.log(data)
+            $('#modal1').modal('close')
+            self.setState({ preview: []})
+          })
+          .catch(err=>{
+            console.log(err)
+          })
+         
+      } )
+    
+    
   }
 
   renderImages(image){
@@ -96,12 +111,10 @@ class Gallery extends Component{
       <div className="col s3">
         <div className="card">
           <div className="card-image">
-            <img src="http://olk3bzfd5.bkt.clouddn.com/snap2017-04-14-15-17-12.png?imageView2/1/w/400/h/200/interlace/1/q/75|imageslim" />
+            <img src={image.url + '?imageView2/1/w/400/h/200/interlace/1/q/75|imageslim'} />
           </div>
           <div className="card-action">
-            <div>Image1</div>
-            <div>200 * 200</div>
-            <div>http://88888888.png</div>
+            <div>{image.name}</div>
           </div>
         </div>
       </div>

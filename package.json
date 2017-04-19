@@ -25,7 +25,6 @@
   "homepage": "https://github.com/team4yf/yf-fpm-admin#readme",
   "dependencies": {
     "async": "^2.1.4",
-    "form-data": "^2.1.4",
     "json-loader": "^0.5.4",
     "node-fetch": "^1.6.3",
     "plupload": "^2.3.2",
