@@ -111,17 +111,35 @@ main{
   min-height: 10em;
 }
 .images-preview, .images-preview img{
-  min-height: 200px;
-  height: 200px;
-  max-height: 200px;
+  min-height: 150px;
+  height: 150px;
+  max-height: 150px;
 }
 
 .card-content .divider{
   margin-bottom: 1em;
+}
+.max-150{
+  max-height: 150px; overflow-y: hidden;
+}
+.min-150{
+  min-height: 150px;
 }
 .max-200{
   max-height: 200px; overflow-y: hidden;
 }
 .min-200{
   min-height: 200px;
+}
+.mask{
+  position: absolute; background: #333; opacity: 0.6; z-index: 9999;
+}
+.full-mask{
+  width: 100%; height: 100%;
+}
+.mask .center-align{
+  margin: 0 auto;
+}
+.mask .fa{
+  color: #fff;
 }

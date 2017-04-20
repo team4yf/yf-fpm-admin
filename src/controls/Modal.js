@@ -20,6 +20,8 @@ class Modal extends Component{
 
 class FooterFixedModal extends Component{
 
+  
+
   render() {
     return (
       <div className="modal modal-fixed-footer" {...this.props}>

@@ -50,8 +50,8 @@ class TextField extends Component{
     }
     return (
       <div className="form-group">
-        <label className="col-sm-2 control-label">{this.props.title}</label>
-        <div className="col-sm-10">
+        <label className="control-label">{this.props.title}</label>
+        <div className="">
           {control}
         </div>
       </div>

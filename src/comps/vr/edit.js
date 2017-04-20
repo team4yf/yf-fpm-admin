@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import _ from 'lodash'
 import YF from 'yf-fpm-client-nodejs'
 import Dropzone from 'react-dropzone'
+import { ImagePicker } from '../gallery'
 import { PageTitle, TextField, Selector, Panel } from '../../controls'
 
 class VrEditor extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {imagesHtml: ''}
+    this.state = {images: []}
   }
   componentDidMount(e) {
 
@@ -32,43 +33,37 @@ class VrEditor extends Component {
       })
     return false
   }
-  onDrop(acceptedFiles, rejectedFiles, e) {
-    // console.log('Accepted files: ', acceptedFiles)
-    let file = new YF.File()
-    let form = new FormData(document.getElementById('collection-editer-form'))
-    let image = acceptedFiles[0]
-    console.log(image)
-    console.log(form)
-    file.upload(form)
-      .then(res => {
-        console.log(res)
-      })
-
-    this.setState({
-      imagesHtml: this.renderImages(acceptedFiles)
-    })
+  
+  onRemoveImageHandler(i, e) {
+    console.log(i)
+    this.state.images.splice(i, 1)
+    this.setState({ images: this.state.images })
   }
 
-  renderImages(images) {
-    let imageDivs = []
-    images.map((image, i) => {
-      imageDivs.push(
-        <div className="col s6" key={"image-" + i}>
-          <div className="card">
-            <div className="card-image">
-              <img src={image.preview} />
-              <a className="btn-floating halfway-fab waves-effect waves-light red">
-                <i className="fa fa-trash"></i>
-              </a>
-            </div>
-            <div className="card-content">
-              <p>{image.name}</p>
-            </div>
+  renderImage(image, i) {
+    return (<div className="col s6" key={"image-" + i}>
+        <div className="card">
+          <div className="card-image">
+            <img src={image.url} />
+            <a className="btn-floating halfway-fab waves-effect waves-light red" onClick={ this.onRemoveImageHandler.bind(this, i) }>
+              <i className="fa fa-trash"></i>
+            </a>
+          </div>
+          <div className="card-content">
+            <p>{image.name}</p>
           </div>
         </div>
-      )
-    })
-    return imageDivs
+      </div>)
+  }
+
+  onCheckHandler(image){
+    //console.log(image)
+  }
+
+  onOkHandler(images){
+    if(images.length < 1){ return }
+    this.setState({images: images})
+    this.refs.sky.setValue(images[0].url)
   }
 
   render() {
@@ -78,15 +73,7 @@ class VrEditor extends Component {
         <div className="white">
           <Panel title="Edit A Vr">
             <form className="form-horizontal" id="collection-editer-form" onSubmit={this.onSubmitHandler.bind(this)} >
-              <Dropzone onDrop={this.onDrop.bind(this)} className="dropzone grey lighten-4 valign-wrapper" id="upload-container">
-                <div className="valign">
-                  <h3 className="center-align center-block">+ Drop File Or Click To Upload</h3>
-                </div>
-              </Dropzone>
-              <div className="row images-preview">
-                {this.state.imagesHtml}
-              </div>
-              <div className="clearfix"></div>
+              
               <TextField title="Name"
                 ref="name"
                 placeholder="type your vr name" />
@@ -106,6 +93,15 @@ class VrEditor extends Component {
               <TextField title="Sky"
                 ref="sky"
                 placeholder="http://" />
+
+              <ImagePicker 
+                single={true}
+                onCheckHandler={this.onCheckHandler.bind(this)}
+                onOkHandler={ this.onOkHandler.bind(this) }/>
+              <div className="row images-preview">
+                {this.state.images.map(this.renderImage.bind(this))}
+              </div>
+              <div className="clearfix"></div>
 
               <TextField title="Content"
                 multiLine="true"
