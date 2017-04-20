@@ -5914,13 +5914,13 @@ webpackJsonp([0],[
 
 	var _gallery = __webpack_require__(717);
 
-	var _setting = __webpack_require__(733);
+	var _setting = __webpack_require__(734);
 
-	var _collection = __webpack_require__(738);
+	var _collection = __webpack_require__(739);
 
-	var _vr = __webpack_require__(741);
+	var _vr = __webpack_require__(742);
 
-	var _tools = __webpack_require__(744);
+	var _tools = __webpack_require__(745);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6912,12 +6912,12 @@ webpackJsonp([0],[
 	        { className: "form-group" },
 	        _react2.default.createElement(
 	          "label",
-	          { className: "col-sm-2 control-label" },
+	          { className: "control-label" },
 	          this.props.title
 	        ),
 	        _react2.default.createElement(
 	          "div",
-	          { className: "col-sm-10" },
+	          { className: "" },
 	          control
 	        )
 	      );
@@ -41844,7 +41844,7 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Gallery = undefined;
+	exports.ImagePicker = exports.Gallery = undefined;
 
 	var _react = __webpack_require__(1);
 
@@ -41852,9 +41852,12 @@ webpackJsonp([0],[
 
 	var _gallery = __webpack_require__(718);
 
+	var _picker = __webpack_require__(733);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.Gallery = _gallery.Gallery;
+	exports.ImagePicker = _picker.ImagePicker;
 
 /***/ },
 /* 718 */
@@ -41925,7 +41928,6 @@ webpackJsonp([0],[
 	      var self = this;
 	      var uploader = new _yfFpmClientNodejs2.default.Func('gallery.list');
 	      uploader.invoke().then(function (data) {
-	        console.log(data);
 	        _this2.setState({ gallery: _lodash2.default.concat(_this2.state.gallery, data) });
 	      }).catch(function (err) {
 	        console.log(err);
@@ -42000,23 +42002,25 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'onUploadHandler',
 	    value: function onUploadHandler() {
+	      var _this3 = this;
+
 	      var self = this;
 	      var uploader = new _yfFpmClientNodejs2.default.Func('gallery.upload');
 	      (0, _map2.default)(this.state.preview, function (image, cb) {
 	        var reader = new FileReader();
 	        reader.onload = function (e) {
 	          self.readerOnLoad(e, function (base64) {
-	            image = _lodash2.default.assign(image, { data: base64 });
-	            cb(null, image);
+	            var d = { name: image.name, size: image.size, type: image.type, data: base64 };
+	            cb(null, d);
 	          });
 	        };
 	        reader.readAsDataURL(image);
 	      }, function (err, result) {
 	        console.log(result);
 	        uploader.invoke(result).then(function (data) {
-	          console.log(data);
 	          $('#modal1').modal('close');
 	          self.setState({ preview: [] });
+	          self.setState({ gallery: _lodash2.default.concat(data, _this3.state.gallery) });
 	        }).catch(function (err) {
 	          console.log(err);
 	        });
@@ -42033,8 +42037,8 @@ webpackJsonp([0],[
 	          { className: 'card' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'card-image' },
-	            _react2.default.createElement('img', { src: image.url + '?imageView2/1/w/400/h/200/interlace/1/q/75|imageslim' })
+	            { className: 'card-image max-200 min-200' },
+	            _react2.default.createElement('img', { src: image.url + '' })
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -42042,7 +42046,8 @@ webpackJsonp([0],[
 	            _react2.default.createElement(
 	              'div',
 	              null,
-	              image.name
+	              image.name,
+	              '\xA0'
 	            )
 	          )
 	        )
@@ -42664,17 +42669,350 @@ webpackJsonp([0],[
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.ImagePicker = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _lodash = __webpack_require__(235);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var _map = __webpack_require__(719);
+
+	var _map2 = _interopRequireDefault(_map);
+
+	var _yfFpmClientNodejs = __webpack_require__(239);
+
+	var _yfFpmClientNodejs2 = _interopRequireDefault(_yfFpmClientNodejs);
+
+	var _reactDropzone = __webpack_require__(732);
+
+	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+
+	var _reactRouter = __webpack_require__(159);
+
+	var _controls = __webpack_require__(228);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ImagePicker = function (_Component) {
+	  _inherits(ImagePicker, _Component);
+
+	  function ImagePicker(props) {
+	    _classCallCheck(this, ImagePicker);
+
+	    var _this = _possibleConstructorReturn(this, (ImagePicker.__proto__ || Object.getPrototypeOf(ImagePicker)).call(this, props));
+
+	    _this.state = {
+	      gallery: [],
+	      preview: []
+	    };
+	    _this.checkedImages = {};
+	    return _this;
+	  }
+
+	  _createClass(ImagePicker, [{
+	    key: 'fetchPage',
+	    value: function fetchPage(i, e) {
+	      var _this2 = this;
+
+	      this.page = i;
+	      var self = this;
+	      var uploader = new _yfFpmClientNodejs2.default.Func('gallery.list');
+	      uploader.invoke().then(function (data) {
+	        _this2.setState({ gallery: _lodash2.default.concat(_this2.state.gallery, data) });
+	      }).catch(function (err) {
+	        console.log(err);
+	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.fetchPage(1);
+	      $('.modal').modal();
+	    }
+	  }, {
+	    key: 'readerOnLoad',
+	    value: function readerOnLoad(e, cb) {
+	      //图片base64数据
+	      var imgBase64Data = e.target.result;
+	      var pos = imgBase64Data.indexOf("4") + 2;
+	      imgBase64Data = imgBase64Data.substring(pos, imgBase64Data.length - pos); //去掉Base64:开头的标识字符
+	      cb(imgBase64Data);
+	    }
+	  }, {
+	    key: 'onPageClickHandler',
+	    value: function onPageClickHandler(i, e) {
+	      this.fetchPage(i);
+	    }
+	  }, {
+	    key: 'onDrop',
+	    value: function onDrop(acceptedFiles, rejectedFiles, e) {
+	      var self = this;
+	      this.setState({ preview: _lodash2.default.concat(this.state.preview, acceptedFiles) });
+	    }
+	  }, {
+	    key: 'renderPreview',
+	    value: function renderPreview(image, i) {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col s3', key: 'preview-' + i },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'card' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'card-image' },
+	            _react2.default.createElement('img', { src: image.preview })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'card-action' },
+	            _react2.default.createElement(
+	              'a',
+	              { className: 'btn-floating btn-small waves-effect waves-light red',
+	                onClick: this.removePreview.bind(this) },
+	              _react2.default.createElement(
+	                _controls.Icon,
+	                null,
+	                'trash'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'removePreview',
+	    value: function removePreview() {}
+	  }, {
+	    key: 'onUploadHandler',
+	    value: function onUploadHandler() {
+	      var _this3 = this;
+
+	      var self = this;
+	      var uploader = new _yfFpmClientNodejs2.default.Func('gallery.upload');
+	      (0, _map2.default)(this.state.preview, function (image, cb) {
+	        var reader = new FileReader();
+	        reader.onload = function (e) {
+	          self.readerOnLoad(e, function (base64) {
+	            var d = { name: image.name, size: image.size, type: image.type, data: base64 };
+	            cb(null, d);
+	          });
+	        };
+	        reader.readAsDataURL(image);
+	      }, function (err, result) {
+	        console.log(result);
+	        uploader.invoke(result).then(function (data) {
+	          $('#modal1').modal('close');
+	          self.setState({ preview: [] });
+	          self.setState({ gallery: _lodash2.default.concat(data, _this3.state.gallery) });
+	        }).catch(function (err) {
+	          console.log(err);
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'onOkHandler',
+	    value: function onOkHandler() {
+	      $('#modal1').modal('close');
+	      this.props.onOkHandler(_lodash2.default.values(this.checkedImages));
+	    }
+	  }, {
+	    key: 'onCheckHandler',
+	    value: function onCheckHandler(image, index) {
+
+	      var images = this.state.gallery;
+	      var flag = !(image.checked === true);
+	      if (this.props.single) {
+	        images = _lodash2.default.map(images, function (i) {
+	          i.checked = false;
+	          return i;
+	        });
+	      }
+	      images[index].checked = flag;
+	      if (flag) {
+	        if (this.props.single) {
+	          this.checkedImages = {};
+	        }
+	        this.checkedImages['id-' + index] = image;
+	      } else {
+	        delete this.checkedImages['id-' + index];
+	      }
+
+	      this.setState({ gallery: images });
+	      this.props.onCheckHandler(image);
+	    }
+	  }, {
+	    key: 'renderImages',
+	    value: function renderImages(image, index) {
+	      var mask = image.checked === true ? _react2.default.createElement(
+	        'div',
+	        { className: 'valign-wrapper mask full-mask' },
+	        _react2.default.createElement(
+	          'h3',
+	          { className: 'valign center-align' },
+	          _react2.default.createElement(
+	            _controls.Icon,
+	            null,
+	            'check'
+	          )
+	        )
+	      ) : '';
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col s3', key: 'image-' + index },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'card', onClick: this.onCheckHandler.bind(this, image, index) },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'card-image max-150 min-150' },
+	            mask,
+	            _react2.default.createElement('img', { src: image.url + '' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'card-action' },
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              image.name,
+	              '\xA0'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var self = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _controls.FooterFixedModal,
+	          { id: 'modal1',
+	            title: 'Image Picker',
+	            ref: 'modal',
+	            onModalOkHandler: this.onOkHandler.bind(this) },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col s12' },
+	              _react2.default.createElement(
+	                'ul',
+	                { className: 'tabs' },
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'tab col s3' },
+	                  _react2.default.createElement(
+	                    'a',
+	                    { className: 'active', href: '#gallery' },
+	                    'Gallery'
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  'li',
+	                  { className: 'tab col s3' },
+	                  _react2.default.createElement(
+	                    'a',
+	                    { href: '#upload' },
+	                    'Upload'
+	                  )
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { id: 'gallery', className: 'col s12' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                this.state.gallery.map(this.renderImages.bind(this))
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { id: 'upload', className: 'col s12' },
+	              _react2.default.createElement(
+	                _reactDropzone2.default,
+	                { onDrop: this.onDrop.bind(this), className: 'dropzone grey lighten-4 valign-wrapper', id: 'upload-container' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'valign' },
+	                  _react2.default.createElement(
+	                    'h5',
+	                    { className: 'center-align center-block' },
+	                    '+ Drop File Or Click To Upload'
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                this.state.preview.map(this.renderPreview.bind(this))
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: '' },
+	          _react2.default.createElement(
+	            'button',
+	            { className: 'waves-effect waves-light btn', 'data-target': 'modal1' },
+	            _react2.default.createElement(
+	              _controls.Icon,
+	              null,
+	              'upload'
+	            ),
+	            ' Upload'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ImagePicker;
+	}(_react.Component);
+
+	exports.ImagePicker = ImagePicker;
+
+/***/ },
+/* 734 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	exports.TemplateEditor = exports.TemplateList = exports.Smtp = undefined;
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _smtp = __webpack_require__(734);
+	var _smtp = __webpack_require__(735);
 
 	var _smtp2 = _interopRequireDefault(_smtp);
 
-	var _template = __webpack_require__(737);
+	var _template = __webpack_require__(738);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42683,7 +43021,7 @@ webpackJsonp([0],[
 	exports.TemplateEditor = _template.TemplateEditor;
 
 /***/ },
-/* 734 */
+/* 735 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42708,7 +43046,7 @@ webpackJsonp([0],[
 
 	var _yfFpmClientNodejs2 = _interopRequireDefault(_yfFpmClientNodejs);
 
-	var _each = __webpack_require__(735);
+	var _each = __webpack_require__(736);
 
 	var _each2 = _interopRequireDefault(_each);
 
@@ -42879,7 +43217,7 @@ webpackJsonp([0],[
 	exports.default = Smtp;
 
 /***/ },
-/* 735 */
+/* 736 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42893,7 +43231,7 @@ webpackJsonp([0],[
 
 	var _eachOf2 = _interopRequireDefault(_eachOf);
 
-	var _withoutIndex = __webpack_require__(736);
+	var _withoutIndex = __webpack_require__(737);
 
 	var _withoutIndex2 = _interopRequireDefault(_withoutIndex);
 
@@ -42964,7 +43302,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 736 */
+/* 737 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -42981,7 +43319,7 @@ webpackJsonp([0],[
 	module.exports = exports["default"];
 
 /***/ },
-/* 737 */
+/* 738 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43251,7 +43589,7 @@ webpackJsonp([0],[
 	exports.TemplateEditor = TemplateEditor;
 
 /***/ },
-/* 738 */
+/* 739 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43265,9 +43603,9 @@ webpackJsonp([0],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _list = __webpack_require__(739);
+	var _list = __webpack_require__(740);
 
-	var _edit = __webpack_require__(740);
+	var _edit = __webpack_require__(741);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43275,7 +43613,7 @@ webpackJsonp([0],[
 	exports.CollectionEditor = _edit.CollectionEditor;
 
 /***/ },
-/* 739 */
+/* 740 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43424,7 +43762,7 @@ webpackJsonp([0],[
 	exports.CollectionList = CollectionList;
 
 /***/ },
-/* 740 */
+/* 741 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43536,7 +43874,7 @@ webpackJsonp([0],[
 	exports.CollectionEditor = CollectionEditor;
 
 /***/ },
-/* 741 */
+/* 742 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43550,9 +43888,9 @@ webpackJsonp([0],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _list = __webpack_require__(742);
+	var _list = __webpack_require__(743);
 
-	var _edit = __webpack_require__(743);
+	var _edit = __webpack_require__(744);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43560,7 +43898,7 @@ webpackJsonp([0],[
 	exports.VrEditor = _edit.VrEditor;
 
 /***/ },
-/* 742 */
+/* 743 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43707,7 +44045,7 @@ webpackJsonp([0],[
 	exports.VrList = VrList;
 
 /***/ },
-/* 743 */
+/* 744 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43735,6 +44073,8 @@ webpackJsonp([0],[
 
 	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
 
+	var _gallery = __webpack_require__(717);
+
 	var _controls = __webpack_require__(228);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -43753,7 +44093,7 @@ webpackJsonp([0],[
 
 	    var _this = _possibleConstructorReturn(this, (VrEditor.__proto__ || Object.getPrototypeOf(VrEditor)).call(this, props));
 
-	    _this.state = { imagesHtml: '' };
+	    _this.state = { images: [] };
 	    return _this;
 	  }
 
@@ -43780,56 +44120,56 @@ webpackJsonp([0],[
 	      return false;
 	    }
 	  }, {
-	    key: 'onDrop',
-	    value: function onDrop(acceptedFiles, rejectedFiles, e) {
-	      // console.log('Accepted files: ', acceptedFiles)
-	      var file = new _yfFpmClientNodejs2.default.File();
-	      var form = new FormData(document.getElementById('collection-editer-form'));
-	      var image = acceptedFiles[0];
-	      console.log(image);
-	      console.log(form);
-	      file.upload(form).then(function (res) {
-	        console.log(res);
-	      });
-
-	      this.setState({
-	        imagesHtml: this.renderImages(acceptedFiles)
-	      });
+	    key: 'onRemoveImageHandler',
+	    value: function onRemoveImageHandler(i, e) {
+	      console.log(i);
+	      this.state.images.splice(i, 1);
+	      this.setState({ images: this.state.images });
 	    }
 	  }, {
-	    key: 'renderImages',
-	    value: function renderImages(images) {
-	      var imageDivs = [];
-	      images.map(function (image, i) {
-	        imageDivs.push(_react2.default.createElement(
+	    key: 'renderImage',
+	    value: function renderImage(image, i) {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col s6', key: "image-" + i },
+	        _react2.default.createElement(
 	          'div',
-	          { className: 'col s6', key: "image-" + i },
+	          { className: 'card' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'card' },
+	            { className: 'card-image' },
+	            _react2.default.createElement('img', { src: image.url }),
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'card-image' },
-	              _react2.default.createElement('img', { src: image.preview }),
-	              _react2.default.createElement(
-	                'a',
-	                { className: 'btn-floating halfway-fab waves-effect waves-light red' },
-	                _react2.default.createElement('i', { className: 'fa fa-trash' })
-	              )
-	            ),
+	              'a',
+	              { className: 'btn-floating halfway-fab waves-effect waves-light red', onClick: this.onRemoveImageHandler.bind(this, i) },
+	              _react2.default.createElement('i', { className: 'fa fa-trash' })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'card-content' },
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'card-content' },
-	              _react2.default.createElement(
-	                'p',
-	                null,
-	                image.name
-	              )
+	              'p',
+	              null,
+	              image.name
 	            )
 	          )
-	        ));
-	      });
-	      return imageDivs;
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'onCheckHandler',
+	    value: function onCheckHandler(image) {
+	      //console.log(image)
+	    }
+	  }, {
+	    key: 'onOkHandler',
+	    value: function onOkHandler(images) {
+	      if (images.length < 1) {
+	        return;
+	      }
+	      this.setState({ images: images });
+	      this.refs.sky.setValue(images[0].url);
 	    }
 	  }, {
 	    key: 'render',
@@ -43847,25 +44187,6 @@ webpackJsonp([0],[
 	            _react2.default.createElement(
 	              'form',
 	              { className: 'form-horizontal', id: 'collection-editer-form', onSubmit: this.onSubmitHandler.bind(this) },
-	              _react2.default.createElement(
-	                _reactDropzone2.default,
-	                { onDrop: this.onDrop.bind(this), className: 'dropzone grey lighten-4 valign-wrapper', id: 'upload-container' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'valign' },
-	                  _react2.default.createElement(
-	                    'h3',
-	                    { className: 'center-align center-block' },
-	                    '+ Drop File Or Click To Upload'
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'row images-preview' },
-	                this.state.imagesHtml
-	              ),
-	              _react2.default.createElement('div', { className: 'clearfix' }),
 	              _react2.default.createElement(_controls.TextField, { title: 'Name',
 	                ref: 'name',
 	                placeholder: 'type your vr name' }),
@@ -43878,6 +44199,16 @@ webpackJsonp([0],[
 	              _react2.default.createElement(_controls.TextField, { title: 'Sky',
 	                ref: 'sky',
 	                placeholder: 'http://' }),
+	              _react2.default.createElement(_gallery.ImagePicker, {
+	                single: true,
+	                onCheckHandler: this.onCheckHandler.bind(this),
+	                onOkHandler: this.onOkHandler.bind(this) }),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row images-preview' },
+	                this.state.images.map(this.renderImage.bind(this))
+	              ),
+	              _react2.default.createElement('div', { className: 'clearfix' }),
 	              _react2.default.createElement(_controls.TextField, { title: 'Content',
 	                multiLine: 'true',
 	                ref: 'content',
@@ -43904,7 +44235,7 @@ webpackJsonp([0],[
 	exports.VrEditor = VrEditor;
 
 /***/ },
-/* 744 */
+/* 745 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43918,7 +44249,7 @@ webpackJsonp([0],[
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _apiTester = __webpack_require__(745);
+	var _apiTester = __webpack_require__(746);
 
 	var _apiTester2 = _interopRequireDefault(_apiTester);
 
@@ -43927,7 +44258,7 @@ webpackJsonp([0],[
 	exports.ApiTester = _apiTester2.default;
 
 /***/ },
-/* 745 */
+/* 746 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
