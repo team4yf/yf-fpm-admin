@@ -21,7 +21,6 @@ class Gallery extends Component{
     let uploader = new YF.Func('gallery.list')
     uploader.invoke()
       .then(data=>{
-        console.log(data)
         this.setState({ gallery: _.concat(this.state.gallery, data) })
       })
       .catch(err => {
@@ -83,8 +82,8 @@ class Gallery extends Component{
         let reader = new FileReader()
         reader.onload = (e) => {
           self.readerOnLoad(e, (base64)=>{
-            image = _.assign(image, {data: base64})
-            cb(null, image)
+            let d = { name: image.name, size: image.size, type: image.type, data: base64 } 
+            cb(null, d)
           })
         }
         reader.readAsDataURL(image)
@@ -93,9 +92,9 @@ class Gallery extends Component{
         console.log(result)
         uploader.invoke(result)
           .then((data) => {
-            console.log(data)
             $('#modal1').modal('close')
             self.setState({ preview: []})
+            self.setState({ gallery: _.concat(data, this.state.gallery ) })
           })
           .catch(err=>{
             console.log(err)
@@ -110,11 +109,11 @@ class Gallery extends Component{
     return (
       <div className="col s3">
         <div className="card">
-          <div className="card-image">
-            <img src={image.url + '?imageView2/1/w/400/h/200/interlace/1/q/75|imageslim'} />
+          <div className="card-image max-200 min-200">
+            <img src={image.url + ''} />
           </div>
           <div className="card-action">
-            <div>{image.name}</div>
+            <div>{image.name}&nbsp;</div>
           </div>
         </div>
       </div>

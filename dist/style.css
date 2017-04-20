@@ -119,3 +119,9 @@ main{
 .card-content .divider{
   margin-bottom: 1em;
 }
+.max-200{
+  max-height: 200px; overflow-y: hidden;
+}
+.min-200{
+  min-height: 200px;
+}
