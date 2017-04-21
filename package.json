@@ -35,6 +35,7 @@
     "react-dropzone": "^3.12.3",
     "react-router": "^2.0.0",
     "recharts": "^0.20.6",
+    "socket.io-client": "^1.7.3",
     "yf-fpm-client-nodejs": "^1.0.10"
   },
   "devDependencies": {

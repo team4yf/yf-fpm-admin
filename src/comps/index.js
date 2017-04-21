@@ -9,7 +9,7 @@ import { Gallery } from './gallery'
 import { Smtp, TemplateList, TemplateEditor } from './setting'
 import { CollectionList, CollectionEditor } from './collection'
 import { VrList, VrEditor } from './vr'
-import { ApiTester } from './tools'
+import { ApiTester, Raspberry } from './tools'
 
 class Application extends Component{
   constructor(props) {
@@ -50,5 +50,5 @@ class Application extends Component{
   }
 }
 
-export {Application, Login, App, User, Dashboard, Welcome, Smtp, CollectionList, CollectionEditor, TemplateList, TemplateEditor, ApiTester, VrList, VrEditor, Gallery}
+export {Application, Login, App, User, Dashboard, Welcome, Smtp, CollectionList, CollectionEditor, TemplateList, TemplateEditor, ApiTester, VrList, VrEditor, Gallery, Raspberry}
 

@@ -60,6 +60,7 @@ class Nav extends Component{
               <NavLink to="/gallery" icon="image">Gallery</NavLink>
               <CollapsibleNav icon="wrench" title="Tool">
                 <NavLink to="/tools/apiTester" icon="plug">ApiTester</NavLink>
+                <NavLink to="/tools/raspberry" icon="key">Raspberry</NavLink>
                 <NavLink href="#!" icon="paper-plane">Pusher</NavLink>
               </CollapsibleNav> 
               <CollapsibleNav icon="cog" title="Setting">
