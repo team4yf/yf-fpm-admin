@@ -20,7 +20,7 @@ webpackJsonp([0],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_yfFpmClientNodejs2.default.init({ mode: 'PRODUCT', scope: 'api', appkey: '123123', masterKey: '123123' });
+	_yfFpmClientNodejs2.default.init({ mode: 'PRODUCT', appkey: '123123', masterKey: '123123', endpoint: 'http://api.yunplus.io/api' });
 
 	(0, _reactDom.render)(_react2.default.createElement(
 	  _reactRouter.Router,
@@ -7316,32 +7316,48 @@ webpackJsonp([0],[
 	      var title = '',
 	          createButton = this.props.hasCreate ? _react2.default.createElement(
 	        'button',
-	        { className: 'right btn green darken-1 lighten-2 white-text', onClick: this.props.onCreateHandler },
+	        { className: 'valign btn btn-small green darken-1 lighten-2 white-text', onClick: this.props.onCreateHandler },
 	        '+ Create'
 	      ) : '';
+
+	      /*let searchBar = this.props.hasSearch? 
+	      (
+	        <div className="right">
+	          <SearchBar />
+	        </div>
+	      ) :''*/
 
 	      if (this.props.title) {
 	        title = _react2.default.createElement(
 	          'div',
-	          null,
+	          { className: 'panel-header' },
 	          _react2.default.createElement(
-	            'span',
-	            { className: 'card-title left' },
-	            this.props.title,
-	            ' '
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'panel-title col s3' },
+	              this.props.title,
+	              ' '
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'panel-tools col s9 right-align' },
+	              _react2.default.createElement(SearchBar, null),
+	              createButton
+	            )
 	          ),
-	          createButton,
-	          _react2.default.createElement('div', { className: 'clearfix' }),
 	          _react2.default.createElement('div', { className: 'divider' })
 	        );
 	      }
+
 	      return _react2.default.createElement(
 	        'div',
-	        { className: "card " + this.props.className },
+	        { className: "panel " + this.props.className },
+	        title,
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'card-content' },
-	          title,
+	          { className: 'panel-content' },
 	          this.props.children,
 	          _react2.default.createElement('div', { className: 'clearfix' })
 	        )
@@ -7518,18 +7534,8 @@ webpackJsonp([0],[
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: this.props.direction },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'input-field' },
-	          _react2.default.createElement('i', { className: 'grey-text fa fa-search prefix' }),
-	          _react2.default.createElement('input', { id: '', type: 'text', className: ' validate' }),
-	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'icon_prefix', className: 'grey-text' },
-	            'Search'
-	          )
-	        )
+	        { className: 'input-field inline search-bar' },
+	        _react2.default.createElement('input', { id: 'search-bar', placeholder: 'Search', className: 'left-align validate' })
 	      );
 	    }
 	  }]);
@@ -7611,11 +7617,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var searchBar = this.props.hasSearch ? _react2.default.createElement(
-	        'div',
-	        { className: 'right' },
-	        _react2.default.createElement(SearchBar, null)
-	      ) : '';
+
 	      return _react2.default.createElement(
 	        TablePanel,
 	        {
@@ -7623,7 +7625,6 @@ webpackJsonp([0],[
 	          hasCreate: this.props.hasCreate,
 	          onCreateHandler: this.props.onCreateHandler },
 	        this.props.children,
-	        searchBar,
 	        _react2.default.createElement('div', { className: 'clearfix' }),
 	        _react2.default.createElement(
 	          'table',
@@ -8269,21 +8270,6 @@ webpackJsonp([0],[
 	              list: [],
 	              ref: 'table',
 	              onPageClickHandler: this.onPageClickHandler.bind(this) },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'right' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'input-field' },
-	                _react2.default.createElement('i', { className: 'teal-text fa fa-search prefix' }),
-	                _react2.default.createElement('input', { id: 'icon_prefix', type: 'text', className: 'validate' }),
-	                _react2.default.createElement(
-	                  'label',
-	                  { htmlFor: 'icon_prefix' },
-	                  'Search'
-	                )
-	              )
-	            ),
 	            _react2.default.createElement('div', { className: 'clearfix' })
 	          )
 	        )
@@ -43811,7 +43797,9 @@ webpackJsonp([0],[
 
 	    var _this = _possibleConstructorReturn(this, (CollectionEditor.__proto__ || Object.getPrototypeOf(CollectionEditor)).call(this, props));
 
-	    _this.state = {};
+	    _this.state = {
+	      columns: [{}]
+	    };
 	    return _this;
 	  }
 
@@ -43819,18 +43807,90 @@ webpackJsonp([0],[
 	    key: 'onSubmitHandler',
 	    value: function onSubmitHandler(e) {
 	      e.preventDefault();
-	      // let obj = new YF.Object('fpm_template', {
-	      //   name: this.refs.name.getValue(),
-	      //   content: this.refs.content.getValue()
-	      // })
-	      // obj.create()
-	      //   .then(res => {
-	      //     Materialize.toast('Add Success!', 4000)
-	      //   })
-	      //   .catch(err=>{
-	      //     swal('', err.message, 'danger')
-	      //   })
-	      // return false
+	      var name = this.refs['name'].getValue();
+
+	      alert(name);
+	      return false;
+	    }
+	  }, {
+	    key: 'onMoreColumnHandler',
+	    value: function onMoreColumnHandler() {
+	      var columns = this.state.columns;
+	      this.setState({
+	        columns: _lodash2.default.concat(columns, {})
+	      });
+	    }
+	  }, {
+	    key: 'onColumnRender',
+	    value: function onColumnRender(column, index) {
+	      return _react2.default.createElement(
+	        'tr',
+	        { key: 'column-' + index },
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          _react2.default.createElement('input', { placeholder: 'required' })
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          _react2.default.createElement(
+	            'select',
+	            { className: 'browser-default' },
+	            _react2.default.createElement(
+	              'option',
+	              { value: '1' },
+	              'TINYINT'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: '1' },
+	              'INT'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: '2' },
+	              'BIGINT'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: '3' },
+	              'VARCHAR(50)'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: '3' },
+	              'VARCHAR(200)'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: '3' },
+	              'VARCHAR(2000)'
+	            ),
+	            _react2.default.createElement(
+	              'option',
+	              { value: '3' },
+	              'VARCHAR(4000)'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          _react2.default.createElement('input', { type: 'checkbox', id: "column-null-" + index, className: 'filled-in' }),
+	          _react2.default.createElement('label', { htmlFor: "column-null-" + index })
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          _react2.default.createElement('input', { placeholder: 'not required' })
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          _react2.default.createElement('input', { placeholder: 'not required' })
+	        )
+	      );
 	    }
 	  }, {
 	    key: 'render',
@@ -43845,7 +43905,7 @@ webpackJsonp([0],[
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container white' },
+	          { className: 'white' },
 	          _react2.default.createElement(
 	            _controls.Panel,
 	            { title: 'Edit A Collection' },
@@ -43855,10 +43915,72 @@ webpackJsonp([0],[
 	              _react2.default.createElement(_controls.TextField, { title: 'Name',
 	                ref: 'name',
 	                placeholder: 'type your collection name' }),
-	              _react2.default.createElement(_controls.TextField, { title: 'Content',
-	                multiLine: 'true',
-	                ref: 'content',
-	                placeholder: 'type your collection content' }),
+	              _react2.default.createElement(
+	                'p',
+	                null,
+	                'Columns'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                  'table',
+	                  { className: 'bordered' },
+	                  _react2.default.createElement(
+	                    'thead',
+	                    null,
+	                    _react2.default.createElement(
+	                      'tr',
+	                      null,
+	                      _react2.default.createElement(
+	                        'th',
+	                        { 'data-field': 'name' },
+	                        'Name'
+	                      ),
+	                      _react2.default.createElement(
+	                        'th',
+	                        { 'data-field': 'type' },
+	                        'Type'
+	                      ),
+	                      _react2.default.createElement(
+	                        'th',
+	                        { 'data-field': 'isnull' },
+	                        'IsNull'
+	                      ),
+	                      _react2.default.createElement(
+	                        'th',
+	                        { 'data-field': 'default' },
+	                        'Default'
+	                      ),
+	                      _react2.default.createElement(
+	                        'th',
+	                        { 'data-field': 'comment' },
+	                        'Comment'
+	                      )
+	                    )
+	                  ),
+	                  _react2.default.createElement(
+	                    'tbody',
+	                    null,
+	                    this.state.columns.map(this.onColumnRender.bind(this)),
+	                    _react2.default.createElement(
+	                      'tr',
+	                      null,
+	                      _react2.default.createElement(
+	                        'td',
+	                        { colSpan: '5' },
+	                        _react2.default.createElement(
+	                          'button',
+	                          { className: 'grey btn',
+	                            onClick: this.onMoreColumnHandler.bind(this) },
+	                          '+'
+	                        )
+	                      )
+	                    )
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement('div', { className: 'space-20' }),
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'col offset-s2 s10' },
