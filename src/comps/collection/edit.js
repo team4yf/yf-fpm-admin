@@ -7,29 +7,55 @@ class CollectionEditor extends Component{
 
   constructor(props){
     super(props)
-    this.state = {}
+    this.state = {
+      columns: [{}]
+    }
   }
   onSubmitHandler(e){
     e.preventDefault()
-    // let obj = new YF.Object('fpm_template', {
-    //   name: this.refs.name.getValue(),
-    //   content: this.refs.content.getValue()
-    // })
-    // obj.create()
-    //   .then(res => {
-    //     Materialize.toast('Add Success!', 4000)
-    //   })
-    //   .catch(err=>{
-    //     swal('', err.message, 'danger')
-    //   })
-    // return false
+    let name = this.refs['name'].getValue()
+
+    alert(name)
+    return false
+  }
+
+  onMoreColumnHandler(){
+    let columns = this.state.columns
+    this.setState({
+      columns: _.concat(columns, {})
+    })
+  }
+
+  onColumnRender(column, index){
+    return (
+      <tr key={'column-' + index}>
+        <td><input placeholder="required" /></td>
+        <td>
+          <select className="browser-default">
+            <option value="1">TINYINT</option>
+            <option value="1">INT</option>
+            <option value="2">BIGINT</option>
+            <option value="3">VARCHAR(50)</option>
+            <option value="3">VARCHAR(200)</option>
+            <option value="3">VARCHAR(2000)</option>
+            <option value="3">VARCHAR(4000)</option>
+          </select>
+        </td>
+        <td>
+          <input type="checkbox" id={"column-null-" + index} className="filled-in"/>
+          <label htmlFor={"column-null-" + index}></label>
+        </td>
+        <td><input placeholder="not required"/></td>
+        <td><input placeholder="not required"/></td>
+      </tr>
+    )
   }
 
   render(){
     return (
       <div>
         <PageTitle>Collection</PageTitle>
-        <div className="container white">
+        <div className="white">
           <Panel title="Edit A Collection">
             <form className="form-horizontal" id="collection-editer-form" onSubmit={this.onSubmitHandler.bind(this)} >
 
@@ -37,11 +63,35 @@ class CollectionEditor extends Component{
                   ref="name"
                   placeholder="type your collection name"/>
 
-                <TextField title="Content"
-                  multiLine="true"
-                  ref="content"
-                  placeholder="type your collection content"/>
+                <p>Columns</p>
+                <div>
+                  <table className="bordered">
+                    <thead>
+                      <tr>
+                          <th data-field="name">Name</th>
+                          <th data-field="type">Type</th>
+                          <th data-field="isnull">IsNull</th>
+                          <th data-field="default">Default</th>
+                          <th data-field="comment">Comment</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      {
+                        this.state.columns.map(this.onColumnRender.bind(this))
+                      }
+                      <tr>
+                        <td colSpan="5">
+                          <button className="grey btn"
+                            onClick={this.onMoreColumnHandler.bind(this)}>+</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                </div>
                 
+                <div className="space-20"></div>
                 <div className="col offset-s2 s10">
                   <button type="submit" className="btn modal-close">Save</button>
                 </div>

@@ -47,13 +47,6 @@ class UserList extends Component {
             list={[]} 
             ref='table'
             onPageClickHandler={this.onPageClickHandler.bind(this)}>
-            <div className="right">
-              <div className="input-field">
-                <i className="teal-text fa fa-search prefix"></i>
-                <input id="icon_prefix" type="text" className="validate" />
-                <label htmlFor="icon_prefix">Search</label>
-              </div>
-            </div>
             <div className="clearfix"></div>
           </Table>
         </div>

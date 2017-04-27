@@ -12,7 +12,7 @@ import {Application, Login, App, User, CollectionList, CollectionEditor,
 
 import YF from 'yf-fpm-client-nodejs'
 
-YF.init({mode:'PRODUCT', scope:'api', appkey:'123123', masterKey:'123123'})
+YF.init({mode:'PRODUCT', appkey:'123123', masterKey:'123123', endpoint: 'http://api.yunplus.io/api'})
 
 render((
   <Router history={ browserHistory }>

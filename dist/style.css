@@ -102,9 +102,6 @@ main{
   margin-top: 2em;
 }
 .page-content {
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
   padding-bottom: 10px;
 }
 .dropzone{
@@ -142,4 +139,39 @@ main{
 }
 .mask .fa{
   color: #fff;
+}
+.space-20{
+  height: 20px; background: transparent; display: block;
+}
+td{
+  padding-top: 12px; padding-bottom: 12px;
+}
+.panel{
+  background: #fff; padding: 0 0 3em;
+}
+.panel-header{
+  background: #fff;
+}
+.panel-title{
+  height: 60px; font-size: 1.2em; text-indent: .1em; line-height: 60px; font-weight: bold;
+}
+.panel-tools{
+  height: 60px;
+  vertical-align: middle;
+}
+.panel-header>.row{
+  margin-bottom: 0;
+}
+.btn-small{
+  height: 28px;
+  line-height: 28px;
+  padding: 0 1rem;
+  margin: 16px 0px;
+  font-size: .8rem;
+}
+.search-bar{
+  margin-right: 1em;
+}
+#search-bar{
+  height: 2em;
 }

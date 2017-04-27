@@ -6,22 +6,41 @@ class TablePanel extends Component{
 
   render(){
     let title = '',
-      createButton = this.props.hasCreate? (<button className="right btn green darken-1 lighten-2 white-text" onClick={this.props.onCreateHandler}>+ Create</button>):''
+      createButton = this.props.hasCreate? (<button className="valign btn btn-small green darken-1 lighten-2 white-text" onClick={this.props.onCreateHandler}>+ Create</button>):''
     
+    /*let searchBar = this.props.hasSearch? 
+    (
+      <div className="right">
+        <SearchBar />
+      </div>
+    ) :''*/
+
     if(this.props.title){
       title = (
-        <div>
-          <span className="card-title left">{this.props.title} </span>
-          {createButton}
-          <div className="clearfix"></div>
+        <div className="panel-header">
+          <div className="row">
+            <div className="panel-title col s3">{this.props.title} </div>
+            <div className="panel-tools col s9 right-align">
+              { 
+                (
+                    <SearchBar />
+                ) 
+              }
+              {createButton}
+              
+            </div>
+          </div>
           <div className="divider"></div>
         </div>
       )
     }
+
+
+    
     return (
-        <div className={"card " + this.props.className }>
-          <div className="card-content">
-            {title}
+        <div className={"panel " + this.props.className }>
+          {title}
+          <div className="panel-content">
             {this.props.children}
             <div className="clearfix"></div>
           </div>
@@ -116,12 +135,8 @@ class LoadingDataRow extends Component {
 class SearchBar extends Component {
   render() {
     return (
-      <div className={this.props.direction}>
-        <div className="input-field">
-          <i className="grey-text fa fa-search prefix"></i>
-          <input id="" type="text" className=" validate" />
-          <label htmlFor="icon_prefix" className="grey-text">Search</label>
-        </div>
+      <div className="input-field inline search-bar">
+        <input id="search-bar" placeholder="Search" className="left-align validate" />
       </div>
     )
   }
@@ -166,19 +181,13 @@ class Table extends Component {
   }
 
   render(){
-    let searchBar = this.props.hasSearch? 
-      (
-        <div className="right">
-          <SearchBar />
-        </div>
-      ) :''
+
     return (
       <TablePanel 
         title={this.props.title}
         hasCreate={this.props.hasCreate}
-        onCreateHandler={this.props.onCreateHandler}>
+        onCreateHandler={this.props.onCreateHandler} >
         {this.props.children}
-        {searchBar}
         <div className="clearfix"></div>
         <table className="table striped">
           <TableHeader columns={this.props.columns} />
